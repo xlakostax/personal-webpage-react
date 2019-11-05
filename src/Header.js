@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export default class Header extends Component {
 
   componentDidMount = () => {
-    var navBtns = document.getElementById( 'headerNavMenu' ).getElementsByTagName( 'a' );
+    var navBtns = document.getElementById( 'navMenu' ).getElementsByTagName( 'a' );
     var path = window.location.href;
     for ( let i = 0; i < navBtns.length; i++ ) {
       if ( navBtns[i].href !== path ){
@@ -16,7 +16,7 @@ export default class Header extends Component {
   render() {
     return(
       <header>
-        <nav id='headerNavMenu'>
+        <nav id='navMenu'>
           <ul>
             <li>
               <h2>Konstantin<span>Veselovskii</span></h2>

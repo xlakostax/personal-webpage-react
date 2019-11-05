@@ -64,7 +64,7 @@ h2, h1 {
   text-transform: uppercase;
 }
 
-#wrapper, #text, footer {
+/*  #wrapper, #text, footer {
   font-family: "Merriweather";
   line-height: 1.5;
 }
@@ -72,7 +72,8 @@ h2, h1 {
 header {
   position: sticky;
   top: 0;
-  left: 0;
+  right: 0;
+  margin: 0 auto 2em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,7 +86,7 @@ header {
   display: none;
 }
 
-#headerNavMenu {
+#navMenu {
   width: 90%;
   position: relative;
   display: flex;
@@ -128,33 +129,33 @@ header {
   display: block;
 }
 
-#headerNavMenu ul:first-child {
+#navMenu ul:first-child {
   padding: 1.2em 0 1.2em 1.2em;
   text-align: left;
 }
 
-#headerNavMenu ul:nth-child(2) {
+#navMenu ul:nth-child(2) {
   text-align: center;
   height: 0;
 }
 
-#headerNavMenu ul:last-child {
+#navMenu ul:last-child {
   padding: 1.2em 1.2em 1.2em 0;
   text-align: right;
 }
 
-#headerNavMenu li {
+#navMenu li {
   display: inline-block;
   vertical-align: middle;
   padding: 0 0.6em;
 }
 
-#headerNavMenu h2 {
+#navMenu h2 {
   font-weight: 400;
   font-size: 1.2em;
 }
 
-#headerNavMenu span {
+#navMenu span {
   font-weight: 800;
 }
 
@@ -206,26 +207,26 @@ footer {
     right: 1.8em;
   }
 
-  #headerNavMenu {
+  #navMenu {
     flex-direction: column;
     justify-content: center;
     text-align: center;
   }
 
-  #headerNavMenu ul:nth-child(2) {
+  #navMenu ul:nth-child(2) {
     text-align: center;
   }
 
-  #headerNavMenu ul:first-child {
+  #navMenu ul:first-child {
     padding: 0;
   }
 
-  #headerNavMenu ul:last-child {
+  #navMenu ul:last-child {
     padding: 0;
     display: none;
   }
 
-  #headerNavMenu li {
+  #navMenu li {
     display: inline;
     text-align: left;
     vertical-align: middle;
@@ -252,25 +253,25 @@ footer {
     left: 0;
   }
 
-  #headerNavMenu {
+  #navMenu {
     flex-direction: column;
     justify-content: center;
     text-align: center;
   }
 
-  #headerNavMenu ul:first-child {
+  #navMenu ul:first-child {
     padding: 0;
     text-align: center;
     padding: 1.2em 0;
   }
 
-  #headerNavMenu ul:last-child {
+  #navMenu ul:last-child {
     padding: 0;
     text-align: center;
     padding: 1.2em 0;
   }
 
-  #headerNavMenu ul:last-child li {
+  #navMenu ul:last-child li {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
@@ -291,4 +292,4 @@ footer {
   .fa-angle-up {
     font-size: 2em;
   }
-}
+} */

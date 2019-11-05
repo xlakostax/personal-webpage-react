@@ -41,7 +41,7 @@ class Home extends Component {
     return(
       <main>
         <div id="titleContainer">
-          <h1 className="h1">
+          <h1>
             <span>I'm </span>
             Konstantin
             <br />
