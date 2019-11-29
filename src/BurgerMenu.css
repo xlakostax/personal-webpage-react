@@ -15,26 +15,26 @@
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: rgba(0,0,0);
+  background: rgba(0, 0, 0);
 }
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-position: fixed;
-width: 36px;
-height: 30px;
-right: 360px;
-top: 306px;
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 360px;
+  top: 306px;
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: rgba(0,0,0);
+  background: rgba(0, 0, 0);
 }
 
 /* General sidebar styles */
 .bm-menu {
-  background: rgba(255,255,255);
+  background: rgba(255, 255, 255);
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
