@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TweenLite, TweenMax } from 'gsap/all';
-import { NavLink } from "react-router-dom";
-import $ from "jquery";
+import { NavLink } from 'react-router-dom';
+import $ from 'jquery';
 import styled from 'styled-components';
 import './Home.css';
 
@@ -60,43 +60,42 @@ const NavMenu = styled.nav`
   }
 `;
 
-
 class Home extends Component {
   /* Parallax effect using gsap from side sources */
-  componentDidMount() {
-    if(window.screen.width>=1360){
-      var rect = $('#root')[0].getBoundingClientRect();
-      var mouse = {x: 0, y: 0, moved: false};
+  componentDidMount = () => {
+    if( window.screen.width >= 360 ){
+      var rect = $( '#root' )[0].getBoundingClientRect();
+      var mouse = { x: 0, y: 0, moved: false };
 
-      $('#root').mousemove(function(e) {
+      $( '#root' ).mousemove( (e) => {
         mouse.moved = true;
         mouse.x = e.clientX - rect.left;
         mouse.y = e.clientY - rect.top;
-      });
+      } );
 
-      TweenLite.ticker.addEventListener('tick', function(){
-        if (mouse.moved){
-          parallaxIt("#titleContainer", -30);
+      TweenLite.ticker.addEventListener('tick', () => {
+        if ( mouse.moved ){
+          parallaxIt( '#titleContainer', -30 );
         }
         mouse.moved = false;
       });
 
-      function parallaxIt(target, movement) {
-        TweenMax.to(target, 0.3, {
-          x: (mouse.x - rect.width / 2) / rect.width * movement,
-          y: (mouse.y - rect.height / 2) / rect.height * movement
+      function parallaxIt( target, movement ) {
+        TweenMax.to( target, 0.3, {
+          x: ( mouse.x - rect.width / 2 ) / rect.width * movement,
+          y: ( mouse.y - rect.height / 2 ) / rect.height * movement
         });
       }
 
-      $(window).on('resize scroll', function(){
-        rect = $('#root')[0].getBoundingClientRect();
+      $( window ).on( 'resize scroll', () => {
+        rect = $( '#root' )[0].getBoundingClientRect();
       })
     }
   }
   render() {
     return(
       <Main>
-        <div id="titleContainer">
+        <div id='titleContainer'>
           <H1>
             <span>I'm </span>
             Konstantin
@@ -109,18 +108,18 @@ class Home extends Component {
                 <H2>a web developer</H2>
               </li>
               <li>
-                <a href="https://github.com/xlakostax">
-                  <i className="fab fa-github-square"></i>
+                <a href='https://github.com/xlakostax'>
+                  <i className='fab fa-github-square'></i>
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/veselovskii/">
-                  <i className="fab fa-linkedin"></i>
+                <a href='https://www.linkedin.com/in/veselovskii/'>
+                  <i className='fab fa-linkedin'></i>
                 </a>
               </li>
               <li>
-                <a href="https://www.facebook.com/xlakostax">
-                  <i className="fab fa-facebook-square"></i>
+                <a href='https://www.facebook.com/xlakostax'>
+                  <i className='fab fa-facebook-square'></i>
                 </a>
               </li>
             </ul>
@@ -128,17 +127,17 @@ class Home extends Component {
           <NavMenu>
             <ul>
               <li>
-                <NavLink to="/projects">
+                <NavLink to='/projects'>
                   <H2>Projects</H2>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/about">
+                <NavLink to='/about'>
                   <H2>About</H2>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contacts">
+                <NavLink to='/contacts'>
                   <H2>Contacts</H2>
                 </NavLink>
               </li>

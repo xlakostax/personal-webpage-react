@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import './Header.css'
 
 const HeaderTag = styled.header`
   position: sticky;
@@ -15,6 +14,25 @@ const HeaderTag = styled.header`
   font-family: 'Nunito', Georgia, serif;
   background-color: white;
   z-index: 999;
+  & .active {
+    color: rgb(255, 99, 71);
+  }
+  & .active:after, .inactive:after {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 1px;
+    transition: 300ms;
+  }
+  & .active:after {
+    background: rgb(255, 99, 71);
+  }
+  & .inactive:after {
+    background: rgba(47, 47, 47, 1);
+  }
+  & .active:hover:after, .inactive:hover:after {
+    width: 100%;
+  }
 `;
 
 const Nav = styled.nav`
