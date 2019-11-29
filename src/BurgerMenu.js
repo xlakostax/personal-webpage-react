@@ -3,7 +3,6 @@ import { slide as Menu } from 'react-burger-menu'
 import './BurgerMenu.css'
 import { NavLink } from 'react-router-dom';
 
-
 export default class BurgerMenu extends Component {
   render () {
     return (

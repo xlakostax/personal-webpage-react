@@ -2,7 +2,63 @@ import React, { Component } from 'react';
 import { TweenLite, TweenMax } from 'gsap/all';
 import { NavLink } from "react-router-dom";
 import $ from "jquery";
+import styled from 'styled-components';
 import './Home.css';
+
+const Main = styled.main`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const H1 = styled.h1`
+  font-size: 8em;
+  line-height: 1;
+  & span {
+    font-weight: 400;
+  }
+`;
+
+const H2 = styled.h2`
+  font-size: 2em;
+  font-weight: 400;
+  padding-right: 0.5em;
+`;
+
+const SubtitleContainer = styled.div`
+  padding-top: 1.2em;
+  & ul {
+    padding-inline-start: 0;
+  }
+  & i {
+    position: relative;
+    font-size: 2em;
+    padding-right: 0.2em;
+  }
+  & i:hover {
+    transition: color 100ms linear;
+    color: tomato;
+  }
+  & li {
+    display: inline-block;
+    vertical-align: middle;
+  }
+`;
+const NavMenu = styled.nav`
+  position: relative;
+  padding-top: 1.2em;
+  & ul {
+    padding-inline-start: 0;
+  }
+  & li {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.8em;
+  }
+`;
 
 
 class Home extends Component {
@@ -39,18 +95,18 @@ class Home extends Component {
   }
   render() {
     return(
-      <main>
+      <Main>
         <div id="titleContainer">
-          <h1>
+          <H1>
             <span>I'm </span>
             Konstantin
             <br />
             Veselovskii
-          </h1>
-          <div id="subtitleContainer">
+          </H1>
+          <SubtitleContainer>
             <ul>
               <li>
-                <h2>a web developer</h2>
+                <H2>a web developer</H2>
               </li>
               <li>
                 <a href="https://github.com/xlakostax">
@@ -68,28 +124,28 @@ class Home extends Component {
                 </a>
               </li>
             </ul>
-          </div>
-          <nav id="navMenu">
+          </SubtitleContainer>
+          <NavMenu>
             <ul>
               <li>
                 <NavLink to="/projects">
-                  <h2>Projects</h2>
+                  <H2>Projects</H2>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/about">
-                  <h2>About</h2>
+                  <H2>About</H2>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/contacts">
-                  <h2>Contacts</h2>
+                  <H2>Contacts</H2>
                 </NavLink>
               </li>
             </ul>
-          </nav>
+          </NavMenu>
         </div>
-      </main>
+      </Main>
     )
   }
 }

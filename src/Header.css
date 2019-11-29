@@ -1,11 +1,23 @@
-header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  background-color: white;
-  z-index: 999;
+.active {
+  color: rgb(255, 99, 71);
+}
+
+.active:after, .inactive:after {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 1px;
+  transition: 300ms;
+}
+
+.active:after {
+  background: rgb(255, 99, 71);
+}
+
+.inactive:after {
+  background: rgba(47, 47, 47, 1);
+}
+
+.active:hover:after, .inactive:hover:after {
+  width: 100%;
 }
