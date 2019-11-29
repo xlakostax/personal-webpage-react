@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Nunito', Georgia, serif;
+  font-family: "Merriweather";
   padding: 0;
   /* color: rgba(47, 47, 47, 1);
   background: rgb(246, 246, 246) center center no-repeat;
@@ -38,16 +38,12 @@ a {
 }
 
 h2, h1 {
+  font-family: 'Nunito', Georgia, serif;
   text-transform: uppercase;
 }
 
-#wrapper, #text, footer {
-  font-family: "Merriweather";
+p, li {
   line-height: 1.5;
-}
-
-.wrapper {
-
 }
 
 /*

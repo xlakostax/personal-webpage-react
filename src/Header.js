@@ -12,6 +12,7 @@ const HeaderTag = styled.header`
   justify-content: center;
   align-items: center;
   width: 90%;
+  font-family: 'Nunito', Georgia, serif;
   background-color: white;
   z-index: 999;
 `;
