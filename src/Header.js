@@ -55,7 +55,6 @@ export default class Header extends Component {
   componentDidMount = () => {
     var navBtns = document.getElementById( 'navMenu' ).getElementsByTagName( 'a' );
     var path = window.location.href;
-    console.log(path);
     for ( let i = 0; i < navBtns.length; i++ ) {
       if ( navBtns[i].href !== path ){
         navBtns[i].className += ' inactive'
