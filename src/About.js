@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Footer from './Footer'
 import Header from './Header'
-import MobileMenu from './MobileMenu'
 import BurgerMenu from './BurgerMenu'
 import styled from 'styled-components';
 
