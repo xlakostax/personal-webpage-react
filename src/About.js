@@ -31,7 +31,7 @@ const Wrapper = styled.div`
     }
   & a {
     display: inline-block;
-    color: red;
+    color: rgb(255, 99, 71);
   }
   & a:after {
     content: '';
