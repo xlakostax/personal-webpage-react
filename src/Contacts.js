@@ -75,7 +75,7 @@ const Contacts = () => {
           E-mail: <a href="mailto:konstantin.veselovskii@gmail.com?subject=About cooperation">konstantin.veselovskii@gmail.com</a>
         </p><br />
         <Wrapper>
-          <form action="/send" method="post" netlify>
+          <form action="/contacts" method="post" netlify>
             <Input nameData = 'Your name: ' type = 'text' name = 'name'/>
             <Input nameData = 'Your email: ' type = 'email' name = 'email'/>
             <p>
