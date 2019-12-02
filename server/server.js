@@ -19,7 +19,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.post('/send', (req, res) => {
+app.post('/contacts', (req, res) => {
   const output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>

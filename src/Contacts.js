@@ -20,7 +20,7 @@ const Main = styled.main`
   }
 `;
 
-const Wrapper = styled.div`
+const Form = styled.div`
   position: relative;
   width: 100%;
   text-align: justify;
@@ -74,7 +74,7 @@ const Contacts = () => {
           Phone: <a href="callto://+358 41 723 7774?call">+358 41 723-77-74</a><br />
           E-mail: <a href="mailto:konstantin.veselovskii@gmail.com?subject=About cooperation">konstantin.veselovskii@gmail.com</a>
         </p><br />
-        <Wrapper>
+        <Form>
           <form action="/contacts" method="post" netlify>
             <Input nameData = 'Your name: ' type = 'text' name = 'name'/>
             <Input nameData = 'Your email: ' type = 'email' name = 'email'/>
@@ -85,7 +85,7 @@ const Contacts = () => {
             </p>
             <button type="submit" name="send">Send</button>
           </form>
-        </Wrapper>
+        </Form>
       </Main>
       <Footer />
     </Div>
