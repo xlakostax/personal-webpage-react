@@ -69,7 +69,7 @@ export default class About extends Component {
   };
 
   render() {
-    const { width } = this.state;
+    {/*const { width } = this.state;*/}
     const isMobile = window.innerWidth <= 500;
     if (isMobile) {
       return(
@@ -116,4 +116,4 @@ export default class About extends Component {
       );
     }
   }
-  }
+}

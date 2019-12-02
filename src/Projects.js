@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from './Footer'
 import Header from './Header'
+import BurgerMenu from './BurgerMenu'
 import styled from 'styled-components';
 
 const Div = styled.div`
