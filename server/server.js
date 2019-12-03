@@ -1,4 +1,3 @@
-
 const express = require ('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require("body-parser");
@@ -17,7 +16,7 @@ app.use(
 
 app.use( bodyParser.json() );
 
-app.post('/success', (req, res) => {
+app.post('/send', (req, res) => {
   const output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>
@@ -33,6 +32,11 @@ app.post('/success', (req, res) => {
   let transporter = nodemailer.createTransport({
     ...config.mailer
   });
+
+  transporter.verify((error, success) => {
+    error ? console.log( error ) : console.log( 'Server is ready to take message' )
+  });
+
   // setup email data with unicode symbols
   let mailOptions = {
       from: `${req.body.email}`,
@@ -42,18 +46,25 @@ app.post('/success', (req, res) => {
       html: output // HTML body
   };
 
-  // send mail with defined transport object
-  transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error);
-        res.redirect('error');
-      } else {
-        console.log('Message sent: %s', info.messageId);
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-        res.redirect('success');
-      }
+  // Send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, data) => {
+    if (error) {
+      res.json({
+        msg: 'fail'
+      })
+      console.log(error);
+      // res.redirect('error'); //Hardcoding
+    } else {
+      res.json({
+        msg: 'success'
+      })
+      console.log('Message sent: %s', data.messageId);
+      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(data));
+      // res.redirect('success'); //Hardcoding
+    }
   });
-  });
-  app.listen( config.server.port, () => {
-      console.log( `Server running on port ${ config.server.port }` );
-  } );
+});
+
+app.listen( config.server.port, () => {
+  console.log( `Server running on port ${ config.server.port }` );
+} );

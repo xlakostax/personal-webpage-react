@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { withRouter } from 'react-router';
 
@@ -40,23 +41,60 @@ class Form extends Component {
   constructor( props ) {
     super( props );
     this.state = {
-      /*showModal: false*/
+      name: '',
+      email: '',
+      message: ''
     };
-    /*this.onChangeHandler = this.onChangeHandler.bind( this );
-    this.handleCloseModal = this.handleCloseModal.bind( this );*/
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.resetForm = this.resetForm.bind(this);
   }
 
-  submitForm (e) {
-		e.preventDefault()
-		this.props.history.push('/success');
-	}
+  onChangeHandler = (event) => {
+    let name = event.target.name;
+    let value = event.target.value;
+    this.setState({
+      [name]: value /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
+    });
+  }
+
+  handleSubmit = (event) => {
+        event.preventDefault();
+        const name = this.state.name;
+        const email = this.state.email;
+        const message = this.state.message;
+        axios({
+            method: "POST",
+            url:"http://localhost:3001/send",
+            data: {
+                name: name,
+                email: email,
+                messsage: message
+            }
+        }).then((response)=>{
+            if (response.data.msg === 'success'){
+                // alert("Message Sent.");
+                this.resetForm();
+            }else if(response.data.msg === 'fail'){
+                // alert("Message failed to send.")
+            }
+        })
+    }
+
+    resetForm = (event) => {
+      this.setState({
+        name: '',
+        email: '',
+        message: ''
+      });
+    }
 
   render() {
     const Input = (props) => {
       return (
         <p>
           <label>{props.nameData}
-            <input type = {props.type} name = {props.name} required />
+            <input type = {props.type} name = {props.name} value = {props.value} onChange = {props.onChange} required />
           </label>
         </p>
       )
@@ -65,12 +103,12 @@ class Form extends Component {
     return(
       <Wrapper>
         {/*<form action="/contacts" method="post" netlify onSubmit={this.submitForm.bind(this)}>*/}
-        <form action="/success" method="post" netlify>
-          <Input nameData = 'Your name: ' type = 'text' name = 'name'/>
-          <Input nameData = 'Your email: ' type = 'email' name = 'email'/>
+        <form method="post" onSubmit={this.handleSubmit}>
+          <Input id = 'name' nameData = 'Your name: ' type = 'text' name = 'name' value = {this.state.name} onChange={this.onChangeHandler}/>
+          <Input id = 'email' nameData = 'Your email: ' type = 'email' name = 'email' value = {this.state.email} onChange={this.onChangeHandler}/>
           <p>
             <label>Message:
-              <textarea name="message" required></textarea>
+              <textarea id = 'message' name="message" required value = {this.state.message} onChange={this.onChangeHandler}/>
             </label>
           </p>
           <button type="submit" name="send">Send</button>
