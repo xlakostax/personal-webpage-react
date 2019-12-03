@@ -13,7 +13,7 @@ const HeaderTag = styled.header`
   width: 90%;
   font-family: 'Nunito', Georgia, serif;
   background-color: white;
-  z-index: 999;
+  z-index: 99;
   & .active {
     color: rgb(255, 99, 71);
   }

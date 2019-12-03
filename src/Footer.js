@@ -10,7 +10,7 @@ const FooterTag = styled.footer`
   margin: 2em auto;
   padding: 2em 0;
   text-align: center;
-  z-index: 999;
+  z-index: 99;
 `;
 
 const Footer = () => {

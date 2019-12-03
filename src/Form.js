@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import Modal from 'react-modal';
 import { withRouter } from 'react-router';
 
 const Wrapper = styled.div`
@@ -34,7 +35,24 @@ const Wrapper = styled.div`
     color: rgb(255, 99, 71);
     border: 1px solid rgb(255, 99, 71);
   }
+  & h4 {
+    display: block;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3em;
+  }
 `;
+
+const modalText = {
+  position: 'absolute',
+  display: 'block',
+  width: '100vw',
+  height: '100vh',
+  top: 0, right: 0, bottom: 0, left: 0,
+  margin: '0 auto',
+  textAlign: 'center',
+  zIndex: '9999'
+}
 
 class Form extends Component {
 
@@ -43,11 +61,13 @@ class Form extends Component {
     this.state = {
       name: '',
       email: '',
-      message: ''
+      message: '',
+      showModal: false
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.resetForm = this.resetForm.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind( this );
   }
 
   onChangeHandler = (event) => {
@@ -58,7 +78,7 @@ class Form extends Component {
     });
   }
 
-  handleSubmit = (event) => {
+  onSubmitHandler = (event) => {
         event.preventDefault();
         const name = this.state.name;
         const email = this.state.email;
@@ -75,6 +95,7 @@ class Form extends Component {
             if (response.data.msg === 'success'){
                 // alert("Message Sent.");
                 this.resetForm();
+                this.setState({ showModal: true });
             }else if(response.data.msg === 'fail'){
                 // alert("Message failed to send.")
             }
@@ -87,6 +108,10 @@ class Form extends Component {
         email: '',
         message: ''
       });
+    }
+
+    handleCloseModal = () => {
+      this.setState( { showModal: false } )
     }
 
   render() {
@@ -103,7 +128,18 @@ class Form extends Component {
     return(
       <Wrapper>
         {/*<form action="/contacts" method="post" netlify onSubmit={this.submitForm.bind(this)}>*/}
-        <form method="post" onSubmit={this.handleSubmit}>
+        <form method="post" onSubmit={this.onSubmitHandler}>
+          <Modal
+            isOpen = { this.state.showModal }
+            contentLabel = 'onRequestClose'
+            onRequestClose = { this.handleCloseModal }
+            className = 'Modal'
+            shouldCloseOnOverlayClick = { false }
+            style = {{modalText}}
+          >
+            <i className='fas fa-times' onClick = { this.handleCloseModal }  style = { { cursor: 'pointer', margin: '10px' } }></i>
+            <h4>Sent successful</h4>
+          </Modal>
           <Input id = 'name' nameData = 'Your name: ' type = 'text' name = 'name' value = {this.state.name} onChange={this.onChangeHandler}/>
           <Input id = 'email' nameData = 'Your email: ' type = 'email' name = 'email' value = {this.state.email} onChange={this.onChangeHandler}/>
           <p>
