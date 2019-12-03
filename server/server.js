@@ -15,7 +15,7 @@ app.use(
   })
 );
 
-app.use(bodyParser.json());
+app.use( bodyParser.json() );
 
 app.post('/success', (req, res) => {
   const output = `
