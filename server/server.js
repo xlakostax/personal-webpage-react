@@ -17,7 +17,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.post('/contacts', (req, res) => {
+app.post('/success', (req, res) => {
   const output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>

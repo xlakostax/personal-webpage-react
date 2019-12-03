@@ -65,7 +65,7 @@ class Form extends Component {
     return(
       <Wrapper>
         {/*<form action="/contacts" method="post" netlify onSubmit={this.submitForm.bind(this)}>*/}
-        <form action="/contacts" method="post" netlify>
+        <form action="/success" method="post" netlify>
           <Input nameData = 'Your name: ' type = 'text' name = 'name'/>
           <Input nameData = 'Your email: ' type = 'email' name = 'email'/>
           <p>
