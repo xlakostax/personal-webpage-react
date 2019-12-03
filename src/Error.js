@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from 'styled-components';
 
 const Main = styled.div`
@@ -36,14 +36,16 @@ const Main = styled.div`
   }
 `;
 
-const Notfound = () => {
-  return (
-    <Main>
-      <p>404 <br />
-      Page not found</p> <br />
-      <a href="/">Go back home</a>
-    </Main>
-  )
+export default class Error extends Component {
+  componentDidMount = () => {
+    setTimeout(() => { window.location.replace("/contacts") }, 5000);
+  };
+  render() {
+    return (
+      <Main>
+        <p>Error </p><br />
+        <a href="/">Go back home</a>
+      </Main>
+    )
+  }
 }
-
-export default Notfound

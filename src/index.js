@@ -5,6 +5,8 @@ import About from "./About";
 import Contacts from "./Contacts";
 import Home from "./Home";
 import Notfound from "./Notfound";
+import Success from "./Success";
+import Error from "./Error";
 import Projects from "./Projects";
 import './Common.css';
 import * as serviceWorker from './serviceWorker';
@@ -16,6 +18,8 @@ const routing = (
       <Route path="/projects" component={Projects} />
       <Route path="/about" component={About} />
       <Route path="/contacts" component={Contacts} />
+      <Route path="/success" component={Success} />
+      <Route path="/error" component={Error} />
       <Route component={Notfound} />
     </Switch>
   </Router>

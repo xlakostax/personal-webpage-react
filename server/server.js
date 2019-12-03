@@ -1,12 +1,10 @@
-'use strict'
 
 const express = require ('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require("body-parser");
 const path = require('path');
 const cors = require('cors')
-const port = 3001;
-
+const config = require('./config.js');
 const app = express();
 
 app.use(cors());
@@ -33,19 +31,8 @@ app.post('/contacts', (req, res) => {
 
   // Create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    service: "ethereal",
-    auth: {
-        user: 'jorge.crooks@ethereal.email',
-        pass: 'WYRFyfrJUvK5n1xxBu'
-    },
-    tls:{
-      rejectUnauthorized:false
-    }
+    ...config.mailer
   });
-
   // setup email data with unicode symbols
   let mailOptions = {
       from: `${req.body.email}`,
@@ -58,13 +45,15 @@ app.post('/contacts', (req, res) => {
   // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-          return console.log(error);
+        console.log(error);
+        res.redirect('error');
+      } else {
+        console.log('Message sent: %s', info.messageId);
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+        res.redirect('success');
       }
-      console.log('Message sent: %s', info.messageId);
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-      res.redirect('contacts');
   });
   });
-  app.listen( port, () => {
-      console.log( `Server running on port ${ port }` );
+  app.listen( config.server.port, () => {
+      console.log( `Server running on port ${ config.server.port }` );
   } );
