@@ -3,6 +3,10 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import { withRouter } from 'react-router';
+Modal.defaultStyles.overlay.backgroundColor = 'cornsilk';
+Modal.defaultStyles.overlay.display = 'flex';
+Modal.defaultStyles.overlay.justifyContent = 'center';
+Modal.defaultStyles.overlay.alignItems = 'center';
 
 const Wrapper = styled.div`
   position: relative;
@@ -127,19 +131,19 @@ class Form extends Component {
 
     return(
       <Wrapper>
-        {/*<form action="/contacts" method="post" netlify onSubmit={this.submitForm.bind(this)}>*/}
+        <Modal
+          isOpen = { this.state.showModal }
+          contentLabel = 'onRequestClose'
+          onRequestClose = { this.handleCloseModal }
+          className = 'Modal'
+          shouldCloseOnOverlayClick = { false }
+          style = {{modalText}}
+        >
+          <i className='fas fa-times' onClick = { this.handleCloseModal }  style = { { cursor: 'pointer', margin: '10px' } }></i>
+          <h4>Sent successful</h4>
+        </Modal>
+        {/*<form action="/contacts" method="post" netlify>*/}
         <form method="post" onSubmit={this.onSubmitHandler}>
-          <Modal
-            isOpen = { this.state.showModal }
-            contentLabel = 'onRequestClose'
-            onRequestClose = { this.handleCloseModal }
-            className = 'Modal'
-            shouldCloseOnOverlayClick = { false }
-            style = {{modalText}}
-          >
-            <i className='fas fa-times' onClick = { this.handleCloseModal }  style = { { cursor: 'pointer', margin: '10px' } }></i>
-            <h4>Sent successful</h4>
-          </Modal>
           <Input id = 'name' nameData = 'Your name: ' type = 'text' name = 'name' value = {this.state.name} onChange={this.onChangeHandler}/>
           <Input id = 'email' nameData = 'Your email: ' type = 'email' name = 'email' value = {this.state.email} onChange={this.onChangeHandler}/>
           <p>
