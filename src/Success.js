@@ -88,8 +88,7 @@ export default class Success extends Component {
     return (
       <Main>
         <p>Sent </p><br />
-        <a href="/">Go back home</a>
-        m: {this.state.time.m} s: {this.state.time.s}
+        Redirecting back in {this.state.time.s} s.
       </Main>
     )
   }
