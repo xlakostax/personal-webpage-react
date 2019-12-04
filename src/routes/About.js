@@ -1,15 +1,8 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import BurgerMenu from '../components/BurgerMenu';
 import styled from 'styled-components';
-
-const Div = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-`;
 
 const Main = styled.main`
   position: relative;
@@ -69,11 +62,10 @@ export default class About extends Component {
   };
 
   render() {
-    {/*const { width } = this.state;*/}
     const isMobile = window.innerWidth <= 500;
     if (isMobile) {
       return(
-        <Div>
+        <Fragment>
           <BurgerMenu />
           <Main>
             <h1>About</h1>
@@ -90,11 +82,11 @@ export default class About extends Component {
             </Wrapper>
           </Main>
           <Footer />
-        </Div>
+        </Fragment>
       )
     } else {
       return(
-        <Div>
+        <Fragment>
           <Header />
           <Main>
             <h1>About</h1>
@@ -112,7 +104,7 @@ export default class About extends Component {
             </Wrapper>
           </Main>
           <Footer />
-        </Div>
+        </Fragment>
       );
     }
   }

@@ -1,15 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import BurgerMenu from '../components/BurgerMenu';
 import styled from 'styled-components';
-
-const Div = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-`;
 
 const Main = styled.main`
   position: relative;
@@ -56,7 +49,7 @@ const Projects = () => {
     );
   });
   return(
-    <Div>
+    <Fragment>
       <Header />
       <Main>
         <h1>Projects</h1>
@@ -65,7 +58,7 @@ const Projects = () => {
         </Grid>
       </Main>
       <Footer />
-    </Div>
+    </Fragment>
   )
 }
 export default Projects;

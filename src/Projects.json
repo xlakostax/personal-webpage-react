@@ -1,6 +1,12 @@
 [
   {
     "id": 1,
+    "title": "Web personal",
+    "description": "Personal web page",
+    "url": "https://veselovskii.netlify.com/"
+  },
+  {
+    "id": 2,
     "title": "Event manager app",
     "description": "A simple app for managing internal events made by React.js, Redux, Node.js, Express.js and MongoDB",
     "url": "http://eventid.herokuapp.com/"

@@ -1,17 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Form from '../components/Form'
 import BurgerMenu from '../components/BurgerMenu';
 import styled from 'styled-components';
-
-const Div = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-`;
 
 const Main = styled.main`
   position: relative;
@@ -24,7 +16,7 @@ const Main = styled.main`
 
 const Contacts = () => {
   return(
-    <Div>
+    <Fragment>
       <Header />
       <Main>
         <h1>Contacts</h1>
@@ -36,7 +28,7 @@ const Contacts = () => {
         <Form />
       </Main>
       <Footer />
-    </Div>
+    </Fragment>
   )
 }
 export default Contacts;

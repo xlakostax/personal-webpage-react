@@ -78,7 +78,7 @@ export default class Success extends Component {
       seconds: seconds,
     });
     // Check if we're at zero.
-    if (seconds == 0) {
+    if (seconds === 0) { //==
       clearInterval(this.timer);
       window.location.replace("/contacts");
     }
