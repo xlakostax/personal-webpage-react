@@ -110,6 +110,11 @@ export default class Header extends Component {
                 <h2>Contacts</h2>
               </NavLink>
             </li>
+            <li>
+              <NavLink exact to='/blog'>
+                <h2>Blog</h2>
+              </NavLink>
+            </li>
           </ul>
         </Nav>
       </HeaderTag>

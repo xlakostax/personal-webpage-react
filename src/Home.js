@@ -141,6 +141,11 @@ class Home extends Component {
                   <H2>Contacts</H2>
                 </NavLink>
               </li>
+              <li>
+                <NavLink to='/contacts'>
+                  <H2>Blog</H2>
+                </NavLink>
+              </li>
             </ul>
           </NavMenu>
         </div>
