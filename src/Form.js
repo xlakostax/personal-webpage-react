@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import { withRouter } from 'react-router';
 
+const Spinner = require('react-spinkit');
+
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
@@ -33,8 +35,11 @@ const Wrapper = styled.div`
     height: 10em;
   }
   & button {
+    position: relative;
     padding: 1em;
     background-color: transparent;
+    height: 3em;
+    width: 5em;
     border-radius: 5px 5px;
     border: 1px solid rgba(47, 47, 47, 1);
     text-transform: uppercase;
@@ -44,23 +49,11 @@ const Wrapper = styled.div`
     color: rgb(255, 99, 71);
     border: 1px solid rgb(255, 99, 71);
   }
-  & h4 {
-    display: block;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 3em;
+  & div {
+    display: flex;
+    align-items: center;
   }
 `;
-
-const modal = {
-  position: 'absolute',
-  display: 'block',
-  width: '100vw',
-  height: '100vh',
-  top: 0, right: 0, bottom: 0, left: 0,
-  margin: '0 auto',
-  textAlign: 'center',
-}
 
 class Form extends Component {
 
@@ -71,13 +64,15 @@ class Form extends Component {
       email: '',
       message: '',
       showModalSuccess: false,
-      showModalError: false
+      showModalError: false,
+      display: 'none'
     };
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.resetForm = this.resetForm.bind(this);
     this.handleCloseModalSuccess = this.handleCloseModalSuccess.bind( this );
     this.handleCloseModalError = this.handleCloseModalError.bind( this );
+    this.spinnerHandler = this.spinnerHandler.bind(this);
   }
 
   onChangeHandler = (event) => {
@@ -94,8 +89,8 @@ class Form extends Component {
     const email = this.state.email;
     const message = this.state.message;
     axios({
-      method: "POST",
-      url:"http://localhost:3001/send",
+      method: 'POST',
+      url:'http://localhost:3001/send',
       data: {
         name: name,
         email: email,
@@ -107,6 +102,7 @@ class Form extends Component {
         this.resetForm();
         this.setState( { showModalSuccess: true } );
       } else if ( response.data.msg === 'fail' ) {
+        this.setState( {display: 'none'} );
         this.setState( { showModalError: true } );
       }
     })
@@ -128,6 +124,10 @@ class Form extends Component {
     this.setState( { showModalError: false } )
   }
 
+  spinnerHandler = () => {
+    this.setState( { display: 'block' } )
+  }
+
   render() {
     const Input = (props) => {
       return (
@@ -138,6 +138,7 @@ class Form extends Component {
         </p>
       )
     }
+
     return(
       <Wrapper>
         <Modal
@@ -163,16 +164,19 @@ class Form extends Component {
           <i className='fas fa-times' onClick = { this.handleCloseModalError }  style = { { cursor: 'pointer', margin: '10px' } }></i>
           <p><span>Error.</span> Your message was not sent. Please check your connection or firewall settings.</p>
         </Modal>
-        {/*<form action="/contacts" method="post" netlify>*/}
-        <form method="post" onSubmit={this.onSubmitHandler}>
+        {/*<form action='/contacts' method='post' netlify>*/}
+        <form method='post' onSubmit = {this.onSubmitHandler}>
           <Input id = 'name' nameData = 'Your name: ' type = 'text' name = 'name' value = {this.state.name} onChange={this.onChangeHandler}/>
           <Input id = 'email' nameData = 'Your email: ' type = 'email' name = 'email' value = {this.state.email} onChange={this.onChangeHandler}/>
           <p>
             <label>Message:
-              <textarea id = 'message' name="message" required value = {this.state.message} onChange={this.onChangeHandler}/>
+              <textarea id = 'message' name='message' required value = {this.state.message} onChange={this.onChangeHandler}/>
             </label>
           </p>
-          <button type="submit" name="send">Send</button>
+          <div>
+            <button type='submit' name='send' onClick = { this.spinnerHandler }>Send</button>
+            <Spinner name='three-bounce' style = { { display: this.state.display, marginLeft: '1em' } } />
+          </div>
         </form>
       </Wrapper>
     )
