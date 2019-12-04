@@ -1,7 +1,7 @@
 import React from 'react';
-import Footer from './Footer'
-import Header from './Header'
-import BurgerMenu from './BurgerMenu'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import BurgerMenu from '../components/BurgerMenu';
 import styled from 'styled-components';
 
 const Div = styled.div`
@@ -44,7 +44,7 @@ const Grid = styled.div`
 `;
 
 const Projects = () => {
-  const projectsData = require('./Projects.json');
+  const projectsData = require('../Projects.json');
   var projectList = projectsData.map ( (project) => {
     return (
       <article class='Card Card--inGrid' key={project.id}>
