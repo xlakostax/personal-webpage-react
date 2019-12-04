@@ -2,13 +2,19 @@
   {
     "id": 1,
     "title": "Web personal",
-    "description": "Personal web page",
+    "description": "Personal web page. React.js, Node.js",
     "url": "https://veselovskii.netlify.com/"
   },
   {
     "id": 2,
     "title": "Event manager app",
-    "description": "A simple app for managing internal events made by React.js, Redux, Node.js, Express.js and MongoDB",
+    "description": "A simple app for managing internal events. React.js, Redux, Node.js, Express.js, MongoDB",
     "url": "http://eventid.herokuapp.com/"
+  },
+  {
+    "id": 3,
+    "title": "File uploader",
+    "description": "A simple app for local file up- / downloading. React.js, Node.js",
+    "url": "https://fileuploader.netlify.com"
   }
 ]
