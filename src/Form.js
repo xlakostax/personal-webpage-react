@@ -3,18 +3,23 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import { withRouter } from 'react-router';
-Modal.defaultStyles.overlay.backgroundColor = 'cornsilk';
-Modal.defaultStyles.overlay.display = 'flex';
-Modal.defaultStyles.overlay.justifyContent = 'center';
-Modal.defaultStyles.overlay.alignItems = 'center';
 
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
   text-align: justify;
+  /* & .Modal {
+
+  }
+  & .Overlay {
+
+  } */
   & form {
     position: relative;
     margin: 10em:
+  }
+  & span {
+    color: rgb(255, 99, 71)
   }
   & input, textarea {
     display: block;
@@ -47,7 +52,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const modalText = {
+const modal = {
   position: 'absolute',
   display: 'block',
   width: '100vw',
@@ -55,7 +60,6 @@ const modalText = {
   top: 0, right: 0, bottom: 0, left: 0,
   margin: '0 auto',
   textAlign: 'center',
-  zIndex: '9999'
 }
 
 class Form extends Component {
@@ -66,12 +70,14 @@ class Form extends Component {
       name: '',
       email: '',
       message: '',
-      showModal: false
+      showModalSuccess: false,
+      showModalError: false
     };
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.resetForm = this.resetForm.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind( this );
+    this.handleCloseModalSuccess = this.handleCloseModalSuccess.bind( this );
+    this.handleCloseModalError = this.handleCloseModalError.bind( this );
   }
 
   onChangeHandler = (event) => {
@@ -83,40 +89,44 @@ class Form extends Component {
   }
 
   onSubmitHandler = (event) => {
-        event.preventDefault();
-        const name = this.state.name;
-        const email = this.state.email;
-        const message = this.state.message;
-        axios({
-            method: "POST",
-            url:"http://localhost:3001/send",
-            data: {
-                name: name,
-                email: email,
-                messsage: message
-            }
-        }).then((response)=>{
-            if (response.data.msg === 'success'){
-                // alert("Message Sent.");
-                this.resetForm();
-                this.setState({ showModal: true });
-            }else if(response.data.msg === 'fail'){
-                // alert("Message failed to send.")
-            }
-        })
-    }
+    event.preventDefault();
+    const name = this.state.name;
+    const email = this.state.email;
+    const message = this.state.message;
+    axios({
+      method: "POST",
+      url:"http://localhost:3001/send",
+      data: {
+        name: name,
+        email: email,
+        messsage: message
+      }
+    })
+    .then( ( response ) => {
+      if ( response.data.msg === 'success' ) {
+        this.resetForm();
+        this.setState( { showModalSuccess: true } );
+      } else if ( response.data.msg === 'fail' ) {
+        this.setState( { showModalError: true } );
+      }
+    })
+  }
 
-    resetForm = (event) => {
-      this.setState({
-        name: '',
-        email: '',
-        message: ''
-      });
-    }
+  resetForm = (event) => {
+    this.setState({
+      name: '',
+      email: '',
+      message: ''
+    });
+  }
 
-    handleCloseModal = () => {
-      this.setState( { showModal: false } )
-    }
+  handleCloseModalSuccess = () => {
+    this.setState( { showModalSuccess: false } )
+  }
+
+  handleCloseModalError = () => {
+    this.setState( { showModalError: false } )
+  }
 
   render() {
     const Input = (props) => {
@@ -128,19 +138,30 @@ class Form extends Component {
         </p>
       )
     }
-
     return(
       <Wrapper>
         <Modal
-          isOpen = { this.state.showModal }
+          isOpen = { this.state.showModalSuccess }
           contentLabel = 'onRequestClose'
-          onRequestClose = { this.handleCloseModal }
+          onRequestClose = { this.handleCloseModalSuccess }
           className = 'Modal'
+          overlayClassName = 'Overlay'
           shouldCloseOnOverlayClick = { false }
-          style = {{modalText}}
+
         >
-          <i className='fas fa-times' onClick = { this.handleCloseModal }  style = { { cursor: 'pointer', margin: '10px' } }></i>
-          <h4>Sent successful</h4>
+          <i className='fas fa-times' onClick = { this.handleCloseModalSuccess }  style = { { cursor: 'pointer', margin: '10px' } }></i>
+          <p>Your message was sent successfully.</p>
+        </Modal>
+        <Modal
+          isOpen = { this.state.showModalError }
+          contentLabel = 'onRequestClose'
+          onRequestClose = { this.handleCloseModalError }
+          className = 'Modal'
+          overlayClassName = 'Overlay'
+          shouldCloseOnOverlayClick = { false }
+        >
+          <i className='fas fa-times' onClick = { this.handleCloseModalError }  style = { { cursor: 'pointer', margin: '10px' } }></i>
+          <p><span>Error.</span> Your message was not sent. Please check your connection or firewall settings.</p>
         </Modal>
         {/*<form action="/contacts" method="post" netlify>*/}
         <form method="post" onSubmit={this.onSubmitHandler}>
