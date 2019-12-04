@@ -3,8 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import { withRouter } from 'react-router';
-
-const Spinner = require('react-spinkit');
+import Spinner from 'react-spinkit';
 
 const Wrapper = styled.div`
   position: relative;
@@ -100,6 +99,7 @@ class Form extends Component {
     .then( ( response ) => {
       if ( response.data.msg === 'success' ) {
         this.resetForm();
+        this.setState( {display: 'none'} );
         this.setState( { showModalSuccess: true } );
       } else if ( response.data.msg === 'fail' ) {
         this.setState( {display: 'none'} );
@@ -151,7 +151,7 @@ class Form extends Component {
 
         >
           <i className='fas fa-times' onClick = { this.handleCloseModalSuccess }  style = { { cursor: 'pointer', margin: '10px' } }></i>
-          <p>Your message was sent successfully.</p>
+          <p>Your message was sent <span>successfully</span>.</p>
         </Modal>
         <Modal
           isOpen = { this.state.showModalError }
