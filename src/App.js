@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Modal from 'react-modal';
-import Spinner from 'react-spinkit';
 
 const Wrapper = styled.div`
   position: relative;
@@ -173,8 +172,7 @@ class App extends Component {
             </label>
           </p>
           <div>
-            <button type='submit' name='send' onClick = { this.spinnerHandler }>Send</button>
-            <Spinner name='three-bounce' style = { { display: this.state.display, marginLeft: '1em' } } />
+            <button type='submit' name='send'>Send</button>
           </div>
         </form>
       </Wrapper>
