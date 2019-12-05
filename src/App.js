@@ -87,7 +87,7 @@ class App extends Component {
     const message = this.state.message;
     axios({
       method: 'POST',
-      url:'localhost/send',
+      url:'/send',
       data: {
         name: name,
         email: email,
