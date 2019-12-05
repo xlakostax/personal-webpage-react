@@ -89,19 +89,19 @@ class Form extends Component {
     const message = this.state.message;
     axios({
       method: 'POST',
-      url:'http://localhost:3001/send',
+      url:'http://127.0.0.1:3001/send',
       data: {
         name: name,
         email: email,
         messsage: message
       }
     })
-    .then( ( response ) => {
-      if ( response.data.msg === 'success' ) {
+    .then( ( res ) => {
+      if ( res.data.msg === 'success' ) {
         this.resetForm();
         this.setState( {display: 'none'} );
         this.setState( { showModalSuccess: true } );
-      } else if ( response.data.msg === 'fail' ) {
+      } else if ( res.data.msg === 'fail' ) {
         this.setState( {display: 'none'} );
         this.setState( { showModalError: true } );
       }
