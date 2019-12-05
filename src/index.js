@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import About from "./routes/About";
-import Contacts from "./routes/Contacts";
-import Home from "./routes/Home";
-import Notfound from "./routes/Notfound";
+import About from "./About";
+import Contacts from "./Contacts";
+import Home from "./Home";
+import Notfound from "./Notfound";
 import Success from "./routes/Success";
 import Error from "./routes/Error";
-import Projects from "./routes/Projects";
+import Projects from "./Projects";
 import './styles/Common.css';
 import * as serviceWorker from './serviceWorker';
 
