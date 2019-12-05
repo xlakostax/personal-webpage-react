@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
-import Footer from './components/Footer'
-import Header from './components/Header'
-import BurgerMenu from './components/BurgerMenu';
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import BurgerMenu from '../components/BurgerMenu';
 import styled from 'styled-components';
 
 const Main = styled.main`

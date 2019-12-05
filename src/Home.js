@@ -3,7 +3,7 @@ import { TweenLite, TweenMax } from 'gsap/all';
 import { NavLink } from 'react-router-dom';
 import $ from 'jquery';
 import styled from 'styled-components';
-import '../styles/Home.css';
+import './styles/Home.css';
 
 const Main = styled.main`
   position: relative;
