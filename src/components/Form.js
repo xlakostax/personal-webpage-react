@@ -99,11 +99,9 @@ class Form extends Component {
     .then( ( res ) => {
       if ( res.data.msg === 'success' ) {
         this.resetForm();
-        this.setState( {display: 'none'} );
-        this.setState( { showModalSuccess: true } );
+        this.setState( {display: 'none', showModalSuccess: true} );
       } else if ( res.data.msg === 'fail' ) {
-        this.setState( {display: 'none'} );
-        this.setState( { showModalError: true } );
+        this.setState( {display: 'none', showModalError: true} );
       }
     })
   }
