@@ -2,7 +2,7 @@ const config = {
   mailer: {
     host: 'smtp.ethereal.email',
     port: 587,
-    secure: false, // true for 465, false for other ports
+    secure: false, // true for 465, false for other portss
     service: "ethereal",
     tls:{
       rejectUnauthorized:false
