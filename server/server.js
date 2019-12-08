@@ -53,7 +53,7 @@ app.post('/send', (req, res) => {
         msg: 'fail'
       })
       console.log(error);
-      // res.redirect('error'); //Hardcoding
+      // res.redirect('error'); //Hardcodingg
     } else {
       res.json({
         msg: 'success'
