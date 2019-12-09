@@ -36,7 +36,7 @@ const Main = styled.div`
   }
 `;
 
-export default class Error extends Component {
+export default class Blog extends Component {
   componentDidMount = () => {
     setTimeout(() => { window.location.replace("/contacts") }, 5000);
   };
