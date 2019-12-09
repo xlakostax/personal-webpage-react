@@ -68,11 +68,10 @@ export default class Blog extends Component {
         <Fragment>
           <BurgerMenu />
           <Main>
-            <h1>About</h1>
+            <h1>Blog</h1>
             <Wrapper>
-              <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
-              I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
-              <p>If you need some inspiring ideas, <a href="/contacts">let’s connect</a> to get the process started.</p>
+              <p>Under construction</p> <br />
+              <a href="/">Go back home</a>
             </Wrapper>
           </Main>
           <Footer />
@@ -83,11 +82,10 @@ export default class Blog extends Component {
         <Fragment>
           <Header />
           <Main>
-            <h1>About</h1>
+            <h1>Blog</h1>
             <Wrapper>
-            <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
-            I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
-            <p>If you need some inspiring ideas, <a href="/contacts">let’s connect</a> to get the process started.</p>
+              <p>Under construction</p> <br />
+              <a href="/">Go back home</a>
             </Wrapper>
           </Main>
           <Footer />
