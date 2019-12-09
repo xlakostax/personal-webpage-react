@@ -85,16 +85,9 @@ export default class About extends Component {
           <Main>
             <h1>About</h1>
             <Wrapper>
-              <p>My name is Konstantin Veselovskii. I was born and grew up in "a horrible industrial city" ("The Sopranos", S02E12) in Karelia.
-              I am among the lucky ones who passionate their job. I have been studying to be a web developer since 2019. That’s why the portfolio is still empty. But you can improve it and get smth damn awesome.</p>
-              <br />
-              <h2>Pros of work with me:</h2>
-              <ul>
-                <li>JavaScript, NODE.js, REACT.js</li>
-                <li>Responsive, cross-browser web development</li>
-              </ul>
-              <br />
-              <p>That list isn’t exhaustive. If you need some help, <a href="/contacts">let’s connect</a> to get the process started.</p>
+            <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
+            I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
+            <p>If you need some inspiring ideas, <a href="/contacts">let’s connect</a> to get the process started.</p>
             </Wrapper>
           </Main>
           <Footer />
