@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import BurgerMenu from '../components/BurgerMenu';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Main = styled.main`
@@ -87,10 +88,7 @@ export default class About extends Component {
             <Wrapper>
             <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
             I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
-            <p>If you need some inspiring ideas, <a href="/contacts">let’s connect</a> to get the process started.</p>
-            <p>404 <br />
-            Page not found</p> <br />
-            <a href="/">Go back home</a>
+            <p>If you need some inspiring ideas, <Link exact to='/contacts'>let’s connect</Link> to get the process started.</p>
             </Wrapper>
           </Main>
           <Footer />
