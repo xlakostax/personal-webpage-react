@@ -88,6 +88,9 @@ export default class About extends Component {
             <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
             I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
             <p>If you need some inspiring ideas, <a href="/contacts">let’s connect</a> to get the process started.</p>
+            <p>404 <br />
+            Page not found</p> <br />
+            <a href="/">Go back home</a>
             </Wrapper>
           </Main>
           <Footer />
