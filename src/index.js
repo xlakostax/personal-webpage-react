@@ -16,11 +16,11 @@ const routing = (
   <Router>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/projects" component={Projects} />
-      <Route path="/about" component={About} />
-      <Route path="/contacts" component={Contacts} />
-      <Route path="/success" component={Success} />
-      <Route path="/blog" component={Blog} />
+      <Route exact path="/projects" component={Projects} />
+      <Route exact path="/about" component={About} />
+      <Route exact path="/contacts" component={Contacts} />
+      <Route exact path="/success" component={Success} />
+      <Route exact path="/blog" component={Blog} />
       <Route component={Notfound} />
     </Switch>
   </Router>
