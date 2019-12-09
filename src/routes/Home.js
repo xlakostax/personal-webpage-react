@@ -142,7 +142,7 @@ class Home extends Component {
                 </NavLink>
               </li>
               <li>
-                <NavLink to='/contacts'>
+                <NavLink to='/blog'>
                   <H2>Blog</H2>
                 </NavLink>
               </li>

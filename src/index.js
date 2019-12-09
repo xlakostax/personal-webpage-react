@@ -19,7 +19,7 @@ const routing = (
       <Route path="/about" component={About} />
       <Route path="/contacts" component={Contacts} />
       <Route path="/success" component={Success} />
-      <Route path="/error" component={Error} />
+      <Route path="/blog" component={Blog} />
       <Route component={Notfound} />
     </Switch>
   </Router>

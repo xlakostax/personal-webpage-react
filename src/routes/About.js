@@ -78,7 +78,7 @@ export default class About extends Component {
                 <li>Responsive, cross-browser web development</li>
               </ul>
               <br />
-              <p>That list isn’t exhaustive. If you need some help, <a href="contacts">let’s connect</a> to get the process started.</p>
+              <p>That list isn’t exhaustive. If you need some help, <a href="/contacts">let’s connect</a> to get the process started.</p>
             </Wrapper>
           </Main>
           <Footer />
