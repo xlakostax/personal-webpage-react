@@ -13,7 +13,8 @@ import './styles/Common.css';
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
-  <HashRouter>
+  <Router>
+    <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/projects" component={Projects} />
       <Route exact path="/about" component={About} />
@@ -21,7 +22,8 @@ const routing = (
       <Route exact path="/success" component={Success} />
       <Route exact path="/blog" component={Blog} />
       <Route component={Notfound} />
-  </HashRouter>
+    </Switch>
+  </Router>
 );
 
 ReactDOM.render(routing, document.getElementById("root"));
