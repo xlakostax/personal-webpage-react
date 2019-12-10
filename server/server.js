@@ -60,7 +60,7 @@ app.post('/send', (req, res) => {
       })
       console.log('Message sent: %s', data.messageId);
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(data));
-      res.redirect('success'); //Hardcoding
+      // res.redirect('success'); //Hardcoding
     }
   });
 });
