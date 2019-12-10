@@ -71,7 +71,6 @@ export default class Blog extends Component {
             <h1>Blog</h1>
             <Wrapper>
               <p>Under construction</p> <br />
-              <a href="/">Go back home</a>
             </Wrapper>
           </Main>
           <Footer />

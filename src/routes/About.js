@@ -12,11 +12,6 @@ const Main = styled.main`
       position: relative;
       margin: 1.2em 0;
     }
-`;
-
-const Wrapper = styled.div`
-  position: relative;
-  text-align: justify;
   & h2 {
       margin: 0 0 1em 0;
       font-family: "Merriweather";
@@ -70,11 +65,9 @@ export default class About extends Component {
           <BurgerMenu />
           <Main>
             <h1>About</h1>
-            <Wrapper>
               <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
               I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
-              <p>If you need some inspiring ideas, <a href="/contacts">let’s connect</a> to get the process started.</p>
-            </Wrapper>
+              <p>If you need some inspiring ideas, <Link exact to='/contacts'>let’s connect</Link> to get the process started.</p>
           </Main>
           <Footer />
         </Fragment>
@@ -85,11 +78,8 @@ export default class About extends Component {
           <Header />
           <Main>
             <h1>About</h1>
-            <Wrapper>
-            <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
-            I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
+            <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia. I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
             <p>If you need some inspiring ideas, <Link exact to='/contacts'>let’s connect</Link> to get the process started.</p>
-            </Wrapper>
           </Main>
           <Footer />
         </Fragment>
