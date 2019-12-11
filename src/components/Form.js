@@ -88,7 +88,7 @@ class Form extends Component {
     const email = this.state.email;
     const message = this.state.message;
     axios
-    .post('/contacts', {
+    .post('/send', {
       data: {
         name: name,
         email: email,

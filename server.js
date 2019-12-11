@@ -24,7 +24,7 @@ app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
-app.post('/contacts', (req, res) => {
+app.post('/send', (req, res) => {
   const output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>
