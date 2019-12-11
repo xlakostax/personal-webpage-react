@@ -16,11 +16,7 @@ app.use(
 
 app.use( bodyParser.json() );
 
-app.use(express.static(__dirname + '/public'))
-
-console.log(__dirname);
-
-app.get('*', function (request, response){
+app.get('*', (req, res) => {
   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
@@ -61,14 +57,12 @@ app.post('/send', (req, res) => {
         msg: 'fail'
       })
       console.log(error);
-      // res.redirect('error'); //Hardcodingg
     } else {
       res.json({
         msg: 'success'
       })
       console.log('Message sent: %s', data.messageId);
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(data));
-      // res.redirect('success'); //Hardcoding
     }
   });
 });

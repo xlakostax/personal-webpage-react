@@ -5,8 +5,6 @@ import About from './routes/About';
 import Contacts from './routes/Contacts';
 import Home from './routes/Home';
 import Notfound from './routes/Notfound';
-import Success from './routes/Success';
-import Error from './routes/Error';
 import Blog from './routes/Blog';
 import Projects from './routes/Projects';
 import './styles/Common.css';
@@ -19,7 +17,6 @@ const routing = (
       <Route exact path = '/projects' component = {Projects} />
       <Route exact path = '/about' component = {About} />
       <Route exact path = '/contacts' component = {Contacts} />
-      <Route exact path = '/success' component = {Success} />
       <Route exact path = '/blog' component = {Blog} />
       <Route component = {Notfound} />
     </Switch>
