@@ -16,10 +16,6 @@ app.use(
 
 app.use( bodyParser.json() );
 
-app.get('*', (req, res) => {
-  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-})
-
 app.post('/send', (req, res) => {
   const output = `
     <p>You have a new contact request</p>
