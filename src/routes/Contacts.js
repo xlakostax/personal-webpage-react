@@ -20,8 +20,8 @@ const Contacts = () => {
       <Header />
       <Main>
         <h1>Contacts</h1>
-        <p>Do you have a question or suggestion for cooperation?
-          Contact with me in every way you want (phone or email), or just fill in the form. I am opened for communication and interesting offers.<br /><br />
+        <p>Do you have a question or suggestion?
+          Contact with me in every way you want (phone and email). I am open to any ideas of cooperation.<br /><br />
           Phone: <a href="callto://+358 41 723 7774?call">+358 41 723-77-74</a><br />
           E-mail: <a href="mailto:konstantin.veselovskii@gmail.com?subject=About cooperation">konstantin.veselovskii@gmail.com</a>
         </p><br />
