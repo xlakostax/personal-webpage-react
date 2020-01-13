@@ -138,7 +138,8 @@ class Form extends Component {
 
     return(
       <Wrapper>
-        <Modal
+
+        {/*<Modal
           isOpen = { this.state.showModalSuccess }
           contentLabel = 'onRequestClose'
           onRequestClose = { this.handleCloseModalSuccess }
@@ -161,7 +162,7 @@ class Form extends Component {
           <i className='fas fa-times' onClick = { this.handleCloseModalError }  style = { { cursor: 'pointer', margin: '10px' } }></i>
           <p><span>Error.</span> Your message was not sent. Please check your connection or firewall settings.</p>
         </Modal>
-        {/*<form action='/contacts' method='post' netlify>*/}
+        {/*<form action='/contacts' method='post' netlify>*}
         <form method='post' onSubmit = {this.onSubmitHandler}>
           <Input id = 'name' nameData = 'Your name: ' type = 'text' name = 'name' value = {this.state.name} onChange={this.onChangeHandler}/>
           <Input id = 'email' nameData = 'Your email: ' type = 'email' name = 'email' value = {this.state.email} onChange={this.onChangeHandler}/>
@@ -174,7 +175,20 @@ class Form extends Component {
             <button type='submit' name='send' onClick = { this.spinnerHandler }>Send</button>
             <Spinner name='three-bounce' style = { { display: this.state.display, marginLeft: '1em' } } />
           </div>
-        </form>
+        </form>*/}
+        <form action="https://formspree.io/xoqeeqez" method="POST">
+          <Input id = 'name' nameData = 'Your name: ' type = 'text' name = 'name' value = {this.state.name} onChange={this.onChangeHandler}/>
+          <Input id = 'email' nameData = 'Your email: ' type = 'email' name = 'email' value = {this.state.email} onChange={this.onChangeHandler}/>
+          <p>
+            <label>Message:
+              <textarea id = 'message' name='message' required value = {this.state.message} onChange={this.onChangeHandler}/>
+            </label>
+          </p>
+          <div>
+            <button type='submit' name='send' onClick = { this.spinnerHandler }>Send</button>
+            <Spinner name='three-bounce' style = { { display: this.state.display, marginLeft: '1em' } } />
+          </div>
+        </form>*/
       </Wrapper>
     )
   }

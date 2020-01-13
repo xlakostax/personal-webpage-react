@@ -49,12 +49,12 @@ app.post('/send', (req, res) => {
   // Send mail with defined transport object
   transporter.sendMail(mailOptions, (error, data) => {
     if (error) {
-      res.json({
+      return res.json({
         msg: 'fail'
       })
       console.log(error);
     } else {
-      res.json({
+      return res.json({
         msg: 'success'
       })
       console.log('Message sent: %s', data.messageId);

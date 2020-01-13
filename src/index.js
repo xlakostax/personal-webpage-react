@@ -17,8 +17,8 @@ const routing = (
       <Route exact path = '/projects' component = {Projects} />
       <Route exact path = '/about' component = {About} />
       <Route exact path = '/contacts' component = {Contacts} />
-      <Route exact path = '/blog' component = {Blog} />
-      <Route component = {Notfound} />
+      <Route exact path = '/blog' component = { Blog } />
+      <Route component = { Notfound } />
     </Switch>
   </Router>
 );

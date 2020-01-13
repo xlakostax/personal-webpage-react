@@ -25,7 +25,7 @@ const Contacts = () => {
           Phone: <a href="callto://+358 41 723 7774?call">+358 41 723-77-74</a><br />
           E-mail: <a href="mailto:konstantin.veselovskii@gmail.com?subject=About cooperation">konstantin.veselovskii@gmail.com</a>
         </p><br />
-        {/*<Form />*/}
+        <Form />
       </Main>
       <Footer />
     </Fragment>
