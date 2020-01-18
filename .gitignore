@@ -42,3 +42,4 @@ firebase-debug.log*
 .eslintcache
 *.tgz
 .npm
+**/.firebase/**
