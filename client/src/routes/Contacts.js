@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const Main = styled.main`
   position: relative;
   width: 50%;
+  flex: 1;
   & h1 {
     position: relative;
     margin: 1.2em 0;

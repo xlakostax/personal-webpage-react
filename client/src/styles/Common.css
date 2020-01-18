@@ -1,25 +1,28 @@
-/* Указываем box sizing */
+/* Style reset starts */
+
+/* box sizing */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Убираем внутренние отступы */
-ul[class],
-ol[class] {
+/* remove (inner) paddings */
+body,
+ul,
+ol {
   padding: 0;
 }
 
-/* Убираем внешние отступы */
+/* remove (outer) margins */
 body,
 h1,
 h2,
 h3,
 h4,
 p,
-ul[class],
-ol[class],
+ul,
+ol,
 li,
 figure,
 figcaption,
@@ -29,37 +32,33 @@ dd {
   margin: 0;
 }
 
-/* Выставляем основные настройки по-умолчанию для body */
+/* defaul settings for body */
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.5;
 }
 
-/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-ul[class],
-ol[class] {
+/* remove default styles for ul and ol */
+ul,
+ol {
   list-style: none;
 }
 
-/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* Упрощаем работу с изображениями */
+/* simplify img managing */
 img {
   max-width: 100%;
   display: block;
 }
 
-/* Указываем понятную периодичность в потоке данных у article*/
+/* point a clear periodicity to an article in the flow*/
 article > * + * {
   margin-top: 1em;
 }
 
-/* Наследуем шрифты для инпутов и кнопок */
+/* inherited fonts for inputs and buttons */
 input,
 button,
 textarea,
@@ -67,46 +66,32 @@ select {
   font: inherit;
 }
 
-/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-* {
-  -webkit-font-smoothing: antialiased;
-  margin: 0;
-}
+/* Style reset ends */
 
 ::-webkit-scrollbar {
   width: 0;
   background: transparent;
 }
 
-html, body, #root {
+body{
   position: relative;
-  width: 100%;
-  height: 100%;
+  font-family: "Merriweather";
 }
 
 #root {
   display: flex;
-  height: 100%;
+  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
-  padding: 0;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Merriweather";
-  padding: 0;
   /* color: rgba(47, 47, 47, 1);
   background: rgb(246, 246, 246) center center no-repeat;
   background: -webkit-linear-gradient(160deg, rgba(246, 246, 246, 1) 15%, rgba(255, 255, 255, 1) 15%) center center no-repeat;
@@ -119,18 +104,9 @@ body {
   background-attachment: fixed; */
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 h2, h1 {
   font-family: 'Nunito', Georgia, serif;
   text-transform: uppercase;
-}
-
-p, li {
-  line-height: 1.5;
 }
 
 .Overlay {

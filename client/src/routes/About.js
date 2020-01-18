@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import BurgerMenu from '../components/BurgerMenu';
@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const Main = styled.main`
   position: relative;
   width: 50%;
+  flex: 1;
   & h1 {
       position: relative;
       margin: 1.2em 0;
@@ -61,28 +62,28 @@ export default class About extends Component {
     const isMobile = window.innerWidth <= 500;
     if (isMobile) {
       return(
-        <Fragment>
+        <>
           <BurgerMenu />
           <Main>
             <h1>About</h1>
               <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
               I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
-              <p>If you need some inspiring ideas, <Link exact to='/contacts'>let’s connect</Link> to get the process started.</p>
+              <p>If you need some inspiring ideas, <Link to='/contacts'>let’s connect</Link> to get the process started.</p>
           </Main>
           <Footer />
-        </Fragment>
+        </>
       )
     } else {
       return(
-        <Fragment>
+        <>
           <Header />
           <Main>
             <h1>About</h1>
             <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia. I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
-            <p>If you need some inspiring ideas, <Link exact to='/contacts'>let’s connect</Link> to get the process started.</p>
+            <p>If you need some inspiring ideas, <Link to='/contacts'>let’s connect</Link> to get the process started.</p>
           </Main>
           <Footer />
-        </Fragment>
+        </>
       );
     }
   }
