@@ -18,7 +18,7 @@ const routing = (
       <Route exact path = '/about' component = {About} />
       <Route exact path = '/contacts' component = {Contacts} />
       <Route exact path = '/blog' component = { Blog } />
-      <Route component = { Notfound } />
+      <Route path = '*' component = { Notfound } />  {/* For correct 404 rendering use attribute path = '*' */}
     </Switch>
   </Router>
 );

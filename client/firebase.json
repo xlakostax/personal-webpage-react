@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "**",
+        "destination": "/index.html"
+      },
+      {
         "source": "/app",
         "function": "app"
       }
