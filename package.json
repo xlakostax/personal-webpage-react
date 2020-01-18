@@ -13,7 +13,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server/server.js --exec nodemon",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm build --prefix client"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

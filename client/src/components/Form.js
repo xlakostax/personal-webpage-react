@@ -1,26 +1,19 @@
-import React, { Component } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+import { loadProgressBar } from 'axios-progress-bar'
 import Modal from 'react-modal';
-import { withRouter } from 'react-router';
-import Spinner from 'react-spinkit';
+import styled from 'styled-components';
+import React, { Component } from 'react';
 
-const Wrapper = styled.div`
+import 'axios-progress-bar/dist/nprogress.css';
+
+const Wrapper = styled.section`
   position: relative;
   width: 100%;
-  text-align: justify;
-  /* & .Modal {
-
-  }
-  & .Overlay {
-
-  } */
   & form {
-    position: relative;
-    margin: 10em:
+    margin-bottom: 1em;
   }
   & span {
-    color: rgb(255, 99, 71)
+    color: rgb( 255, 99, 71 )
   }
   & input, textarea {
     display: block;
@@ -28,7 +21,7 @@ const Wrapper = styled.div`
     height: 2em;
     margin: 0 0 1em 0;
     border-radius: 5px 5px;
-    border: 1px solid rgba(220, 220, 220, 1);
+    border: 1px solid rgba( 220, 220, 220, 1 );
   }
   & textarea {
     height: 10em;
@@ -37,160 +30,175 @@ const Wrapper = styled.div`
     position: relative;
     padding: 1em;
     background-color: transparent;
-    height: 3em;
-    width: 5em;
+    height: 4em;
+    width: 6em;
     border-radius: 5px 5px;
-    border: 1px solid rgba(47, 47, 47, 1);
+    border: 1px solid rgba( 47, 47, 47, 1 );
     text-transform: uppercase;
   }
   & button:hover {
     cursor: pointer;
-    color: rgb(255, 99, 71);
-    border: 1px solid rgb(255, 99, 71);
+    color: rgb( 255, 99, 71 );
+    border: 1px solid rgb( 255, 99, 71 );
   }
-  & div {
+  & form > div {
     display: flex;
     align-items: center;
   }
+  & .grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    background-color: rgb( 255, 255, 255 );
+  }
+  & .card-inGrid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1em;
+    overflow-wrap: break-word;
+    border-bottom: 1px solid black;
+    &:last-child {
+      border-bottom: 0 solid black;
+    }
+  }
 `;
 
-class Form extends Component {
-
+export default class Form extends Component {
   constructor( props ) {
     super( props );
     this.state = {
-      name: '',
-      email: '',
-      message: '',
-      showModalSuccess: false,
-      showModalError: false,
-      display: 'none'
+        name: '',
+        email: '',
+        message: '',
+        showModalSuccess: false,
+        showModalError: false,
+        disabled: false
     };
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind( this );
+    this.onChangeHandler = this.onChangeHandler.bind( this );
     this.resetForm = this.resetForm.bind(this);
     this.handleCloseModalSuccess = this.handleCloseModalSuccess.bind( this );
     this.handleCloseModalError = this.handleCloseModalError.bind( this );
-    this.spinnerHandler = this.spinnerHandler.bind(this);
   }
 
-  onChangeHandler = (event) => {
+  componentWillMount = () => {
+    loadProgressBar();
+  }
+
+  onChangeHandler = ( event ) => {
     let name = event.target.name;
     let value = event.target.value;
+
     this.setState({
-      [name]: value /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
+        [name]: value, /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
     });
   }
 
-  onSubmitHandler = (event) => {
-    event.preventDefault();
-    const name = this.state.name;
-    const email = this.state.email;
-    const message = this.state.message;
-    axios
-    .post('/send', {
-      data: {
+  onSubmitHandler = ( event ) => {
+    event.preventDefault(); /* Prevent form submit from reloading the page */
+
+    this.setState({ disabled: true })
+
+    let name = this.state.name;
+    let email = this.state.email;
+    let message = this.state.message;
+    let formObj = {
         name: name,
         email: email,
-        messsage: message
+        message: message
+    };
+    let axiosConfig = { /* Config headers to avoid CORS issues */
+      headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "*"
       }
-    })
+    };
+
+    axios
+    .post( 'https://us-central1-konstantin-veselovskii.cloudfunctions.net/app', formObj, axiosConfig ) /* POST request by axios to the function */
     .then( ( res ) => {
-      if ( res.data.msg === 'success' ) {
-        this.resetForm();
-        this.setState( {display: 'none', showModalSuccess: true} );
-      } else if ( res.data.msg === 'fail' ) {
-        this.setState( {display: 'none', showModalError: true} );
-      }
+        // console.log( res.status )
+        if ( res.data.msg === 'success' ) {
+            this.resetForm();
+            this.setState({ showModalSuccess: true });
+        } else if ( res.data.msg === 'fail' || res.status !== 200 ) {
+            this.setState({ showModalError: true });
+        }
     })
   }
 
-  resetForm = (event) => {
+  resetForm = () => {
     this.setState({
-      name: '',
-      email: '',
-      message: ''
+        name: '',
+        email: '',
+        message: ''
     });
   }
 
   handleCloseModalSuccess = () => {
-    this.setState( { showModalSuccess: false } )
+    this.setState({
+      showModalSuccess: false,
+      disabled: false
+     })
   }
 
   handleCloseModalError = () => {
-    this.setState( { showModalError: false } )
-  }
-
-  spinnerHandler = () => {
-    this.setState( { display: 'block' } )
+    this.setState({
+      showModalSuccess: false,
+      disabled: false
+     })
   }
 
   render() {
-    const Input = (props) => {
-      return (
-        <p>
-          <label>{props.nameData}
-            <input type = {props.type} name = {props.name} value = {props.value} onChange = {props.onChange} required />
-          </label>
-        </p>
-      )
-    }
 
     return(
-      <Wrapper>
-
-        {/*<Modal
-          isOpen = { this.state.showModalSuccess }
-          contentLabel = 'onRequestClose'
-          onRequestClose = { this.handleCloseModalSuccess }
-          className = 'Modal'
-          overlayClassName = 'Overlay'
-          shouldCloseOnOverlayClick = { false }
-
+      <Wrapper className = 'wrapper'>
+        <Modal
+            isOpen = { this.state.showModalSuccess }
+            contentLabel = 'onRequestClose'
+            onRequestClose = { this.handleCloseModalSuccess }
+            className = 'Modal'
+            overlayClassName = 'Overlay'
+            shouldCloseOnOverlayClick = { false }
         >
-          <i className='fas fa-times' onClick = { this.handleCloseModalSuccess }  style = { { cursor: 'pointer', margin: '10px' } }></i>
+          <i className = 'fas fa-times' onClick = { this.handleCloseModalSuccess }  style = {{ cursor: 'pointer', margin: '10px' }}></i>
           <p>Your message was sent <span>successfully</span>.</p>
         </Modal>
         <Modal
-          isOpen = { this.state.showModalError }
-          contentLabel = 'onRequestClose'
-          onRequestClose = { this.handleCloseModalError }
-          className = 'Modal'
-          overlayClassName = 'Overlay'
-          shouldCloseOnOverlayClick = { false }
+            isOpen = { this.state.showModalError }
+            contentLabel = 'onRequestClose'
+            onRequestClose = { this.handleCloseModalError }
+            className = 'Modal'
+            overlayClassName = 'Overlay'
+            shouldCloseOnOverlayClick = { false }
         >
-          <i className='fas fa-times' onClick = { this.handleCloseModalError }  style = { { cursor: 'pointer', margin: '10px' } }></i>
+          <i className = 'fas fa-times' onClick = { this.handleCloseModalError }  style = {{ cursor: 'pointer', margin: '10px' }}></i>
           <p><span>Error.</span> Your message was not sent. Please check your connection or firewall settings.</p>
         </Modal>
-        {/*<form action='/contacts' method='post' netlify>*}
-        <form method='post' onSubmit = {this.onSubmitHandler}>
-          <Input id = 'name' nameData = 'Your name: ' type = 'text' name = 'name' value = {this.state.name} onChange={this.onChangeHandler}/>
-          <Input id = 'email' nameData = 'Your email: ' type = 'email' name = 'email' value = {this.state.email} onChange={this.onChangeHandler}/>
+        <form onSubmit = {this.onSubmitHandler}>
+          <p>
+            <label>Your name:
+              <input id = 'name' type = 'text' name='name' value = { this.state.name } onChange = { this.onChangeHandler } required/>
+            </label>
+          </p>
+          <p>
+            <label>Your email:
+              <input id = 'email' type = 'email' name='email' value = { this.state.email } onChange = { this.onChangeHandler } required/>
+            </label>
+          </p>
           <p>
             <label>Message:
-              <textarea id = 'message' name='message' required value = {this.state.message} onChange={this.onChangeHandler}/>
+              <textarea id = 'message' type = 'text' name = 'message' value = { this.state.message } onChange = { this.onChangeHandler } required/>
             </label>
           </p>
           <div>
-            <button type='submit' name='send' onClick = { this.spinnerHandler }>Send</button>
-            <Spinner name='three-bounce' style = { { display: this.state.display, marginLeft: '1em' } } />
+            <button type='submit' name='send' disabled = { this.state.disabled }>Send</button>
           </div>
-        </form>*/}
-        <form action="https://formspree.io/xoqeeqez" method="POST">
-          <Input id = 'name' nameData = 'Your name: ' type = 'text' name = 'name' value = {this.state.name} onChange={this.onChangeHandler}/>
-          <Input id = 'email' nameData = 'Your email: ' type = 'email' name = 'email' value = {this.state.email} onChange={this.onChangeHandler}/>
-          <p>
-            <label>Message:
-              <textarea id = 'message' name='message' required value = {this.state.message} onChange={this.onChangeHandler}/>
-            </label>
-          </p>
-          <div>
-            <button type='submit' name='send' onClick = { this.spinnerHandler }>Send</button>
-            <Spinner name='three-bounce' style = { { display: this.state.display, marginLeft: '1em' } } />
-          </div>
-        </form>*/
+        </form>
       </Wrapper>
     )
   }
 }
-export default Form;
