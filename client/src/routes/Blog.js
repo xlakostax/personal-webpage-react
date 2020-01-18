@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import BurgerMenu from '../components/BurgerMenu';

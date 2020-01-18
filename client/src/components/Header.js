@@ -90,40 +90,28 @@ export default class Header extends Component {
   };
 
   render() {
+    const data = require( '../menu.json' );
+    const menu = data.slice( 0, 4 ).map ( ( element ) => {
+      return (
+        <li key={element.id}>
+          <NavLink exact to = {element.path}>
+            <h2>{element.title}</h2>
+          </NavLink>
+        </li>
+      );
+    });
     return(
       <HeaderTag>
         <Nav id = 'navMenu'>
           <ul>
             <li>
-              <h2>Konstantin<span>Veselovskii</span></h2>
+              <NavLink exact to='/' >
+                <h2>Konstantin<span>Veselovskii</span></h2>
+              </NavLink>
             </li>
           </ul>
           <ul>
-            <li>
-              <NavLink exact to='/' >
-                <h2>Home</h2>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink exact to='/projects'>
-                <h2>Projects</h2>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink exact to='/about'>
-                <h2>About</h2>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink exact to='/contacts'>
-                <h2>Contacts</h2>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink exact to='/blog'>
-                <h2>Blog</h2>
-              </NavLink>
-            </li>
+            {menu}
           </ul>
         </Nav>
       </HeaderTag>

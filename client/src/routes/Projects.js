@@ -38,8 +38,8 @@ const Grid = styled.div`
 `;
 
 const Projects = () => {
-  const projectsData = require('../Projects.json');
-  var projectList = projectsData.map ( (project) => {
+  const projectsData = require('../projects.json');
+  const projectList = projectsData.map ( (project) => {
     return (
       <article class='Card Card--inGrid' key={project.id}>
         <h3 class='Card-title'>
