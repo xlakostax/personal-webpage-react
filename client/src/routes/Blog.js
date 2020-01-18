@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import BurgerMenu from '../components/BurgerMenu';
@@ -66,7 +66,7 @@ export default class Blog extends Component {
     const isMobile = window.innerWidth <= 500;
     if (isMobile) {
       return(
-        <Fragment>
+        <>
           <BurgerMenu />
           <Main>
             <h1>Blog</h1>
@@ -75,11 +75,11 @@ export default class Blog extends Component {
             </Wrapper>
           </Main>
           <Footer />
-        </Fragment>
+        </>
       )
     } else {
       return(
-        <Fragment>
+        <>
           <Header />
           <Main>
             <h1>Blog</h1>
@@ -89,7 +89,7 @@ export default class Blog extends Component {
             </Wrapper>
           </Main>
           <Footer />
-        </Fragment>
+        </>
       );
     }
   }

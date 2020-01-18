@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import BurgerMenu from '../components/BurgerMenu';
@@ -50,7 +50,7 @@ const Projects = () => {
     );
   });
   return(
-    <Fragment>
+    <>
       <Header />
       <Main>
         <h1>Projects</h1>
@@ -59,7 +59,7 @@ const Projects = () => {
         </Grid>
       </Main>
       <Footer />
-    </Fragment>
+    </>
   )
 }
 export default Projects;

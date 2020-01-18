@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Form from '../components/Form'
@@ -17,7 +17,7 @@ const Main = styled.main`
 
 const Contacts = () => {
   return(
-    <Fragment>
+    <>
       <Header />
       <Main>
         <h1>Contacts</h1>
@@ -29,7 +29,7 @@ const Contacts = () => {
         <Form />
       </Main>
       <Footer />
-    </Fragment>
+    </>
   )
 }
 export default Contacts;
