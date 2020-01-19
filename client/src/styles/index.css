@@ -35,9 +35,9 @@ dd {
 /* defaul settings for body */
 body {
   min-height: 100vh;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; */
   line-height: 1.5;
 }
 

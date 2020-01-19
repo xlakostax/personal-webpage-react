@@ -9,10 +9,12 @@ const Main = styled.main`
   grid-area: main;
   position: relative;
   width: 100%;
-  flex: 1;
   & h1 {
       position: relative;
       margin: 1.2em 0;
+      @media (max-width: 768px) {
+        font-size: 2em;
+      }
     }
   & h2 {
       margin: 0 0 1em 0;
@@ -22,27 +24,19 @@ const Main = styled.main`
     }
   & a {
     display: inline-block;
-    color: rgb(255, 99, 71);
+    color: rgb( 255, 99, 71 );
   }
   & a:after {
     content: '';
     display: block;
     width: 0%;
     height: 1px;
-    background: rgb(255, 99, 71);
+    background: rgb( 255, 99, 71 );
     transition: 300ms;
   }
   & a:hover:after {
     width: 100%;
   }
-`;
-
-const AsideLeft = styled.aside`
-  grid-area: asideLeft;
-`;
-
-const AsideRight = styled.aside`
-  grid-area: asideLeft;
 `;
 
 export default class About extends Component {
@@ -57,8 +51,7 @@ export default class About extends Component {
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
-// make sure to remove the listener
-// when the component is not mounted anymore
+/* make sure to remove the listener when the component is not mounted anymore */
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.handleWindowSizeChange);
   }
@@ -73,13 +66,11 @@ export default class About extends Component {
       return(
         <>
           <BurgerMenu />
-          <AsideLeft />
-          <AsideRight />
           <Main>
             <h1>About</h1>
               <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
               I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
-              <p>If you need some inspiring ideas, <Link to='/contacts'>let’s connect</Link> to get the process started.</p>
+              <p>If you need some inspiring ideas, <Link to = '/contacts'>let’s connect</Link> to get the process started.</p>
           </Main>
           <Footer />
         </>
@@ -91,7 +82,7 @@ export default class About extends Component {
           <Main>
             <h1>About</h1>
             <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia. I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
-            <p>If you need some inspiring ideas, <Link to='/contacts'>let’s connect</Link> to get the process started.</p>
+            <p>If you need some inspiring ideas, <Link to = '/contacts'>let’s connect</Link> to get the process started.</p>
           </Main>
           <Footer />
         </>

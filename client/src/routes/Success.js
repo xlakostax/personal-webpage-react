@@ -20,7 +20,7 @@ const Main = styled.div`
   }
   & a {
     display: inline-block;
-    color: red;
+    color: rgb( 255, 99, 71 );
     text-transform: uppercase;
   }
   & a:after {
@@ -28,7 +28,7 @@ const Main = styled.div`
     display: block;
     width: 0%;
     height: 1px;
-    background: rgb(255, 99, 71);
+    background: rgb( 255, 99, 71 );
     transition: 300ms;
   }
   & a:hover:after {
@@ -42,15 +42,15 @@ export default class Success extends Component {
     this.state = { time: {}, seconds: 5 };
     this.timer = 0;
     // this.startTimer = this.startTimer.bind(this);
-    this.countDown = this.countDown.bind(this);
+    this.countDown = this.countDown.bind( this );
   }
 
   secondsToTime(secs){
     // let hours = Math.floor(secs / (60 * 60));
-    let divisor_for_minutes = secs % (60 * 60);
+    let divisor_for_minutes = secs % ( 60 * 60 );
     // let minutes = Math.floor(divisor_for_minutes / 60);
     let divisor_for_seconds = divisor_for_minutes % 60;
-    let seconds = Math.ceil(divisor_for_seconds);
+    let seconds = Math.ceil( divisor_for_seconds );
     let obj = {
       "s": seconds
     };
@@ -59,14 +59,14 @@ export default class Success extends Component {
 
   componentDidMount = () => {
     // setTimeout(() => { window.location.replace("/contacts") }, 5000);
-    let timeLeftVar = this.secondsToTime(this.state.seconds);
+    let timeLeftVar = this.secondsToTime( this.state.seconds );
     this.setState({ time: timeLeftVar });
     this.startTimer();
   };
 
   startTimer(){
-    if (this.timer === 0 && this.state.seconds > 0) {
-      this.timer = setInterval(this.countDown, 1000);
+    if ( this.timer === 0 && this.state.seconds > 0 ) {
+      this.timer = setInterval( this.countDown, 1000 );
     }
   }
 
@@ -74,13 +74,13 @@ export default class Success extends Component {
     // Remove one second, set state so a re-render happens.
     let seconds = this.state.seconds - 1;
     this.setState({
-      time: this.secondsToTime(seconds),
+      time: this.secondsToTime( seconds ),
       seconds: seconds,
     });
     // Check if we're at zero.
     if (seconds === 0) { //==
       clearInterval(this.timer);
-      window.location.replace("/contacts");
+      window.location.replace( '/contacts' );
     }
   };
 
@@ -88,7 +88,7 @@ export default class Success extends Component {
     return (
       <Main>
         <p>Sent </p><br />
-        Redirecting back in {this.state.time.s} s.
+        Redirecting back in { this.state.time.s } s.
       </Main>
     )
   }

@@ -5,9 +5,9 @@ import BurgerMenu from '../components/BurgerMenu';
 import styled from 'styled-components';
 
 const Main = styled.main`
+  grid-area: main;
   position: relative;
-  width: 50%;
-  flex: 1;
+  width: 100%;
   & h1 {
       position: relative;
       margin: 1.2em 0;
@@ -38,14 +38,14 @@ const Grid = styled.div`
 `;
 
 const Projects = () => {
-  const projectsData = require('../projects.json');
-  const projectList = projectsData.map ( (project) => {
+  var projectsData = require('../projects.json');
+  var projectList = projectsData.map ( (project) => {
     return (
-      <article class='Card Card--inGrid' key={project.id}>
-        <h3 class='Card-title'>
-          <a class='Card-link' href = {project.url} target = '_blank' rel='noopener noreferrer' title='Event manager app'>{project.title}</a>
+      <article className = 'Card Card--inGrid' key={ project.id }>
+        <h3 className = 'Card-title'>
+          <a className = 'Card-link' href = { project.url } target = '_blank' rel = 'noopener noreferrer' title = 'Event manager app'> {project.title }</a>
         </h3>
-        <p class='Card-content'>{project.description}</p>
+        <p className = 'Card-content'>{ project.description }</p>
       </article>
     );
   });

@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { TweenLite, TweenMax } from 'gsap/all';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import $ from 'jquery';
 import styled from 'styled-components';
-import '../styles/Home.css';
 
 const Main = styled.main`
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 4;
   position: relative;
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   & h1 {
     font-size: 8em;
     line-height: 1;
@@ -27,25 +29,21 @@ const Main = styled.main`
   & section {
     padding-top: 1.2em;
     & i {
-      position: relative;
       font-size: 2em;
       padding-right: 0.2em;
     }
     & i:hover {
       transition: color 100ms linear;
-      color: tomato;
+      color: rgb( 255, 99, 71 );
     }
     & li {
       display: inline-block;
-      vertical-align: middle;
     }
   }
   & nav {
-    position: relative;
     padding-top: 1.2em;
     & li {
       display: inline-block;
-      vertical-align: middle;
       font-size: 0.8em;
     }
   }
@@ -87,19 +85,19 @@ class Home extends Component {
     const data = require( '../menu.json' );
     const menu = data.slice( 0, 4 ).map ( ( element ) => {
       return (
-        <li key={element.id}>
-          <NavLink exact to = {element.path}>
-            <h2>{element.title}</h2>
+        <li key = { element.id }>
+          <NavLink exact to = { element.path }>
+            <h2>{ element.title }</h2>
           </NavLink>
         </li>
       );
     });
     const links = data.slice( 4 ).map ( ( element ) => {
       return (
-        <li key={element.id}>
-          <Link href = {element.url}>
-            <i className = {element.icon}></i>
-          </Link>
+        <li key = { element.id }>
+          <a href = { element.url } target = '_blank' rel = 'noopener noreferrer'>
+            <i className = { element.icon }></i>
+          </a>
         </li>
       );
     });

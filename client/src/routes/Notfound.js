@@ -20,7 +20,7 @@ const Main = styled.div`
   }
   & a {
     display: inline-block;
-    color: red;
+    color: rgb( 255, 99, 71 );
     text-transform: uppercase;
   }
   & a:after {
@@ -28,7 +28,7 @@ const Main = styled.div`
     display: block;
     width: 0%;
     height: 1px;
-    background: rgb(255, 99, 71);
+    background: rgb( 255, 99, 71 );
     transition: 300ms;
   }
   & a:hover:after {

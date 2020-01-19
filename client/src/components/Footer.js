@@ -8,13 +8,9 @@ const FooterTag = styled.footer`
   grid-area: footer;
   position: relative;
   width: 80%;
-  margin: 2em auto;
-  padding: 2em 0;
+  margin: 0 auto;
+  padding: 1.2em 0;
   text-align: center;
-  z-index: 99;
-  bottom: 0;
-  left: 0;
-  right: 0;
 `;
 
 const Footer = () => {

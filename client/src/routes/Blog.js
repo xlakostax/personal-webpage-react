@@ -5,9 +5,9 @@ import BurgerMenu from '../components/BurgerMenu';
 import styled from 'styled-components';
 
 const Main = styled.main`
+  grid-area: main;
   position: relative;
-  width: 50%;
-  flex: 1;
+  width: 100%;
   & h1 {
       position: relative;
       margin: 1.2em 0;

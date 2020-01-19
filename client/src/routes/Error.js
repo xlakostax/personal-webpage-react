@@ -20,7 +20,7 @@ const Main = styled.div`
   }
   & a {
     display: inline-block;
-    color: red;
+    color: rgb( 255, 99, 71 );
     text-transform: uppercase;
   }
   & a:after {
@@ -28,7 +28,7 @@ const Main = styled.div`
     display: block;
     width: 0%;
     height: 1px;
-    background: rgb(255, 99, 71);
+    background: rgb( 255, 99, 71 );
     transition: 300ms;
   }
   & a:hover:after {
@@ -38,13 +38,13 @@ const Main = styled.div`
 
 export default class Error extends Component {
   componentDidMount = () => {
-    setTimeout(() => { window.location.replace("/contacts") }, 5000);
+    setTimeout( () => { window.location.replace( '/contacts' ) }, 5000 );
   };
   render() {
     return (
       <Main>
         <p>Error </p><br />
-        <a href="/">Go back home</a>
+        <a href = '/'>Go back home</a>
       </Main>
     )
   }
