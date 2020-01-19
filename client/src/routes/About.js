@@ -67,10 +67,11 @@ export default class About extends Component {
         <>
           <BurgerMenu />
           <Main>
-            <h1>About</h1>
-              <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />
-              I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p><br />
+            <article>
+              <h1>About</h1>
+              <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia. I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p>
               <p>If you need some inspiring ideas, <Link to = '/contacts'>let’s connect</Link> to get the process started.</p>
+            </article>
           </Main>
           <Footer />
         </>
