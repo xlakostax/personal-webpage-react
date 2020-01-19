@@ -3,14 +3,16 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderTag = styled.header`
+  grid-area: header;
   position: sticky;
   top: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 100%;
   font-family: 'Nunito', Georgia, serif;
   background-color: white;
   z-index: 99;

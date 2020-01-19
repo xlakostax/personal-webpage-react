@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 
-import '../styles/BurgerMenu.css';
+import '../styles/burger.css';
 
 export default class BurgerMenu extends Component {
   render () {

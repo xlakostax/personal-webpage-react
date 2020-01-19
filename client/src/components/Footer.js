@@ -5,6 +5,7 @@ var copy = '\u00A9';
 var year = new Date().getFullYear();
 
 const FooterTag = styled.footer`
+  grid-area: footer;
   position: relative;
   width: 80%;
   margin: 2em auto;

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Main = styled.main`
+  grid-area: main;
   position: relative;
   width: 50%;
   flex: 1;
@@ -36,6 +37,14 @@ const Main = styled.main`
   }
 `;
 
+const AsideLeft = styled.aside`
+  grid-area: asideLeft;
+`;
+
+const AsideRight = styled.aside`
+  grid-area: asideLeft;
+`;
+
 export default class About extends Component {
   constructor() {
     super();
@@ -64,6 +73,8 @@ export default class About extends Component {
       return(
         <>
           <BurgerMenu />
+          <AsideLeft />
+          <AsideRight />
           <Main>
             <h1>About</h1>
               <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia.<br />

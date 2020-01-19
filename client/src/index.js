@@ -7,7 +7,7 @@ import Home from './routes/Home';
 import Notfound from './routes/Notfound';
 import Blog from './routes/Blog';
 import Projects from './routes/Projects';
-import './styles/Common.css';
+import './styles/index.css';
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
