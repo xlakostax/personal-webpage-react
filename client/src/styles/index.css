@@ -157,6 +157,11 @@ h2, h1 {
   outline: none;
 }
 
+.Modal i {
+  cursor: pointer;
+  margin: 10px;
+}
+
 #nprogress .bar {
   background: rgb( 255, 99, 71 ) !important;
 }

@@ -46,9 +46,9 @@ const HeaderTag = styled.header`
     display: flex;
     justify-content: space-between;
     margin: 0;
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
       flex-direction: column;
-    }
+    } */
     & ul:first-child {
       text-align: left;
       & h2 {
@@ -61,17 +61,17 @@ const HeaderTag = styled.header`
     }
     & ul:last-child {
       text-align: right;
-      @media (max-width: 768px) {
+      /* @media (max-width: 768px) {
         display: flex;
         margin-top: 1.2em;
         justify-content: space-between;
-      }
+      } */
       & li {
         display: inline-block;
-        margin-left: 0.5em;
-        @media (max-width: 768px) {
+        margin-left: 1em;
+        /* @media (max-width: 768px) {
           margin-left: 0;
-        }
+        } */
       & h2 {
         font-weight: 400;
         font-size: 1.2em;

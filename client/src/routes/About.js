@@ -12,9 +12,9 @@ const Main = styled.main`
   & h1 {
       position: relative;
       margin: 1.2em 0;
-      @media (max-width: 768px) {
+      /* @media (max-width: 768px) {
         font-size: 2em;
-      }
+      } */
     }
   & h2 {
       margin: 0 0 1em 0;
@@ -43,17 +43,17 @@ export default class About extends Component {
   constructor() {
     super();
     this.state = {
-      width: window.innerWidth,
+      width: window.innerWidth
     };
   }
 
-  componentWillMount = () => {
-    window.addEventListener('resize', this.handleWindowSizeChange);
+  componentDidMount = () => {
+    window.addEventListener( 'resize', this.handleWindowSizeChange );
   }
 
 /* make sure to remove the listener when the component is not mounted anymore */
   componentWillUnmount = () => {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener( 'resize', this.handleWindowSizeChange );
   }
 
   handleWindowSizeChange = () => {
@@ -61,7 +61,7 @@ export default class About extends Component {
   };
 
   render() {
-    const isMobile = window.innerWidth <= 500;
+    const isMobile = window.innerWidth <= 1024;
     if (isMobile) {
       return(
         <>

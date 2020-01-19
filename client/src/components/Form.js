@@ -164,7 +164,7 @@ export default class Form extends Component {
             overlayClassName = 'Overlay'
             shouldCloseOnOverlayClick = { false }
         >
-          <i className = 'fas fa-times' onClick = { this.handleCloseModalSuccess }  style = {{ cursor: 'pointer', margin: '10px' }}></i>
+          <i className = 'fas fa-times' onClick = { this.handleCloseModalSuccess }></i>
           <p>Your message was sent <span>successfully</span>.</p>
         </Modal>
         <Modal
@@ -175,7 +175,7 @@ export default class Form extends Component {
             overlayClassName = 'Overlay'
             shouldCloseOnOverlayClick = { false }
         >
-          <i className = 'fas fa-times' onClick = { this.handleCloseModalError }  style = {{ cursor: 'pointer', margin: '10px' }}></i>
+          <i className = 'fas fa-times' onClick = { this.handleCloseModalError }></i>
           <p><span>Error.</span> Your message was not sent. Please check your connection or firewall settings.</p>
         </Modal>
         <form onSubmit = {this.onSubmitHandler}>

@@ -25,13 +25,13 @@ const Grid = styled.div`
     font-weight: 400;
     color: rgb(255, 99, 71)
   }
-  & .Card--inGrid {
+  & .card-inGrid {
     position: relative;
     border: 3px solid rgba(220, 220, 220, 1);
     border-radius: 5px;
     padding: 2em;
   }
-  & .Card p {
+  & .card p {
     position: relative;
     font-size: 1em;
   }
@@ -41,11 +41,11 @@ const Projects = () => {
   var projectsData = require('../projects.json');
   var projectList = projectsData.map ( (project) => {
     return (
-      <article className = 'Card Card--inGrid' key={ project.id }>
-        <h3 className = 'Card-title'>
-          <a className = 'Card-link' href = { project.url } target = '_blank' rel = 'noopener noreferrer' title = 'Event manager app'> {project.title }</a>
+      <article className = 'card card-inGrid' key={ project.id }>
+        <h3 className = 'card-title'>
+          <a className = 'card-link' href = { project.url } target = '_blank' rel = 'noopener noreferrer' title = 'Event manager app'> {project.title }</a>
         </h3>
-        <p className = 'Card-content'>{ project.description }</p>
+        <p className = 'card-content'>{ project.description }</p>
       </article>
     );
   });
