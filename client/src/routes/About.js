@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const Main = styled.main`
   grid-area: main;
   position: relative;
-  width: 50%;
+  width: 100%;
   flex: 1;
   & h1 {
       position: relative;
