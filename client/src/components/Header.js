@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -14,7 +14,7 @@ const HeaderTag = styled.header`
   padding: 1.2em 0;
   font-family: 'Nunito', Georgia, serif;
   background-color: white;
-  z-index: 99;
+  z-index: 3;
   box-shadow: 0 1px rgba( 220, 220, 220, 1 );
   /* to avoid 'jumping' of fixed header */
   transform:translateZ(0);
@@ -41,7 +41,7 @@ const HeaderTag = styled.header`
     width: 100%;
   } */
   @media (max-width: 1024px) {
-    display: none;
+    /* display: none; */
   }
   & nav {
     width: 100%;
@@ -49,48 +49,115 @@ const HeaderTag = styled.header`
     display: flex;
     justify-content: space-between;
     margin: 0;
-    /* @media (max-width: 768px) {
-      flex-direction: column;
-    } */
-    & ul:first-child {
-      text-align: left;
-      & h2 {
-        font-weight: 400;
-        font-size: 1.2em;
-      }
+    @media (max-width: 1024px) {
+      /* flex-direction: column;
+      justify-content: none; */
+    }
+    & .logo {
+      font-weight: 400;
+      font-size: 1.2em;
+      float: left;
+
       & span {
         font-weight: 800;
       }
     }
-    & ul:last-child {
+    & ul {
       text-align: right;
-      /* @media (max-width: 768px) {
-        display: flex;
-        margin-top: 1.2em;
-        justify-content: space-between;
-      } */
+      @media (max-width: 1024px) {
+        text-align: left;
+        display: none;
+      }
       & li {
         display: inline-block;
         margin-left: 1em;
-        /* @media (max-width: 768px) {
+        @media (min-width: 1024px) {
+          float: left;
+        }
+        @media (max-width: 1024px) {
           margin-left: 0;
-        } */
-      & h2 {
-        font-weight: 400;
-        font-size: 1.2em;
-        background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(255, 99, 71, 0.35) calc(50% - 9px), rgba(255, 99, 71, 0.35) 100% );
-        transition: background-position 120ms ease-in-out;
-        background-size: 100% 180%;
+          /* forcing <li>'s width to be the same as it's content */
+          float:left;
+          clear:left;
+          /* forcing <li>'s width to be the same as it's content */
+        }
+        & h2 {
+          font-weight: 400;
+          font-size: 1.2em;
+          background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(255, 99, 71, 0.35) calc(50% - 9px), rgba(255, 99, 71, 0.35) 100% );
+          transition: background-position 120ms ease-in-out;
+          background-size: 100% 180%;
+          @media (max-width: 1024px) {
+            background-image: none;
+          }
+        }
+        & h2:hover {
+          background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(255, 99, 71, 0.35) calc(50% - 9px), rgba(255, 99, 71, 0.35) 100% );
+          background-position: 0 100%;
+          @media (max-width: 1024px) {
+            /* background-image: none; */
+          }
+        }
       }
-      & h2:hover {
-        background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(255, 99, 71, 0.35) calc(50% - 9px), rgba(255, 99, 71, 0.35) 100% );
-        background-position: 0 100%;
+    }
+    & .menu-holder {
+      display: none;
+      @media (max-width: 1024px){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      & .menu-btn {
+        display: none;
+        &:checked ~ .menu-icon .navicon {
+          background: transparent;
+          &:before {
+            transform: rotate(-45deg);
+            top: 0;
+          }
+          &:after {
+            transform: rotate(45deg);
+            top: 0;
+          }
+        }
+      }
+      & .menu-icon {
+        cursor: pointer;
+        display: inline-block;
+        float: right;
+        user-select: none;
+        & .navicon {
+          background: red;
+          display: block;
+          height: 2px;
+          position: relative;
+          transition: background .2s ease-out;
+          width: 18px;
+          &:before, :after {
+            background: red;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            transition: all .2s ease-out;
+            width: 100%;
+          }
+          &:before {
+            top: 5px;
+          }
+          &:after {
+            top: -5px;
+          }
+        }
       }
     }
   }
 `;
 
 const Header = () => {
+  const handleClick = useCallback(() => {
+    alert('Clicked!')
+  })
   var data = require( '../menu.json' );
   var menu = data.slice( 0, 4 ).map ( ( element ) => {
     return (
@@ -103,21 +170,19 @@ const Header = () => {
   });
   return(
     <HeaderTag>
-      <input id = 'menu-btn' className = 'menu-btn' type='checkbox'/>
-      <label className = 'menu-icon' for = 'menu-btn'>
-        <span className = 'navicon'></span>
-      </label>
       <nav>
-        <ul>
-          <li>
-            <NavLink exact to='/' >
-              <h2>Konstantin<span>Veselovskii</span></h2>
-            </NavLink>
-          </li>
-        </ul>
+        <NavLink exact to='/' >
+          <h2 className = 'logo'>Konstantin<span>Veselovskii</span></h2>
+        </NavLink>
         <ul className = 'menu'>
           { menu }
         </ul>
+        <div className = 'menu-holder'>
+          <input id = 'menu-btn' className = 'menu-btn' type = 'checkbox'/>
+          <label className = 'menu-icon' for = 'menu-btn' onClick = { handleClick }>
+            <span className = 'navicon'></span>
+          </label>
+        </div>
       </nav>
     </HeaderTag>
   )
