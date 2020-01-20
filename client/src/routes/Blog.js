@@ -9,9 +9,12 @@ const Main = styled.main`
   position: relative;
   width: 100%;
   & h1 {
-      position: relative;
-      margin: 1.2em 0;
-    }
+    position: relative;
+    margin: 1.2em 0;
+  }
+  & article {
+    text-align: justify;
+  }
 `;
 
 const Wrapper = styled.div`

@@ -6,6 +6,7 @@
 
 /* Position and sizing of burger button */
 .bm-burger-button {
+  display: none;
   position: fixed;
   width: 36px;
   height: 30px;
@@ -51,4 +52,10 @@
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+@media all and (min-device-width: 280px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .bm-burger-button {
+    display: block;
+  }
 }

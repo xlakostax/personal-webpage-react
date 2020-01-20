@@ -40,6 +40,9 @@ const HeaderTag = styled.header`
   & .active:hover:after, .inactive:hover:after {
     width: 100%;
   } */
+  @media (max-width: 1024px) {
+    display: none;
+  }
   & nav {
     width: 100%;
     position: relative;
@@ -100,6 +103,10 @@ const Header = () => {
   });
   return(
     <HeaderTag>
+      <input id = 'menu-btn' className = 'menu-btn' type='checkbox'/>
+      <label className = 'menu-icon' for = 'menu-btn'>
+        <span className = 'navicon'></span>
+      </label>
       <nav>
         <ul>
           <li>
@@ -108,7 +115,7 @@ const Header = () => {
             </NavLink>
           </li>
         </ul>
-        <ul>
+        <ul className = 'menu'>
           { menu }
         </ul>
       </nav>

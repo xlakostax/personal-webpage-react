@@ -18,12 +18,9 @@ const Main = styled.main`
         font-size: 2em;
       } */
     }
-  & h2 {
-      margin: 0 0 1em 0;
-      font-family: "Merriweather";
-      font-size: 1em;
-      /* line-height: 1.5; */
-    }
+  & article {
+    text-align: justify;
+  }
   & a {
     display: inline-block;
     color: rgb( 255, 99, 71 );
@@ -43,12 +40,11 @@ const Main = styled.main`
 
 const About = () => {
   var currentWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  var visible = (currentWidth < 1024) ? {display: 'block'} : {display: 'none'}
+  var visible = (currentWidth < 1024) ? {display: 'block'} : {display: 'none'};
   const [style, setStyle] = useState(visible);
   useEffect( () => {
     setStyle(visible);
     window.addEventListener('resize', setStyle);
-
     /* remove resize listener */
     return () => {
       window.removeEventListener('resize', setStyle);
@@ -56,9 +52,8 @@ const About = () => {
   }, []);
   return(
     <>
-      <span style = { visible } >
-        <BurgerMenu/>
-      </span>
+      {/*<BurgerMenu />*/}
+      <Header />
       <Main>
         <article>
           <h1>About</h1>

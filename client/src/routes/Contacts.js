@@ -13,6 +13,9 @@ const Main = styled.main`
     position: relative;
     margin: 1.2em 0;
   }
+  & article {
+    text-align: justify;
+  }
 `;
 
 const Contacts = () => {
