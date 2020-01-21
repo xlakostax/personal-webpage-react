@@ -100,7 +100,6 @@ body{
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 25% 1fr 25%;
   /* grid-gap: 10px; */
-  height: 100vh;
   min-height: 100vh;
 }
 
@@ -171,6 +170,13 @@ h2, h1 {
 #nprogress .spinner-icon {
     border-top-color: rgb( ‎255, 99, 71 ) !important;
     border-left-color: rgb( 255, 99, 71 ) !important;
+}
+
+/* Media queries */
+@media all and (max-width: 1024px) {
+  #root {
+    display: block;
+  }
 }
 
 /*
