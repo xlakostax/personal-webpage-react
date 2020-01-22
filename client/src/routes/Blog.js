@@ -23,6 +23,7 @@ const Main = styled.main`
       height: 100%;
       justify-content: center;
       & i {
+        color: rgba( 220, 220, 220, 0.5 );
         font-size: 20em;
       }
     }

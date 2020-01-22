@@ -36,16 +36,12 @@ const Main = styled.div`
   }
 `;
 
-export default class Error extends Component {
-  componentDidMount = () => {
-    setTimeout( () => { window.location.replace( '/contacts' ) }, 5000 );
-  };
-  render() {
-    return (
-      <Main>
-        <p>Error </p><br />
-        <a href = '/'>Go back home</a>
-      </Main>
-    )
-  }
+const Error = () => {
+  return (
+    <Main>
+      <p>Error </p><br />
+      <a href = '/'>Go back home</a>
+    </Main>
+  )
 }
+export default Error;
