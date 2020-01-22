@@ -12,6 +12,13 @@
 # production
 **/build/**
 
+# files
+About (with class function).js
+Success.js
+Error.js
+burger.css
+BurgerMenu.js
+
 # Firebase config
 
 # Uncomment this if you'd like others to create their own Firebase project.
