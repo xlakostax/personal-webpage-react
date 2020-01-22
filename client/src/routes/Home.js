@@ -14,9 +14,18 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   width: 100%;
+  @media (max-width: 767px) {
+    /*Do smth with layout*/
+  }
   & h1 {
     font-size: 8em;
     line-height: 1;
+    @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+      font-size: 6em;
+    }
+    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
+      font-size: 4em;
+    }
     & span {
       font-weight: 400;
     }
@@ -25,9 +34,18 @@ const Main = styled.main`
     font-size: 2em;
     font-weight: 400;
     padding-right: 0.5em;
+    @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
+      font-size: 1.6em;
+    }
+    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
+      font-size: 1.4em;
+    }
   }
   & section {
     padding-top: 1.2em;
+    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
+      padding-top: 0.8em;
+    }
     & i {
       font-size: 2em;
       padding-right: 0.2em;
@@ -42,6 +60,9 @@ const Main = styled.main`
   }
   & nav {
     padding-top: 1.2em;
+    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
+      padding-top: 0.8em;
+    }
     & li {
       display: inline-block;
       font-size: 0.8em;

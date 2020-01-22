@@ -39,7 +39,7 @@ const Blog = () => {
           <h1>Blog</h1>
           <div>
             <p>
-              <i class="swg swg-deathstar swg-6x"></i>
+              <i className = 'swg swg-deathstar swg-6x'></i>
             </p> <br />
             <p>Under construction</p> <br />
           </div>
