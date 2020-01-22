@@ -33,12 +33,9 @@ dd {
 }
 
 /* defaul settings for body */
-body {
-  min-height: 100vh;
-  /* scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased; */
+body, html {
   line-height: 1.5;
+  min-height: 100vh;
 }
 
 /* remove default styles for ul and ol */
@@ -49,8 +46,8 @@ ol {
 
 /* simplify img managing */
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 /* point a clear periodicity to an article in the flow*/
@@ -74,13 +71,23 @@ a {
 /* Style reset ends */
 
 ::-webkit-scrollbar {
-  width: 0;
   background: transparent;
+  width: 0;
 }
 
-body{
-  position: relative;
+body {
   font-family: "Merriweather";
+  position: relative;
+  /* color: rgba(47, 47, 47, 1); */
+  /* background: rgb(246, 246, 246) center center no-repeat; */
+  /* background: -webkit-linear-gradient(160deg, rgba(246, 246, 246, 1) 15%, rgba(255, 255, 255, 1) 15%) center center no-repeat; */
+  /* background: -o-linear-gradient(190deg, rgba(246, 246, 246, 1) 15%, rgba(255, 255, 255, 1) 15%) center center no-repeat; */
+  /* background: linear-gradient(290deg, rgba(246, 246, 246, 1) 15%, rgba(255, 255, 255, 1) 15%) center center no-repeat; */
+  /* background-size: cover; */
+  /* -moz-background-size: cover; */
+  /* -webkit-background-size: cover; */
+  /* -o-background-size: cover; */
+  /* background-attachment: fixed; */
 }
 
 /* #root {
@@ -97,23 +104,9 @@ body{
     "header header header"
     "asideLeft main asideRight"
     "footer footer footer";
-  grid-template-rows: auto 1fr auto;
   grid-template-columns: 25% 1fr 25%;
-  /* grid-gap: 10px; */
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-}
-
-body {
-  /* color: rgba(47, 47, 47, 1);
-  background: rgb(246, 246, 246) center center no-repeat;
-  background: -webkit-linear-gradient(160deg, rgba(246, 246, 246, 1) 15%, rgba(255, 255, 255, 1) 15%) center center no-repeat;
-  background: -o-linear-gradient(190deg, rgba(246, 246, 246, 1) 15%, rgba(255, 255, 255, 1) 15%) center center no-repeat;
-  background: linear-gradient(290deg, rgba(246, 246, 246, 1) 15%, rgba(255, 255, 255, 1) 15%) center center no-repeat;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  background-attachment: fixed; */
 }
 
 h2, h1 {
@@ -122,30 +115,31 @@ h2, h1 {
 }
 
 .Overlay {
-  position: fixed;
+  align-items: center;
+  background-color: rgba( 255, 255, 255, 0.5 );
+  justify-content: center; left: 0;
+  position: fixed; right: 0;
+  top: 0;
+
   display: flex;
   justify-content: center;
-  align-items: center;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
   z-index: 9999;
-  background-color: rgba( 255, 255, 255, 0.5 );
 }
 
 .Modal {
-  position: absolute;
-  top: 20%;
-  left: 20%;
-  right: 20%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  bottom: 20%;
   background-color: rgba( 255, 255, 255, 1 );
   border: 1px solid rgba( 220, 220, 220, 1 );
   border-radius: 5px;
+  bottom: 20%;
+  display: flex;
+  justify-content: center;
+  left: 20%;
+  position: absolute;
+  right: 20%;
+  top: 20%;
 }
 
 .Modal span {
@@ -168,17 +162,15 @@ h2, h1 {
   box-shadow: 0 0 10px rgb( 255, 99, 71 ), 0 0 5px rgb( 255, 99, 71 ) !important;
 }
 #nprogress .spinner-icon {
-    border-top-color: rgb( ‎255, 99, 71 ) !important;
-    border-left-color: rgb( 255, 99, 71 ) !important;
+  border-left-color: rgb( 255, 99, 71 ) !important;
+  border-top-color: rgb( ‎255, 99, 71 ) !important;
 }
 
-/* Media queries */
-@media all and (max-width: 1024px) {
+@media (max-width: 768px) {
   #root {
-    display: block;
+    grid-template-columns: 10% 1fr 10%;
   }
 }
-
 /*
 .fa-angle-up {
   font-size: 0;

@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderTag = styled.header`
-  grid-area: header;
   display: flex;
+  grid-area: header;
   justify-content: space-between;
+  align-items: center;
   position: sticky;
   margin: 0 auto;
   width: 80%;
@@ -39,39 +40,55 @@ const HeaderTag = styled.header`
   & .active:hover:after, .inactive:hover:after {
     width: 100%;
   } */
-  @media (max-width: 1024px) {
-    display: block;
-  }
   & .logo {
     font-weight: 400;
     font-size: 1.2em;
-    float: left;
-
     & span {
       font-weight: 800;
     }
   }
-
   & nav {
-    position: relative;
-    @media (max-width: 1024px) {
-      width: 100vw;
+    @media ( max-width: 1024px ) {
+      color: rgb( 255, 255, 255 );
+      transition: transform 1s ease-in-out;
+      -webkit-transition: transform 1s ease-in-out;
+      -moz-transition: transform 1s ease-in-out;
+      -ms-transition: transform 1s ease-in-out;
+      -o-transition: transform 1s ease-in-out;
+      top: 0;
+      bottom: 0;
+      min-height: 100vh;
       position: fixed;
-      top: 0; left: 0; bottom: 0; right: 0;
+      width: 100vw;
+      background-color: rgba( 47, 47, 47, 0.9 );
+      transform: translateX( -200vw );
     }
     & ul {
+      display: flex;
+
+      @media (max-width: 1024px) {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        justify-content: center;
+        height: 100%;
+      }
       & li {
+        color: rgb( 255, 255, 255 )
         display: inline-block;
         margin-left: 1em;
-        @media (min-width: 1024px) {
-          float: left;
+        @media (min-width: 768px) and (max-width: 1023px) {
+          font-size: 4em;
+          /* forcing <li>'s width to be the same as it's content */
+          /* float:left;
+          clear:left; */
+          /* forcing <li>'s width to be the same as it's content */
         }
-        @media (max-width: 1024px) {
-          margin-left: 0;
-          /* forcing <li>'s width to be the same as it's content */
-          float:left;
-          clear:left;
-          /* forcing <li>'s width to be the same as it's content */
+        @media (min-width: 425px) and (max-width: 767px) {
+          font-size: 3em;
+        }
+        @media (max-width: 424px) {
+          font-size: 2em;
         }
         & h2 {
           font-weight: 400;
@@ -87,71 +104,72 @@ const HeaderTag = styled.header`
           background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(255, 99, 71, 0.35) calc(50% - 9px), rgba(255, 99, 71, 0.35) 100% );
           background-position: 0 100%;
           @media (max-width: 1024px) {
-            /* background-image: none; */
+            background-image: none;
           }
         }
       }
     }
   }
-  & .menu-holder {
+  & .menu-btn {
     display: none;
-    @media (max-width: 1024px) {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
+    &:checked ~ nav {
+      transition: transform 1s ease-in-out;
+      transform: translateX(-10%);
     }
-    & .menu-btn {
-      display: none;
-      &:checked ~ .menu-icon .navicon {
-        background: transparent;
-        &:before {
-          transform: rotate(-45deg);
-          top: 0;
-        }
-        &:after {
-          transform: rotate(45deg);
-          top: 0;
-        }
+    &:checked ~ .menu-icon .navicon {
+      background: transparent;
+      &:before {
+        transform: rotate(-45deg);
+        top: 0;
+        transition: background 0.9s ease-in-out;
+        background: rgb( 255, 255, 255 );
+      }
+      &:after {
+        transform: rotate(45deg);
+        top: 0;
+        transition: background 0.9s ease-in-out;
+        background: rgb( 255, 255, 255 );
       }
     }
-    & .menu-icon {
-      cursor: pointer;
-      display: inline-block;
-      float: right;
-      user-select: none;
-      & .navicon {
-        background: red;
+  }
+  & .menu-icon {
+    cursor: pointer;
+    user-select: none;
+    z-index: 999;
+    & .navicon {
+      background: rgba( 47, 47, 47 );
+      display: none;
+      height: 2px;
+      position: relative;
+      transition: background .2s ease-out;
+      width: 2em;
+      @media (max-width: 1024px){
         display: block;
-        height: 2px;
-        position: relative;
-        transition: background .2s ease-out;
-        width: 18px;
-        &:before, :after {
-          background: red;
-          content: '';
-          display: block;
-          height: 100%;
-          position: absolute;
-          transition: all .2s ease-out;
-          width: 100%;
+      }
+      &:before, :after {
+        background: rgba( 47, 47, 47 );
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .3s ease-out;
+        width: 100%;
+        margin-bottom: .3em;
+        @media (max-width: 1024px){
+
         }
-        &:before {
-          top: 5px;
-        }
-        &:after {
-          top: -5px;
-        }
+      }
+      &:before {
+        top: 5px;
+      }
+      &:after {
+        top: -5px;
       }
     }
   }
 `;
 
 const Header = () => {
-  const handleClick = useCallback(() => {
-    console.log('Clicked!')
-  })
   var data = require( '../menu.json' );
   var menu = data.slice( 0, 4 ).map ( ( element ) => {
     return (
@@ -164,20 +182,18 @@ const Header = () => {
   });
   return(
     <HeaderTag>
-      <NavLink exact to='/' >
+      <NavLink exact to='/'>
         <h2 className = 'logo'>Konstantin<span>Veselovskii</span></h2>
       </NavLink>
-      <nav>
+        <input id = 'menu-btn' className = 'menu-btn' type = 'checkbox'/>
+        <label className = 'menu-icon' htmlFor = 'menu-btn'>
+          <span className = 'navicon'></span>
+        </label>
+      <nav id = 'nav'>
         <ul className = 'menu'>
           { menu }
         </ul>
       </nav>
-      <div className = 'menu-holder'>
-        <input id = 'menu-btn' className = 'menu-btn' type = 'checkbox'/>
-        <label className = 'menu-icon' htmlFor = 'menu-btn' onClick = { handleClick }>
-          <span className = 'navicon'></span>
-        </label>
-      </div>
     </HeaderTag>
   )
 }
