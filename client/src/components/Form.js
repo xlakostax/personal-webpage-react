@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { loadProgressBar } from 'axios-progress-bar'
 import Modal from 'react-modal';
-import styled from 'styled-components';
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import 'axios-progress-bar/dist/nprogress.css';
 

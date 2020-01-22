@@ -114,7 +114,7 @@ h2, h1 {
   text-transform: uppercase;
 }
 
-.Overlay {
+/* .Overlay {
   align-items: center;
   background-color: rgba( 255, 255, 255, 0.5 );
   justify-content: center; left: 0;
@@ -153,7 +153,7 @@ h2, h1 {
 .Modal i {
   cursor: pointer;
   margin: 10px;
-}
+} */
 
 #nprogress .bar {
   background: rgb( 255, 99, 71 ) !important;
@@ -171,129 +171,3 @@ h2, h1 {
     grid-template-columns: 10% 1fr 10%;
   }
 }
-/*
-.fa-angle-up {
-  font-size: 0;
-  color: rgba(47, 47, 47, 1);
-}
-
-@media all and (min-device-width: 280px) and (max-device-width: 500px) {
-  header {
-    position: relative;
-    width: 100%;
-    left: 0;
-  }
-
-  #menuIconHolder, #closeIconHolder {
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
-
-  .fa-bars, .fa-times, .fa-angle-up {
-    font-size: 2em;
-  }
-
-  .fa-bars-hidden {
-    opacity: 0;
-  }
-
-  #closeIconHolder, #menuIconHolder {
-    top: 1.2em;
-  }
-
-  #closeIconHolder {
-    right: 2.9em;
-  }
-
-  #menuIconHolder {
-    right: 1.8em;
-  }
-
-  #navMenu {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-
-  #navMenu ul:nth-child(2) {
-    text-align: center;
-  }
-
-  #navMenu ul:first-child {
-    padding: 0;
-  }
-
-  #navMenu ul:last-child {
-    padding: 0;
-    display: none;
-  }
-
-  #navMenu li {
-    display: inline;
-    text-align: left;
-    vertical-align: middle;
-  }
-
-  main {
-    width: 90%;
-  }
-
-  #topIconHolder {
-    position: fixed;
-    display: none;
-    bottom: 2em;
-    right: 2em;
-    opacity: 1;
-  }
-}
-
-@media all and (min-device-width: 501px) and (max-device-width: 900px) {
-
-  header {
-    position: relative;
-    width: 100%;
-    left: 0;
-  }
-
-  #navMenu {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-
-  #navMenu ul:first-child {
-    padding: 0;
-    text-align: center;
-    padding: 1.2em 0;
-  }
-
-  #navMenu ul:last-child {
-    padding: 0;
-    text-align: center;
-    padding: 1.2em 0;
-  }
-
-  #navMenu ul:last-child li {
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  main {
-    width: 90%;
-  }
-
-  #topIconHolder {
-    position: fixed;
-    display: none;
-    bottom: 2em;
-    right: 2em;
-    opacity: 1;
-  }
-
-  .fa-angle-up {
-    font-size: 2em;
-  }
-} */

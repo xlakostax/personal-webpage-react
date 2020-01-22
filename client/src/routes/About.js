@@ -1,23 +1,19 @@
-import React, { Component } from 'react';
+import BurgerMenu from '../components/BurgerMenu';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import BurgerMenu from '../components/BurgerMenu';
 import { Link } from 'react-router-dom';
+import React, { Component, useEffect, useState } from 'react';
 import styled from 'styled-components';
-
-import { useState, useEffect } from 'react';
 
 const Main = styled.main`
   grid-area: main;
   position: relative;
   width: 100%;
   & h1 {
-      position: relative;
-      margin: 1.2em 0;
-      /* @media (max-width: 768px) {
-        font-size: 2em;
-      } */
-    }
+    font-size: 2em;
+    margin: 1.2em 0;
+    position: relative;
+  }
   & article {
     text-align: justify;
   }
@@ -39,17 +35,17 @@ const Main = styled.main`
 `;
 
 const About = () => {
-  var currentWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  var visible = (currentWidth < 1024) ? {display: 'block'} : {display: 'none'};
-  const [style, setStyle] = useState(visible);
-  useEffect( () => {
-    setStyle(visible);
-    window.addEventListener('resize', setStyle);
-    /* remove resize listener */
-    return () => {
-      window.removeEventListener('resize', setStyle);
-    }
-  }, []);
+  // var currentWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  // var visible = (currentWidth < 1024) ? {display: 'block'} : {display: 'none'};
+  // const [style, setStyle] = useState(visible);
+  // useEffect( () => {
+  //   setStyle(visible);
+  //   window.addEventListener('resize', setStyle);
+  //   /* remove resize listener */
+  //   return () => {
+  //     window.removeEventListener('resize', setStyle);
+  //   }
+  // }, []);
   return(
     <>
       {/*<BurgerMenu />*/}

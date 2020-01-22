@@ -8,92 +8,44 @@ const Main = styled.main`
   grid-area: main;
   position: relative;
   width: 100%;
-  & h1 {
-    position: relative;
-    margin: 1.2em 0;
-  }
   & article {
+    height: 70%;
     text-align: justify;
+    & h1 {
+      font-size: 2em;
+      margin: 1.2em 0;
+      position: relative;
+    }
+    & div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+      & i {
+        font-size: 20em;
+      }
+    }
   }
 `;
 
-const Wrapper = styled.div`
-  position: relative;
-  text-align: justify;
-  & h2 {
-      margin: 0 0 1em 0;
-      font-family: "Merriweather";
-      font-size: 1em;
-      /* line-height: 1.5; */
-    }
-  & a {
-    display: inline-block;
-    color: rgb(255, 99, 71);
-  }
-  & a:after {
-    content: '';
-    display: block;
-    width: 0%;
-    height: 1px;
-    background: rgb(255, 99, 71);
-    transition: 300ms;
-  }
-  & a:hover:after {
-    width: 100%;
-  }
-`;
-
-export default class Blog extends Component {
-  constructor() {
-    super();
-    this.state = {
-      width: window.innerWidth,
-    };
-  }
-
-  componentWillMount = () => {
-    window.addEventListener('resize', this.handleWindowSizeChange);
-  }
-
-// make sure to remove the listener
-// when the component is not mounted anymore
-  componentWillUnmount = () => {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
-  }
-
-  handleWindowSizeChange = () => {
-    this.setState({ width: window.innerWidth });
-  };
-
-  render() {
-    const isMobile = window.innerWidth <= 500;
-    if (isMobile) {
-      return(
-        <>
-          <BurgerMenu />
-          <Main>
-            <h1>Blog</h1>
-            <Wrapper>
-              <p>Under construction</p> <br />
-            </Wrapper>
-          </Main>
-          <Footer />
-        </>
-      )
-    } else {
-      return(
-        <>
-          <Header />
-          <Main>
-            <h1>Blog</h1>
-            <Wrapper>
-              <p>Under construction</p> <br />
-              <a href="/">Go back home</a>
-            </Wrapper>
-          </Main>
-          <Footer />
-        </>
-      );
-    }
-  }
+const Blog = () => {
+  return(
+    <>
+      <Header />
+      <Main>
+        <article>
+          <h1>Blog</h1>
+          <div>
+            <p>
+              <i class="swg swg-deathstar swg-6x"></i>
+            </p> <br />
+            <p>Under construction</p> <br />
+          </div>
+        </article>
+      </Main>
+      <Footer />
+    </>
+  );
 }
+export default Blog;
