@@ -61,7 +61,7 @@ const Wrapper = styled.section`
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-      width: 1em;
+      width: 1.2em;
       & input {
         cursor: pointer;
         height: 0;
@@ -78,7 +78,7 @@ const Wrapper = styled.section`
           border-width: 0 3px 3px 0;content: "";
           display: none;
           height: 10px;
-          left: 4px;
+          left: 6px;
           position: absolute;
           top: 3px;
           transform: rotate(45deg);
@@ -86,11 +86,6 @@ const Wrapper = styled.section`
               -ms-transform: rotate(45deg);
           width: 5px;
         }
-
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
       }
     }
 

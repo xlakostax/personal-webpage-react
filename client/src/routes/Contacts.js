@@ -2,7 +2,6 @@ import React from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Form from '../components/Form'
-import BurgerMenu from '../components/BurgerMenu';
 import styled from 'styled-components';
 
 const Main = styled.main`
