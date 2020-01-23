@@ -47,10 +47,53 @@ const Wrapper = styled.section`
     color: rgb( 255, 99, 71 )
   }
   & :nth-child(4) {
-    align-items: center;
     display: flex;
-    justify-contenr: flex-start;
+    justify-content: flex-start;
     margin: 0 0 1em 0;
+    & label {
+      border: 1px solid rgba( 47, 47, 47, 1 );
+      cursor: pointer;
+      font-size: 1em;
+      height: 1.2em;
+      margin-right: 1em;
+      position: relative;
+      user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+      width: 1em;
+      & input {
+        cursor: pointer;
+        height: 0;
+        opacity: 0;
+        position: absolute;
+        width: 0;
+        &:checked ~ span:after {
+          display: block;
+        }
+      }
+      & span {
+        &:after {
+          border: solid black;
+          border-width: 0 3px 3px 0;content: "";
+          display: none;
+          height: 10px;
+          left: 4px;
+          position: absolute;
+          top: 3px;
+          transform: rotate(45deg);
+              -webkit-transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+          width: 5px;
+        }
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+      }
+    }
+
     & a {
       display: inline-block;
       color: rgb( 255, 99, 71 );
@@ -197,7 +240,13 @@ export default class Form extends Component {
             </label>
           </p>
           <p>
-            <input type = 'checkbox' required /> <p>I have read and accepted the <Link to = '/policy'>Privacy Policy</Link></p>
+            <label>
+              <input id = 'checkbox' type = 'checkbox' required />
+              <span></span>
+            </label>
+            <p>
+              I have read and accepted the <Link to = '/policy'>Privacy Policy</Link>
+            </p>
           </p>
           <div>
             <button type='submit' name='send' disabled = { this.state.disabled }>Send</button>
