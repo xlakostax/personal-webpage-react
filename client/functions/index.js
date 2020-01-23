@@ -41,8 +41,9 @@ app.post( '/', ( req, res ) => {
         <li>Message: ${req.body.message}</li>
       </ul>
     `;
-    console.log(output)
-
+    const output_response = `
+      <p style = 'color: red'>Your request has been received. I will get in touch with you shortly!</p>
+    `;
 // Create reusable transporter object using the default SMTP transport
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -65,8 +66,8 @@ app.post( '/', ( req, res ) => {
 
     const mailOptions_response = {
         to: req.body.email,
-        subject: 'Thank you for contacting us!',
-        html: 'We will acknowledge your request shortly.'
+        subject: 'Thank you for contacting me!',
+        html: output_response
     };
 
 // Send mail with defined transport object

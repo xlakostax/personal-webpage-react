@@ -28,6 +28,10 @@ app.post('/send', (req, res) => {
     <p>${req.body.message}</p>
   `;
 
+  const output_response = `
+    <p style = 'color: red'>Your request has been received. I will get in touch with you shortly!</p>
+  `;
+
   // Create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     ...config.mailer
@@ -44,6 +48,12 @@ app.post('/send', (req, res) => {
       subject: 'A new request frow web page', // Subject line
       // text: '', // Plain text body
       html: output // HTML body
+  };
+
+  const mailOptions_response = {
+      to: req.body.email,
+      subject: 'Thank you for contacting me!',
+      html: output_response
   };
 
   // Send mail with defined transport object
