@@ -26,6 +26,9 @@ const Main = styled.main`
     @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
       font-size: 4em;
     }
+    /* @media (min-width: 425px) and (max-width: 767px) and (orientation: landscape) {
+      font-size: 3em;
+    } */
     & span {
       font-weight: 400;
     }
@@ -40,15 +43,33 @@ const Main = styled.main`
     @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
       font-size: 1.4em;
     }
+    /* @media (min-width: 425px) and (max-width: 767px) and (orientation: landscape) {
+      font-size: 1.2em;
+    } */
   }
   & section {
     padding-top: 1.2em;
     @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
       padding-top: 0.8em;
     }
+    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
+      font-size: 0.6em;
+    }
+    /* @media (min-width: 425px) and (max-width: 767px) and (orientation: landscape) {
+      font-size: 0.4em;
+    } */
     & i {
       font-size: 2em;
       padding-right: 0.2em;
+      @media (min-width: 900px) and (max-width: 1199px) {
+        font-size: 1.6em;
+      }
+      @media (min-width: 768px) and (max-width: 899px) {
+        font-size: 1.4em;
+      }
+      /* @media (min-width: 425px) and (max-width: 767px) {
+        font-size: 1.2em;
+      } */
     }
     & i:hover {
       transition: color 100ms linear;
@@ -63,6 +84,12 @@ const Main = styled.main`
     @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
       padding-top: 0.8em;
     }
+    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
+      font-size: 0.6em;
+    }
+    /* @media (min-width: 425px) and (max-width: 767px) and (orientation: landscape) {
+      font-size: 0.4em;
+    } */
     & li {
       display: inline-block;
       font-size: 0.8em;

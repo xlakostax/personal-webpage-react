@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { loadProgressBar } from 'axios-progress-bar'
 import Modal from 'react-modal';
 import React, { Component } from 'react';
@@ -11,57 +12,59 @@ const Wrapper = styled.section`
   width: 100%;
   & form {
     margin-bottom: 1em;
+    & input:not([type = 'checkbox']), textarea {
+      display: block;
+      width: 100%;
+      height: 2em;
+      margin: 0 0 1em 0;
+      border-radius: 5px 5px;
+      border: 1px solid rgba( 220, 220, 220, 1 );
+    }
+    & textarea {
+      height: 10em;
+    }
+    & button {
+      position: relative;
+      padding: 1em;
+      background-color: transparent;
+      height: 4em;
+      width: 6em;
+      border-radius: 5px 5px;
+      border: 1px solid rgba( 47, 47, 47, 1 );
+      text-transform: uppercase;
+    }
+    & button:hover {
+      cursor: pointer;
+      color: rgb( 255, 99, 71 );
+      border: 1px solid rgb( 255, 99, 71 );
+    }
+    & div {
+      display: flex;
+      align-items: center;
+    }
   }
   & span {
     color: rgb( 255, 99, 71 )
   }
-  & input, textarea {
-    display: block;
-    width: 100%;
-    height: 2em;
-    margin: 0 0 1em 0;
-    border-radius: 5px 5px;
-    border: 1px solid rgba( 220, 220, 220, 1 );
-  }
-  & textarea {
-    height: 10em;
-  }
-  & button {
-    position: relative;
-    padding: 1em;
-    background-color: transparent;
-    height: 4em;
-    width: 6em;
-    border-radius: 5px 5px;
-    border: 1px solid rgba( 47, 47, 47, 1 );
-    text-transform: uppercase;
-  }
-  & button:hover {
-    cursor: pointer;
-    color: rgb( 255, 99, 71 );
-    border: 1px solid rgb( 255, 99, 71 );
-  }
-  & form > div {
-    display: flex;
+  & :nth-child(4) {
     align-items: center;
-  }
-  & .grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 100%;
-    background-color: rgb( 255, 255, 255 );
-  }
-  & .card-inGrid {
-    position: relative;
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 1em;
-    overflow-wrap: break-word;
-    border-bottom: 1px solid black;
-    &:last-child {
-      border-bottom: 0 solid black;
+    justify-contenr: flex-start;
+    margin: 0 0 1em 0;
+    & a {
+      display: inline-block;
+      color: rgb( 255, 99, 71 );
+    }
+    & a:after {
+      content: '';
+      display: block;
+      width: 0%;
+      height: 1px;
+      background: rgb( 255, 99, 71 );
+      transition: 300ms;
+    }
+    & a:hover:after {
+      width: 100%;
     }
   }
 `;
@@ -153,7 +156,6 @@ export default class Form extends Component {
   }
 
   render() {
-
     return(
       <Wrapper className = 'wrapper'>
         <Modal
@@ -193,6 +195,9 @@ export default class Form extends Component {
             <label>Message:
               <textarea id = 'message' type = 'text' name = 'message' value = { this.state.message } onChange = { this.onChangeHandler } required/>
             </label>
+          </p>
+          <p>
+            <input type = 'checkbox' required /> <p>I have read and accepted the <Link to = '/policy'>Privacy Policy</Link></p>
           </p>
           <div>
             <button type='submit' name='send' disabled = { this.state.disabled }>Send</button>

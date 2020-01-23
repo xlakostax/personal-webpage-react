@@ -182,7 +182,7 @@ const Header = () => {
   });
   return(
     <HeaderTag>
-      <NavLink exact to='/'>
+      <NavLink exact to = '/'>
         <h2 className = 'logo'>Konstantin<span>Veselovskii</span></h2>
       </NavLink>
         <input id = 'menu-btn' className = 'menu-btn' type = 'checkbox'/>
