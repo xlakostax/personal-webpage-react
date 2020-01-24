@@ -38,8 +38,8 @@ const Policy = () => {
       <Header />
       <Main>
       <article>
-        <h1>Welcome to our Privacy Policy</h1>
-        <h3>Your privacy is critically important to us.</h3>
+        <h1>Welcome to Privacy Policy</h1>
+        <h3>Your privacy is critically important to me.</h3>
         "Konstantin Veselovskii. A web developer" is located at:<br />
         <address>
           Kilpolantie 16 B 17 Helsinki <br />00940 , Finland<br />+358 41 723 77 74
