@@ -37,6 +37,10 @@ const Main = styled.main`
     font-size: 2em;
     font-weight: 400;
     padding-right: 0.5em;
+    &:hover {
+      transition: color 100ms linear;
+      color: rgb( 255, 99, 71 );
+    }
     @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
       font-size: 1.6em;
     }
