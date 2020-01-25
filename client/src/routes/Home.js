@@ -37,10 +37,6 @@ const Main = styled.main`
     font-size: 2em;
     font-weight: 400;
     padding-right: 0.5em;
-    &:hover {
-      transition: color 100ms linear;
-      color: rgb( 255, 99, 71 );
-    }
     @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
       font-size: 1.6em;
     }
@@ -85,6 +81,12 @@ const Main = styled.main`
   }
   & nav {
     padding-top: 1.2em;
+    & h2 {
+      &:hover {
+        transition: color 100ms linear;
+        color: rgb( 255, 99, 71 );
+      }
+    }
     @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
       padding-top: 0.8em;
     }
@@ -155,7 +157,7 @@ class Home extends Component {
     });
     return(
       <Main>
-        <div id='titleContainer'>
+        <div id = 'titleContainer'>
           <h1>
             <span>I'm </span>
             Konstantin
