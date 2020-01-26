@@ -42,7 +42,13 @@ app.post( '/', ( req, res ) => {
       </ul>
     `;
     const output_response = `
-      <p style = 'color: red'>Your request has been received. I will get in touch with you shortly!</p>
+      <p style = 'font-size: 16px'>Hi ${req.body.name}!</p>
+      <p style = 'font-size: 16px'>Your request has been received. I will get in touch with you shortly!</p></br></br>
+      <p style = 'font-size: 16px'>Best regards,</br>
+      Konstantin Veselovskii</br>
+      +358 41 7237774</br>
+      konstantin.veselovskii@gmail.com</p>
+
     `;
 // Create reusable transporter object using the default SMTP transport
     var transporter = nodemailer.createTransport({
@@ -66,7 +72,7 @@ app.post( '/', ( req, res ) => {
 
     const mailOptions_response = {
         to: req.body.email,
-        subject: 'Thank you for contacting me!',
+        subject: 'Thank you for your request!',
         html: output_response
     };
 
@@ -81,15 +87,19 @@ app.post( '/', ( req, res ) => {
 
     transporter.sendMail( mailOptions_response, ( err, info ) => {
         if ( err ) {
-            return res.status(500).json({
+            return (
+              res.status(500).json({
                 msg: 'fail'
-            })
-            console.log( err );
+              }),
+              console.log( err )
+            );
         } else {
-            return res.status(200).json({
+            return (
+              res.status(200).json({
                 msg: 'success'
-            })
-            console.log( info );
+              }),
+              console.log( info )
+          )
         }
     })
 });
