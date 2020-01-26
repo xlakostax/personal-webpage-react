@@ -15,7 +15,7 @@ const Main = styled.main`
   align-items: center;
   width: 100%;
   @media (max-width: 767px) {
-    /*Do smth with layout*/
+  /*Do smth with layout*/
   }
   & h1 {
     font-size: 8em;
