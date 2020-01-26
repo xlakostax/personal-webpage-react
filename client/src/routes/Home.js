@@ -115,46 +115,8 @@ class Home extends Component {
 
   /* Parallax effect using gsap from side sources */
   componentDidMount = () => {
-    // if( window.screen.width >= 360 ){
-    //   var rect = $( '#root' )[0].getBoundingClientRect();
-    //   var mouse = { x: 0, y: 0, moved: false };
-    //
-    //   $( '#root' ).mousemove( (e) => {
-    //     mouse.moved = true;
-    //     mouse.x = e.clientX - rect.left;
-    //     mouse.y = e.clientY - rect.top;
-    //   } );
-    //
-    //   TweenLite.ticker.addEventListener('tick', () => {
-    //     if ( mouse.moved ){
-    //       parallaxIt( '#titleContainer', -30 );
-    //     }
-    //     mouse.moved = false;
-    //   });
-    //
-    //   function parallaxIt( target, movement ) {
-    //     TweenMax.to( target, 0.3, {
-    //       x: ( mouse.x - rect.width / 2 ) / rect.width * movement,
-    //       y: ( mouse.y - rect.height / 2 ) / rect.height * movement
-    //     });
-    //   }
-    //
-    //   $( window ).on( 'resize scroll', () => {
-    //     rect = $( '#root' )[0].getBoundingClientRect();
-    //   })
-    // }
-    // function parallax(e) {
-    //   console.log(e);
-    //       var smth = document.querySelectorAll('titleContainer');
-    //       // console.log(smth);
-    //       smth.forEach( layer => {
-    //       var speed = layer.getAttribute('data-speed');
-    //       var x = ( window.innerWidth - e.pageX * speed) / 100;
-    //       var y = ( window.innerWidth - e.pageY * speed) / 100;
-    //       this.titleContainer.style.transform = `translateX(${x}px) translateY(${y}px)`
-    //     })
-    // }
-    window.addEventListener('mousemove', this.parallax);
+    // if ( window.screen.width >= '1660px' ){}
+      window.addEventListener('mousemove', this.parallax);
     // console.log(this.div.current.className)
     // console.log(this.state.transform);
   }
