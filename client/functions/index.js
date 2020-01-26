@@ -42,13 +42,12 @@ app.post( '/', ( req, res ) => {
       </ul>
     `;
     const output_response = `
-      <p style = 'font-size: 16px'>Hi ${req.body.name}!</p>
+      <p style = 'font-size: 16px'>Hi, ${req.body.name}!</p>
       <p style = 'font-size: 16px'>Your request has been received. I will get in touch with you shortly!</p></br></br>
       <p style = 'font-size: 16px'>Best regards,</br>
       Konstantin Veselovskii</br>
       +358 41 7237774</br>
       konstantin.veselovskii@gmail.com</p>
-
     `;
 // Create reusable transporter object using the default SMTP transport
     var transporter = nodemailer.createTransport({
