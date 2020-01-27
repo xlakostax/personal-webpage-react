@@ -106,7 +106,7 @@ const Main = styled.main`
 class Home extends Component {
   constructor( props ) {
     super( props );
-    this.div = React.createRef();
+    // this.div = React.createRef();
     this.state = {
       transform: ''
     };
@@ -116,7 +116,7 @@ class Home extends Component {
   /* Parallax effect using gsap from side sources */
   componentDidMount = () => {
     // if ( window.screen.width >= '1660px' ){}
-      window.addEventListener('mousemove', this.parallax);
+      document.addEventListener('mousemove', this.parallax);
     // console.log(this.div.current.className)
     // console.log(this.state.transform);
   }
@@ -127,8 +127,8 @@ class Home extends Component {
 
   parallax = ( e ) => {
     // console.log( e );
-    var smth = document.querySelectorAll(`.${this.div.current.className}`);
-    // console.log(smth);
+    // var smth = document.querySelectorAll(`.${this.div.current.className}`);
+    var smth = document.querySelectorAll(`.${this.className = 'titleContainer'}`);
     smth.forEach( element => {
       var speed = element.getAttribute('speed');
       // console.log(speed)
@@ -136,7 +136,7 @@ class Home extends Component {
       var y = ( window.innerWidth - e.pageY * speed) / 100;
       // console.log(x, y);
       this.setState({
-        transform: `translateX(${x}px) translateY(${y}px)`
+        transform: `translateX(${x}px) translateY(${y}px)`,
       })
       // console.log(this.state.transform);
     })
@@ -167,7 +167,8 @@ class Home extends Component {
     }
     return(
       <Main>
-        <div id = 'titleContainer' className = 'titleContainer' {...speedAttr} style = {{ transform: this.state.transform }} ref = { this.div }>
+        {/*<div id = 'titleContainer' className = 'titleContainer' {...speedAttr} style = {{ transform: this.state.transform }} ref = { this.div }>*/}
+        <div id = 'titleContainer' className = 'titleContainer' {...speedAttr} style = {{ transform: this.state.transform }}>
           <h1>
             <span>I'm </span>
             Konstantin
