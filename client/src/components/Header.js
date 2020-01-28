@@ -1,9 +1,12 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderTag = styled.header`
   display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
   grid-area: header;
   justify-content: space-between;
   align-items: center;
@@ -22,6 +25,9 @@ const HeaderTag = styled.header`
     -moz-transform:translateZ(0);
     -ms-transform: translateZ(0);
     -o-transform:translateZ(0);
+  @media (max-width: 374px) {
+    width: 90%;
+  }
   /* & .active {
     color: rgb(255, 99, 71);
   }
@@ -72,7 +78,7 @@ const HeaderTag = styled.header`
     }
   }
   & nav {
-    @media ( max-width: 1024px ) {
+    @media ( max-width: 1023px ) {
       color: rgb( 255, 255, 255 );
       transition: transform 1s ease-in-out;
         -webkit-transition: transform 1s ease-in-out;
@@ -93,9 +99,15 @@ const HeaderTag = styled.header`
     }
     & ul {
       display: flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
 
-      @media (max-width: 1024px) {
+      @media (max-width: 1023px) {
         display: flex;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
         flex-direction: column;
         /* align-items: center; */
         justify-content: center;
@@ -128,14 +140,14 @@ const HeaderTag = styled.header`
             -ms-transition: background-position 120ms ease-in-out;
             -o-transition: background-position 120ms ease-in-out;
           background-size: 100% 180%;
-          @media (max-width: 1024px) {
+          @media (max-width: 1023px) {
             background-image: none;
           }
         }
         & h2:hover {
           background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(255, 99, 71, 0.35) calc(50% - 9px), rgba(255, 99, 71, 0.35) 100% );
           background-position: 0 100%;
-          @media (max-width: 1024px) {
+          @media (max-width: 1023px) {
             background-image: none;
           }
         }
@@ -150,6 +162,12 @@ const HeaderTag = styled.header`
         -moz-transform: translateX(-10%);
         -ms-transition: translateX(-10%);
         -o-transform: translateX(-10%);
+        @media (max-width: 374px) {
+          -webkit-transform: translateX(-5%);
+          -moz-transform: translateX(-5%);
+          -ms-transition: translateX(-5%);
+          -o-transform: translateX(-5%);
+        }
     }
     &:checked ~ .menu-icon .navicon {
       background: transparent;
@@ -181,7 +199,11 @@ const HeaderTag = styled.header`
   & .menu-icon {
     cursor: pointer;
     user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
     z-index: 999;
+    margin-left: 3em;
     & .navicon {
       background: rgba( 47, 47, 47 );
       display: none;
@@ -193,7 +215,7 @@ const HeaderTag = styled.header`
         -ms-transition: background .1s ease-out 0.3s;
         -o-transition: background .1s ease-out 0.3s;
       width: 2em;
-      @media (max-width: 1024px){
+      @media (max-width: 1023px){
         display: block;
       }
       &:before, :after {
@@ -213,9 +235,6 @@ const HeaderTag = styled.header`
           -moz-transform: rotate(0);
           -ms-transform: rotate(0);
           -o-transform: rotate(0);
-        @media (max-width: 1024px){
-
-        }
       }
       &:before {
         top: 10px;

@@ -6,6 +6,9 @@ const Main = styled.div`
   top: 0;
   left: 0;
   display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -30,6 +33,10 @@ const Main = styled.div`
     height: 1px;
     background: rgb( 255, 99, 71 );
     transition: 300ms;
+      -webkit-transition: 300ms;
+      -moz-transition: 300ms;
+      -ms-transition: 300ms;
+      -o-transition: 300ms;
   }
   & a:hover:after {
     width: 100%;

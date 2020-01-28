@@ -1,75 +1,69 @@
 import React, { Component } from 'react';
-import { TweenLite, TweenMax } from 'gsap/all';
+// import { TweenLite, TweenMax } from 'gsap/all';
 import { NavLink } from 'react-router-dom';
-import $ from 'jquery';
+// import $ from 'jquery';
 import styled from 'styled-components';
 
 const Main = styled.main`
   grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 4;
   position: relative;
   display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  @media (max-width: 767px) {
-  /*Do smth with layout*/
+  width: 90%;
+  margin: 0 5%;
+  @media (min-width: 320px) and (max-width: 767px) {
   }
   & h1 {
-    font-size: 8em;
+    font-size: 8rem;
     line-height: 1;
-    @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
-      font-size: 6em;
+    @media (min-width: 768px) and (max-width: 1439px) {
+      font-size: 6rem;
     }
-    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
-      font-size: 4em;
+    @media (min-width: 425px) and (max-width: 767px) {
+      font-size: 3rem;
     }
-    /* @media (min-width: 425px) and (max-width: 767px) and (orientation: landscape) {
-      font-size: 3em;
-    } */
+    @media (min-width: 320px) and (max-width: 425px) {
+      font-size: 2rem;
+    }
     & span {
       font-weight: 400;
     }
   }
   & h2 {
-    font-size: 2em;
+    font-size: 2rem;
     font-weight: 400;
     padding-right: 0.5em;
-    @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
-      font-size: 1.6em;
+    @media (min-width: 768px) and (max-width: 1023px) {
+      font-size: 2rem;
     }
-    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
-      font-size: 1.4em;
+    @media (min-width: 320px) and (max-width: 767px) {
+      font-size: 1rem;
     }
-    /* @media (min-width: 425px) and (max-width: 767px) and (orientation: landscape) {
-      font-size: 1.2em;
-    } */
   }
   & section {
-    padding-top: 1.2em;
-    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
-      padding-top: 0.8em;
+    padding-top: 1rem;
+    @media (min-width: 768px) and (max-width: 1023px) {
     }
-    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
-      font-size: 0.6em;
+    @media (min-width: 320px) and (max-width: 767px) {
+      padding-top: 0.5rem;
     }
-    /* @media (min-width: 425px) and (max-width: 767px) and (orientation: landscape) {
-      font-size: 0.4em;
-    } */
+
     & i {
-      font-size: 2em;
+      font-size: 2rem;
       padding-right: 0.2em;
-      @media (min-width: 900px) and (max-width: 1199px) {
-        font-size: 1.6em;
+      @media (min-width: 768px) and (max-width: 1023px) {
+        font-size: 2rem;
       }
-      @media (min-width: 768px) and (max-width: 899px) {
-        font-size: 1.4em;
+      @media (min-width: 320px) and (max-width: 767px) {
+        font-size: 1rem;
       }
-      /* @media (min-width: 425px) and (max-width: 767px) {
-        font-size: 1.2em;
-      } */
     }
     & i:hover {
       transition: color 100ms linear;
@@ -80,22 +74,18 @@ const Main = styled.main`
     }
   }
   & nav {
-    padding-top: 1.2em;
+    padding-top: 1rem;
+    @media (min-width: 768px) and (max-width: 1023px) {
+    }
+    @media (min-width: 320px) and (max-width: 767px) {
+      padding-top: 0.5rem;
+    }
     & h2 {
       &:hover {
         transition: color 100ms linear;
         color: rgb( 255, 99, 71 );
       }
     }
-    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
-      padding-top: 0.8em;
-    }
-    @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
-      font-size: 0.6em;
-    }
-    /* @media (min-width: 425px) and (max-width: 767px) and (orientation: landscape) {
-      font-size: 0.4em;
-    } */
     & li {
       display: inline-block;
       font-size: 0.8em;
@@ -126,19 +116,22 @@ class Home extends Component {
   }
 
   parallax = ( e ) => {
+    var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
     // console.log( e );
     // var smth = document.querySelectorAll(`.${this.div.current.className}`);
     var smth = document.querySelectorAll(`.${this.className = 'titleContainer'}`);
     smth.forEach( element => {
-      var speed = element.getAttribute('speed');
-      // console.log(speed)
-      var x = ( window.innerWidth - e.pageX * speed) / 100;
-      var y = ( window.innerWidth - e.pageY * speed) / 100;
-      // console.log(x, y);
-      this.setState({
-        transform: `translateX(${x}px) translateY(${y}px)`,
-      })
-      // console.log(this.state.transform);
+      if (!isMobile) {
+        var speed = element.getAttribute('speed');
+        // console.log(speed)
+        var x = ( window.innerWidth - e.pageX * speed) / 100;
+        var y = ( window.innerWidth - e.pageY * speed) / 100;
+        // console.log(x, y);
+        this.setState({
+          transform: `translateX(${x}px) translateY(${y}px)`,
+        })
+        // console.log(this.state.transform);
+      }
     })
   }
 

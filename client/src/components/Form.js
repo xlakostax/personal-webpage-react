@@ -40,6 +40,9 @@ const Wrapper = styled.section`
     }
     & div {
       display: flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex
       align-items: center;
     }
   }
@@ -48,6 +51,9 @@ const Wrapper = styled.section`
   }
   & :nth-child(4) {
     display: flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex
     justify-content: flex-start;
     margin: 0 0 1em 0;
     & label {
@@ -58,9 +64,9 @@ const Wrapper = styled.section`
       margin-right: 1em;
       position: relative;
       user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
       width: 1.2em;
       & input {
         cursor: pointer;
@@ -83,12 +89,13 @@ const Wrapper = styled.section`
           top: 3px;
           transform: rotate(45deg);
               -webkit-transform: rotate(45deg);
+              -moz-transform: rotate(45deg);
               -ms-transform: rotate(45deg);
+              -o-transform: rotate(45deg);
           width: 5px;
         }
       }
     }
-
     & a {
       display: inline-block;
       color: rgb( 255, 99, 71 );
@@ -100,6 +107,10 @@ const Wrapper = styled.section`
       height: 1px;
       background: rgb( 255, 99, 71 );
       transition: 300ms;
+        -webkit-transition: 300ms;
+        -moz-transition: 300ms;
+        -ms-transition: 300ms;
+        -o-transition: 300ms;
     }
     & a:hover:after {
       width: 100%;
@@ -239,9 +250,7 @@ export default class Form extends Component {
               <input id = 'checkbox' type = 'checkbox' required />
               <span></span>
             </label>
-            <p>
-              I have read and accepted the <Link to = '/policy'>Privacy Policy</Link>
-            </p>
+            I have read and accepted the &nbsp; <Link to = '/policy'>Privacy Policy</Link>
           </p>
           <div>
             <button type='submit' name='send' disabled = { this.state.disabled }>Send</button>

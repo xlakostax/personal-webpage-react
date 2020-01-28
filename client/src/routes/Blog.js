@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import styled from 'styled-components';
@@ -18,6 +18,9 @@ const Main = styled.main`
     & div {
       align-items: center;
       display: flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
       flex-direction: column;
       height: 100%;
       justify-content: center;

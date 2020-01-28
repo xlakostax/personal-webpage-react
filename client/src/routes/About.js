@@ -2,7 +2,8 @@
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { Link } from 'react-router-dom';
-import React, { Component, useEffect, useState } from 'react';
+import React from 'react';
+// import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Main = styled.main`
@@ -28,6 +29,10 @@ const Main = styled.main`
     height: 1px;
     background: rgb( 255, 99, 71 );
     transition: 300ms;
+      -webkit-transition: 300ms;
+      -moz-transition: 300ms;
+      -ms-transition: 300ms;
+      -o-transition: 300ms;
   }
   & a:hover:after {
     width: 100%;

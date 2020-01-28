@@ -16,6 +16,7 @@ const Main = styled.main`
 const Grid = styled.div`
   position: relative;
   display: grid;
+    display: -ms-grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, auto));
   gap: 15px 15px;
   & h3 {
