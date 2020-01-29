@@ -126,15 +126,14 @@ export default class Form extends Component {
         name: '',
         email: '',
         message: '',
-        showModalSuccess: false,
-        showModalError: false,
+        showModal: false,
+        info: '',
         disabled: false
     };
     this.onSubmitHandler = this.onSubmitHandler.bind( this );
     this.onChangeHandler = this.onChangeHandler.bind( this );
     this.resetForm = this.resetForm.bind(this);
-    this.handleCloseModalSuccess = this.handleCloseModalSuccess.bind( this );
-    this.handleCloseModalError = this.handleCloseModalError.bind( this );
+    this.handleCloseModal = this.handleCloseModal.bind( this );
   }
 
   componentDidMount = () => {
@@ -176,9 +175,9 @@ export default class Form extends Component {
         // console.log( res.status )
         if ( res.data.msg === 'success' ) {
             this.resetForm();
-            this.setState({ showModalSuccess: true });
+            this.setState({ showModal: true, info: `Your message was sent <span>successfully</span>.` });
         } else if ( res.data.msg === 'fail' || res.status !== 200 ) {
-            this.setState({ showModalError: true });
+            this.setState({ showModal: true, info: `<span>Error.</span> Your message was not sent. Please check your connection or firewall settings.` });
         }
     })
   }
@@ -191,16 +190,9 @@ export default class Form extends Component {
     });
   }
 
-  handleCloseModalSuccess = () => {
+  handleCloseModal = () => {
     this.setState({
-      showModalSuccess: false,
-      disabled: false
-     })
-  }
-
-  handleCloseModalError = () => {
-    this.setState({
-      showModalSuccess: false,
+      showModal: false,
       disabled: false
      })
   }
@@ -209,26 +201,15 @@ export default class Form extends Component {
     return(
       <Wrapper className = 'wrapper'>
         <Modal
-            isOpen = { this.state.showModalSuccess }
+            isOpen = { this.state.showModal }
             contentLabel = 'onRequestClose'
-            onRequestClose = { this.handleCloseModalSuccess }
+            onRequestClose = { this.handleCloseModal }
             className = 'Modal'
             overlayClassName = 'Overlay'
             shouldCloseOnOverlayClick = { false }
         >
-          <i className = 'fas fa-times' onClick = { this.handleCloseModalSuccess } style = { { cursor: 'pointer', marginRight: '1em'} }></i>
-          <p>Your message was sent <span>successfully</span>.</p>
-        </Modal>
-        <Modal
-            isOpen = { this.state.showModalError }
-            contentLabel = 'onRequestClose'
-            onRequestClose = { this.handleCloseModalError }
-            className = 'Modal'
-            overlayClassName = 'Overlay'
-            shouldCloseOnOverlayClick = { false }
-        >
-          <i className = 'fas fa-times' onClick = { this.handleCloseModalError } style = { { cursor: 'pointer', marginRight: '1em'} }></i>
-          <p><span>Error.</span> Your message was not sent. Please check your connection or firewall settings.</p>
+          <i className = 'fas fa-times' onClick = { this.handleCloseModal } style = { { cursor: 'pointer', marginRight: '1em'} }></i>
+          <p dangerouslySetInnerHTML = {{ __html: this.state.info }} />
         </Modal>
         <form onSubmit = {this.onSubmitHandler}>
           <p>
