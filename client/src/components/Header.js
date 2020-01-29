@@ -14,7 +14,7 @@ const HeaderTag = styled.header`
   margin: 0 auto;
   width: 80%;
   top: 0; right: 0; bottom: 0; left: 0;
-  padding: 1.2em 0;
+  padding: 1.2rem 0;
   font-family: 'Nunito', Georgia, serif;
   background-color: white;
   z-index: 3;
@@ -49,7 +49,7 @@ const HeaderTag = styled.header`
   } */
   & .logo {
     font-weight: 400;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     & span {
       display: inline-block
       transition: transform .2s ease-in-out;
@@ -78,7 +78,7 @@ const HeaderTag = styled.header`
     }
   }
   & nav {
-    @media ( max-width: 1023px ) {
+    @media ( max-width: 767px ) {
       color: rgb( 255, 255, 255 );
       transition: transform 1s ease-in-out;
         -webkit-transition: transform 1s ease-in-out;
@@ -103,7 +103,7 @@ const HeaderTag = styled.header`
         display: -ms-flexbox;
         display: -webkit-flex;
 
-      @media (max-width: 1023px) {
+      @media (max-width: 767px) {
         display: flex;
           display: -webkit-box;
           display: -ms-flexbox;
@@ -116,23 +116,23 @@ const HeaderTag = styled.header`
       & li {
         color: rgb( 255, 255, 255 )
         display: inline-block;
-        margin-left: 1em;
-        @media (min-width: 768px) and (max-width: 1023px) {
-          font-size: 4em;
+        margin: 0 1rem;
+        @media (min-width: 768px) and (max-width: 767px) {
+          font-size: 4rem;
           /* forcing <li>'s width to be the same as it's content */
           /* float:left;
           clear:left; */
           /* forcing <li>'s width to be the same as it's content */
         }
         @media (min-width: 425px) and (max-width: 767px) {
-          font-size: 3em;
+          font-size: 3rem;
         }
         @media (max-width: 424px) {
-          font-size: 2em;
+          font-size: 2rem;
         }
         & h2 {
           font-weight: 400;
-          font-size: 1.2em;
+          font-size: 1.2rem;
           background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(255, 99, 71, 0.35) calc(50% - 9px), rgba(255, 99, 71, 0.35) 100% );
           transition: background-position 120ms ease-in-out;
             -webkit-transition: background-position 120ms ease-in-out;
@@ -140,14 +140,18 @@ const HeaderTag = styled.header`
             -ms-transition: background-position 120ms ease-in-out;
             -o-transition: background-position 120ms ease-in-out;
           background-size: 100% 180%;
-          @media (max-width: 1023px) {
+          @media (max-width: 767px) {
             background-image: none;
+            font-size: 2.4rem;
+          }
+          @media (max-width: 767px) and (orientation: landscape) {
+            text-align: center;
           }
         }
         & h2:hover {
           background-image: linear-gradient( transparent 0%, transparent calc(50% - 9px), rgba(255, 99, 71, 0.35) calc(50% - 9px), rgba(255, 99, 71, 0.35) 100% );
           background-position: 0 100%;
-          @media (max-width: 1023px) {
+          @media (max-width: 767px) {
             background-image: none;
           }
         }
@@ -203,7 +207,7 @@ const HeaderTag = styled.header`
       -moz-user-select: none;
       -ms-user-select: none;
     z-index: 999;
-    margin-left: 3em;
+    margin-left: 3rem;
     & .navicon {
       background: rgba( 47, 47, 47 );
       display: none;
@@ -214,8 +218,8 @@ const HeaderTag = styled.header`
         -moz-transition: background .1s ease-out 0.3s;
         -ms-transition: background .1s ease-out 0.3s;
         -o-transition: background .1s ease-out 0.3s;
-      width: 2em;
-      @media (max-width: 1023px){
+      width: 2rem;
+      @media (max-width: 767px){
         display: block;
       }
       &:before, :after {
@@ -248,11 +252,11 @@ const HeaderTag = styled.header`
 
 const Header = () => {
   var data = require( '../menu.json' );
-  var menu = data.slice( 0, 4 ).map ( ( element ) => {
+  var menu = data.slice( 0, 4 ).map ( ( elrement ) => {
     return (
-      <li key = { element.id }>
-        <NavLink exact to = { element.path }>
-          <h2>{ element.title }</h2>
+      <li key = { elrement.id }>
+        <NavLink exact to = { elrement.path }>
+          <h2>{ elrement.title }</h2>
         </NavLink>
       </li>
     );
