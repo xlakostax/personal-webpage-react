@@ -131,10 +131,10 @@ export default class Form extends Component {
         disabled: false,
         checked: false
     };
-    this.onSubmitHandler = this.onSubmitHandler.bind( this );
+    {/*this.onSubmitHandler = this.onSubmitHandler.bind( this );
     this.onChangeHandler = this.onChangeHandler.bind( this );
     this.resetForm = this.resetForm.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind( this );
+    this.handleCloseModal = this.handleCloseModal.bind( this );*/}
   }
 
   componentDidMount = () => {
