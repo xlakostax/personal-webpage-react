@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { loadProgressBar } from 'axios-progress-bar'
 import Modal from 'react-modal';
+// import ModalWindow from './Modal';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
@@ -136,7 +137,7 @@ export default class Form extends Component {
     this.handleCloseModalError = this.handleCloseModalError.bind( this );
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     loadProgressBar();
   }
 
