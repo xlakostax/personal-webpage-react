@@ -128,7 +128,8 @@ export default class Form extends Component {
         message: '',
         showModal: false,
         info: '',
-        disabled: false
+        disabled: false,
+        checked: false
     };
     this.onSubmitHandler = this.onSubmitHandler.bind( this );
     this.onChangeHandler = this.onChangeHandler.bind( this );
@@ -175,8 +176,12 @@ export default class Form extends Component {
         // console.log( res.status )
         if ( res.data.msg === 'success' ) {
             this.resetForm();
+            // this.renderInfo('Your message was sent <span>successfully</span>.');
+            // this.setState({ showModal: true });
             this.setState({ showModal: true, info: `Your message was sent <span>successfully</span>.` });
         } else if ( res.data.msg === 'fail' || res.status !== 200 ) {
+            // this.renderInfo('<span>Error.</span> Your message was not sent. Please check your connection or firewall settings.');
+            // this.setState({ showModal: true });
             this.setState({ showModal: true, info: `<span>Error.</span> Your message was not sent. Please check your connection or firewall settings.` });
         }
     })
@@ -186,7 +191,8 @@ export default class Form extends Component {
     this.setState({
         name: '',
         email: '',
-        message: ''
+        message: '',
+        checked: false
     });
   }
 
@@ -196,6 +202,16 @@ export default class Form extends Component {
       disabled: false
      })
   }
+
+  onCheckHandler = () => {
+    this.setState({
+      checked: true
+    })
+  }
+
+  // renderInfo = (info) => {
+  //   return info
+  // }
 
   render() {
     return(
@@ -210,6 +226,7 @@ export default class Form extends Component {
         >
           <i className = 'fas fa-times' onClick = { this.handleCloseModal } style = { { cursor: 'pointer', marginRight: '1em'} }></i>
           <p dangerouslySetInnerHTML = {{ __html: this.state.info }} />
+          {/*<p>{this.renderInfo}d</p>*/}
         </Modal>
         <form onSubmit = {this.onSubmitHandler}>
           <p>
@@ -229,7 +246,7 @@ export default class Form extends Component {
           </p>
           <p>
             <label>
-              <input id = 'checkbox' type = 'checkbox' required />
+              <input id = 'checkbox' type = 'checkbox' checked = {this.state.checked} onChange = {this.onCheckHandler} required />
               <span></span>
             </label>
             I have read and accepted the &nbsp; <Link to = '/policy'>Privacy Policy</Link>
