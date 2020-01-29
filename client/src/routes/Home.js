@@ -18,18 +18,19 @@ const Main = styled.main`
   align-items: center;
   width: 90%;
   margin: 0 5%;
-  @media (min-width: 320px) and (max-width: 767px) {
-  }
   & h1 {
     font-size: 8rem;
     line-height: 1;
-    @media (min-width: 768px) and (max-width: 1439px) {
+    @media (min-width: 1024px) and (max-width: 1439px) {
       font-size: 6rem;
     }
-    @media (min-width: 425px) and (max-width: 767px) {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      font-size: 4rem;
+    }
+    @media (min-width: 475px) and (max-width: 767px) {
       font-size: 3rem;
     }
-    @media (min-width: 320px) and (max-width: 425px) {
+    @media (min-width: 320px) and (max-width: 474px) {
       font-size: 2rem;
     }
     & span {
@@ -40,29 +41,73 @@ const Main = styled.main`
     font-size: 2rem;
     font-weight: 400;
     padding-right: 0.5em;
-    @media (min-width: 768px) and (max-width: 1023px) {
-      font-size: 2rem;
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      font-size: 1.5rem;
     }
-    @media (min-width: 320px) and (max-width: 767px) {
+    @media (min-width: 768px) and (max-width: 1023px) {
       font-size: 1rem;
+    }
+    @media (min-width: 475px) and (max-width: 767px) {
+      font-size: 0.75rem;
+    }
+    @media (min-width: 320px) and (max-width: 474px) {
+      font-size: 0.5rem;
+    }
+    @media (min-width: 375px) and (max-width: 424px) and (orientation: portrait) {
+      font-size: 1.125rem;
+    }
+    @media (min-width: 320px) and (max-width: 374px) and (orientation: portrait) {
+      font-size: 0.75rem;
+    }
+  }
+  & ul {
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      line-height: 1.125rem;
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      font-size: 0.75rem;
+    }
+    @media (min-width: 475px) and (max-width: 767px) {
+      font-size: 0.5625rem;
+    }
+    @media (min-width: 320px) and (max-width: 474px) {
+      font-size: 0.375rem;
     }
   }
   & section {
-    padding-top: 1rem;
+    margin-top: 1rem;
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      margin-top: 0.75rem;
+    }
     @media (min-width: 768px) and (max-width: 1023px) {
+      margin-top: 0.5rem;
     }
-    @media (min-width: 320px) and (max-width: 767px) {
-      padding-top: 0.5rem;
+    @media (min-width: 475px) and (max-width: 767px) {
+      margin-top: 0.375rem;
     }
-
+    @media (min-width: 320px) and (max-width: 474px) {
+      margin-top: 0.25rem;
+    }
     & i {
       font-size: 2rem;
       padding-right: 0.2em;
-      @media (min-width: 768px) and (max-width: 1023px) {
-        font-size: 2rem;
+      @media (min-width: 1024px) and (max-width: 1439px) {
+        font-size: 1.5rem;
       }
-      @media (min-width: 320px) and (max-width: 767px) {
+      @media (min-width: 768px) and (max-width: 1023px) {
         font-size: 1rem;
+      }
+      @media (min-width: 475px) and (max-width: 767px) {
+        font-size: 0.75rem;
+      }
+      @media (min-width: 320px) and (max-width: 474px) {
+        font-size: 0.5rem;
+      }
+      @media (min-width: 375px) and (max-width: 424px) and (orientation: portrait) {
+        font-size: 1.125rem;
+      }
+      @media (min-width: 320px) and (max-width: 374px) and (orientation: portrait) {
+        font-size: 0.75rem;
       }
     }
     & i:hover {
@@ -74,11 +119,24 @@ const Main = styled.main`
     }
   }
   & nav {
-    padding-top: 1rem;
+    margin-top: 1rem;
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      margin-top: 0.75rem;
+    }
     @media (min-width: 768px) and (max-width: 1023px) {
+      margin-top: 0.5rem;
+    }
+    @media (min-width: 475px) and (max-width: 767px) {
+      margin-top: 0.375rem;
+    }
+    @media (min-width: 320px) and (max-width: 474px) {
+      margin-top: 0.25rem;
+    }
+    @media (min-width: 475px) and (max-width: 767px) {
+      margin-top: 0.75rem;
     }
     @media (min-width: 320px) and (max-width: 767px) {
-      padding-top: 0.5rem;
+      margin-top: 0.5rem;
     }
     & h2 {
       &:hover {
@@ -88,7 +146,9 @@ const Main = styled.main`
     }
     & li {
       display: inline-block;
-      font-size: 0.8em;
+      @media (min-width: 320px) and (max-width: 767px) {
+        display: inline;
+      }
     }
   }
 `;

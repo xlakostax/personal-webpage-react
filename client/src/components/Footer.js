@@ -16,7 +16,8 @@ const FooterTag = styled.footer`
 const Footer = () => {
   return(
     <FooterTag>
-       {copy} Konstantin Veselovskii | <span id="year">{year}</span>
+       <p>{copy} Konstantin Veselovskii | <span id="year">{year}</span></p>
+       <p>Made with ❤️ in Helsinki.</p>
     </FooterTag>
   )
 }
