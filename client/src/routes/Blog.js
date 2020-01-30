@@ -1,6 +1,7 @@
-import React from 'react';
+import firebaseConf from '../Firebase';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Main = styled.main`
@@ -32,23 +33,78 @@ const Main = styled.main`
   }
 `;
 
-const Blog = () => {
-  return(
-    <>
-      <Header />
-      <Main>
-        <article>
-          <h1>Blog</h1>
-          <div>
-            <p>
-              <i className = 'swg swg-deathstar swg-6x'></i>
-            </p> <br />
-            <p>Under construction</p> <br />
+export default class Blog extends Component {
+  constructor( props ) {
+    super( props );
+    this.state = {
+        postsHistory: [],
+    };
+    this.updateList = this.updateList.bind( this );
+  }
+
+  componentDidMount = () => {
+    this.updateList();
+  }
+
+  updateList = () => {
+    /* Create a reference to messages in the Firebase Database.
+    The reference represents a specific location in the Database,
+    and can be used for reading or writing data to that Database location. */
+    let postsRef = firebaseConf.database().ref();
+    /* Firebase offers several different event types for reading data.
+
+    child_added
+
+    This event type will be triggered once for every message and every time
+    a new message is added to the Database.  */
+    postsRef.on( 'child_added', ( snapshot ) => {
+      /* snapshot.val() contains an object of objects from the Database:
+      { {}, {}, ... , {} } */
+      let obj = snapshot.val();
+      console.log( obj )
+      for (let key in obj) {
+         obj[ key ][ 'id' ] = key;
+      }
+
+      let postsHistory = [];
+      for (let key in obj) {
+          postsHistory.push( obj[ key ] )
+      }
+      // console.log( messHistory )
+      this.setState( {
+         postsHistory: postsHistory
+      })
+      // console.log( this.state.messagesHistory )
+    });
+  }
+  render(){
+    const history = this.state.postsHistory.map( ( element ) => {
+        return (
+          <div className = 'card-inGrid'>
+            <p key = { element.id }> <b>Post:</b> { element.post } </p>< br/>
+            <p key = { element.id }> <b>Tag:</b> { element.tag } </p>< br/>
           </div>
-        </article>
-      </Main>
-      <Footer />
-    </>
-  );
+        )
+    })
+    return(
+      <>
+        <Header />
+        <Main>
+          <article>
+            <h1>Blog</h1>
+            <div>
+              <p>
+                <i className = 'swg swg-deathstar swg-6x'></i>
+              </p> <br />
+              <p>Under construction</p> <br />
+              <div className = 'grid'>
+                {history}
+              </div>
+            </div>
+          </article>
+        </Main>
+        <Footer />
+      </>
+    );
+  }
 }
-export default Blog;

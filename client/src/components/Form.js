@@ -1,8 +1,8 @@
 import axios from 'axios';
+import dompurify from 'dompurify';
 import { Link } from 'react-router-dom';
 import { loadProgressBar } from 'axios-progress-bar'
 import Modal from 'react-modal';
-// import ModalWindow from './Modal';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
@@ -131,10 +131,6 @@ export default class Form extends Component {
         disabled: false,
         checked: false
     };
-    {/*this.onSubmitHandler = this.onSubmitHandler.bind( this );
-    this.onChangeHandler = this.onChangeHandler.bind( this );
-    this.resetForm = this.resetForm.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind( this );*/}
   }
 
   componentDidMount = () => {
@@ -142,9 +138,8 @@ export default class Form extends Component {
   }
 
   onChangeHandler = ( event ) => {
-    let name = event.target.name;
-    let value = event.target.value;
-
+    var name = event.target.name;
+    var value = event.target.value;
     this.setState({
         [name]: value, /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
     });
@@ -153,17 +148,19 @@ export default class Form extends Component {
   onSubmitHandler = ( event ) => {
     event.preventDefault(); /* Prevent form submit from reloading the page */
 
-    this.setState({ disabled: true })
+    this.setState({
+        disabled: true
+    })
 
-    let name = this.state.name;
-    let email = this.state.email;
-    let message = this.state.message;
-    let formObj = {
+    var name = this.state.name;
+    var email = this.state.email;
+    var message = this.state.message;
+    var formObj = {
         name: name,
         email: email,
         message: message
     };
-    let axiosConfig = { /* Config headers to avoid CORS issues */
+    var axiosConfig = { /* Config headers to avoid CORS issues */
       headers: {
           'Content-Type': 'application/json;charset=UTF-8',
           "Access-Control-Allow-Origin": "*"
@@ -173,17 +170,18 @@ export default class Form extends Component {
     axios
     .post( 'https://us-central1-konstantin-veselovskii.cloudfunctions.net/app', formObj, axiosConfig ) /* POST request by axios to the function */
     .then( ( res ) => {
-        // console.log( res.status )
-        if ( res.data.msg === 'success' ) {
-            this.resetForm();
-            // this.renderInfo('Your message was sent <span>successfully</span>.');
-            // this.setState({ showModal: true });
-            this.setState({ showModal: true, info: `Your message was sent <span>successfully</span>.` });
-        } else if ( res.data.msg === 'fail' || res.status !== 200 ) {
-            // this.renderInfo('<span>Error.</span> Your message was not sent. Please check your connection or firewall settings.');
-            // this.setState({ showModal: true });
-            this.setState({ showModal: true, info: `<span>Error.</span> Your message was not sent. Please check your connection or firewall settings.` });
-        }
+      if ( res.data.msg === 'success' ) {
+        this.resetForm();
+        this.setState({
+            showModal: true,
+            info: `Your message was sent <span>successfully</span>.`
+        });
+      } else if ( res.data.msg === 'fail' || res.status !== 200 ) {
+        this.setState({
+            showModal: true,
+            info: `<span>Error.</span> Your message was not sent. Please check your connection or firewall settings.`
+        });
+      }
     })
   }
 
@@ -198,22 +196,19 @@ export default class Form extends Component {
 
   handleCloseModal = () => {
     this.setState({
-      showModal: false,
-      disabled: false
-     })
+        showModal: false,
+        disabled: false
+    })
   }
 
   onCheckHandler = () => {
     this.setState({
-      checked: true
+        checked: true
     })
   }
 
-  // renderInfo = (info) => {
-  //   return info
-  // }
-
   render() {
+    const sanitizer = dompurify.sanitize;
     return(
       <Wrapper className = 'wrapper'>
         <Modal
@@ -225,18 +220,17 @@ export default class Form extends Component {
             shouldCloseOnOverlayClick = { false }
         >
           <i className = 'fas fa-times' onClick = { this.handleCloseModal } style = { { cursor: 'pointer', marginRight: '1em'} }></i>
-          <p dangerouslySetInnerHTML = {{ __html: this.state.info }} />
-          {/*<p>{this.renderInfo}d</p>*/}
+          <p dangerouslySetInnerHTML = {{ __html: sanitizer(this.state.info) }} />
         </Modal>
         <form onSubmit = {this.onSubmitHandler}>
           <p>
             <label>Your name:
-              <input id = 'name' type = 'text' name='name' value = { this.state.name } onChange = { this.onChangeHandler } required/>
+              <input id = 'name' type = 'text' name = 'name' value = { this.state.name } onChange = { this.onChangeHandler } required/>
             </label>
           </p>
           <p>
             <label>Your email:
-              <input id = 'email' type = 'email' name='email' value = { this.state.email } onChange = { this.onChangeHandler } required/>
+              <input id = 'email' type = 'email' name = 'email' value = { this.state.email } onChange = { this.onChangeHandler } required/>
             </label>
           </p>
           <p>
