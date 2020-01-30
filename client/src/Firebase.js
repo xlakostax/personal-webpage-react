@@ -1,5 +1,6 @@
-import firebase from 'firebase';
-var config = { /* COPY THE ACTUAL CONFIG FROM FIREBASE CONSOLE */
+var firebase = require("firebase/app");
+require("firebase/auth");
+require("firebase/database");var config = { /* COPY THE ACTUAL CONFIG FROM FIREBASE CONSOLE */
   apiKey: "AIzaSyDOjgXLYg3gkDH91nPyhBE8YARRpX6uv_I",
   authDomain: "konstantin-veselovskii.firebaseapp.com",
   databaseURL: "https://konstantin-veselovskii.firebaseio.com",

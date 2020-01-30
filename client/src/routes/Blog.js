@@ -47,7 +47,7 @@ export default class Blog extends Component {
   }
 
   updateList = () => {
-    /* Create a reference to messages in the Firebase Database.
+    /* Create a reference to posts in the Firebase Database.
     The reference represents a specific location in the Database,
     and can be used for reading or writing data to that Database location. */
     let postsRef = firebaseConf.database().ref();
@@ -61,22 +61,34 @@ export default class Blog extends Component {
       /* snapshot.val() contains an object of objects from the Database:
       { {}, {}, ... , {} } */
       let obj = snapshot.val();
-      console.log( obj )
+      // console.log( obj )
       for (let key in obj) {
          obj[ key ][ 'id' ] = key;
       }
 
-      let postsHistory = [];
+      var posts = [];
       for (let key in obj) {
-          postsHistory.push( obj[ key ] )
+          posts.push( obj[ key ] )
       }
-      // console.log( messHistory )
+      // console.log( posts )
+
       this.setState( {
-         postsHistory: postsHistory
+         postsHistory: posts
       })
-      // console.log( this.state.messagesHistory )
+      // console.log( this.state.postsHistory )
     });
   }
+
+  filterHandler = () => {
+    var filtered = this.state.postsHistory.filter( element => {
+      return element.tag === 'React' || element.tag === 'Angular'
+    })
+    console.log(filtered)
+    this.setState( {
+       postsHistory: filtered
+    })
+  }
+
   render(){
     const history = this.state.postsHistory.map( ( element ) => {
         return (
@@ -100,6 +112,7 @@ export default class Blog extends Component {
               <div className = 'grid'>
                 {history}
               </div>
+              <span onClick = {this.filterHandler} style = {{cursor: 'pointer'}}>#React</span>
             </div>
           </article>
         </Main>

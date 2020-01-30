@@ -17,7 +17,8 @@ const Footer = () => {
   return(
     <FooterTag>
        <p>{copy} Konstantin Veselovskii | <span id="year">{year}</span></p>
-       <p>Made with ❤️ in Helsinki.</p>
+       {/*<p>Made with 🐑 in Helsinki.</p>*/}
+       <p>Made with <span role="img" aria-label="heart">❤️</span> in Helsinki.</p>
     </FooterTag>
   )
 }
