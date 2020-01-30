@@ -92,9 +92,9 @@ export default class Blog extends Component {
   render(){
     const history = this.state.postsHistory.map( ( element ) => {
         return (
-          <div className = 'card-inGrid'>
-            <p key = { element.id }> <b>Post:</b> { element.post } </p>< br/>
-            <p key = { element.id }> <b>Tag:</b> { element.tag } </p>< br/>
+          <div className = 'card-inGrid' key = { element.id }>
+            <p key = { element.post }> <b>Post:</b> { element.post } </p>
+            <p key = { element.tag } onClick = {this.filterHandler} style = {{ cursor: 'pointer'}}>#{ element.tag }</p>
           </div>
         )
     })
@@ -112,7 +112,6 @@ export default class Blog extends Component {
               <div className = 'grid'>
                 {history}
               </div>
-              <span onClick = {this.filterHandler} style = {{cursor: 'pointer'}}>#React</span>
             </div>
           </article>
         </Main>
