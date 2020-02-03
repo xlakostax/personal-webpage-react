@@ -1,15 +1,30 @@
+// require('dotenv').config();
 const admin = require( 'firebase-admin' );
 const bodyParser = require( 'body-parser' );
 const cors = require( 'cors' );
 const express = require ( 'express' );
 const functions = require( 'firebase-functions' );
 const nodemailer = require( 'nodemailer' );
+// const { google } = require("googleapis");
+// const OAuth2 = google.auth.OAuth2;
 
 const app = express();
 
 // Account parameters. firebase functions:config:set gmail.login=yourlogin@gmail.com gmail.pass=yourpass
 const gmailEmail = functions.config().gmail.email;
 const gmailPassword = functions.config().gmail.password;
+
+// const oauth2Client = new OAuth2(
+//      '', // ClientID
+//      '', // Client Secret
+//      "https://developers.google.com/oauthplayground" // Redirect URL
+// );
+
+// oauth2Client.setCredentials({
+//      refresh_token: ''
+// });
+// const accessToken = oauth2Client.getAccessToken()
+
 admin.initializeApp();
 
 // middleware for CORS enabling
@@ -60,6 +75,21 @@ app.post( '/', ( req, res ) => {
             pass: gmailPassword
         }
     });
+
+   //  var transporter = nodemailer.createTransport({
+   //   service: "gmail",
+   //   host: 'smtp.gmail.com',
+   //   port: 465,
+   //   secure: true,
+   //   auth: {
+   //        type: "OAuth2",
+   //        user: 'konstantin.veselovskii@gmail.com',
+   //        clientId: '',
+   //        clientSecret: '',
+   //        refreshToken: '',
+   //        accessToken: accessToken
+   //   }
+   // });
 
 // setup email data with unicode symbols
     const mailOptions_request = {

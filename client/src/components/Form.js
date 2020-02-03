@@ -1,12 +1,12 @@
-import axios from 'axios';
-import dompurify from 'dompurify';
-import { Link } from 'react-router-dom';
-import { loadProgressBar } from 'axios-progress-bar'
-import Modal from 'react-modal';
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import axios from "axios";
+import dompurify from "dompurify";
+import { Link } from "react-router-dom";
+import { loadProgressBar } from "axios-progress-bar";
+import Modal from "react-modal";
+import React, { Component } from "react";
+import styled from "styled-components";
 
-import 'axios-progress-bar/dist/nprogress.css';
+import "axios-progress-bar/dist/nprogress.css";
 
 const Wrapper = styled.section`
   position: relative;
@@ -65,9 +65,10 @@ const Wrapper = styled.section`
       margin-right: 1em;
       position: relative;
       user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -o-user-select: none;
       width: 1.2em;
       & input {
         cursor: pointer;
@@ -120,136 +121,178 @@ const Wrapper = styled.section`
 `;
 
 export default class Form extends Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
-        name: '',
-        email: '',
-        message: '',
-        showModal: false,
-        info: '',
-        disabled: false,
-        checked: false
+      name: "",
+      email: "",
+      message: "",
+      showModal: false,
+      info: "",
+      disabled: false,
+      checked: false
     };
   }
 
   componentDidMount = () => {
     loadProgressBar();
-  }
+  };
 
-  onChangeHandler = ( event ) => {
+  onChangeHandler = event => {
     var name = event.target.name;
     var value = event.target.value;
     this.setState({
-        [name]: value, /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
+      [name]: value /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
     });
-  }
+  };
 
-  onSubmitHandler = ( event ) => {
+  onSubmitHandler = event => {
     event.preventDefault(); /* Prevent form submit from reloading the page */
 
     this.setState({
-        disabled: true
-    })
+      disabled: true
+    });
 
     var name = this.state.name;
     var email = this.state.email;
     var message = this.state.message;
     var formObj = {
-        name: name,
-        email: email,
-        message: message
+      name: name,
+      email: email,
+      message: message
     };
-    var axiosConfig = { /* Config headers to avoid CORS issues */
+    var axiosConfig = {
+      /* Config headers to avoid CORS issues */
       headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          "Access-Control-Allow-Origin": "*"
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*"
       }
     };
 
     axios
-    .post( 'https://us-central1-konstantin-veselovskii.cloudfunctions.net/app', formObj, axiosConfig ) /* POST request by axios to the function */
-    .then( ( res ) => {
-      if ( res.data.msg === 'success' ) {
-        this.resetForm();
-        this.setState({
+      .post(
+        "https://us-central1-konstantin-veselovskii.cloudfunctions.net/app",
+        formObj,
+        axiosConfig
+      ) /* POST request by axios to the function */
+      .then(res => {
+        if (res.data.msg === "success") {
+          this.resetForm();
+          this.setState({
             showModal: true,
             info: `Your message was sent <span>successfully</span>.`
-        });
-      } else if ( res.data.msg === 'fail' || res.status !== 200 ) {
-        this.setState({
+          });
+        } else if (res.data.msg === "fail" || res.status !== 200) {
+          this.setState({
             showModal: true,
             info: `<span>Error.</span> Your message was not sent. Please check your connection or firewall settings.`
-        });
-      }
-    })
-  }
+          });
+        }
+      });
+  };
 
   resetForm = () => {
     this.setState({
-        name: '',
-        email: '',
-        message: '',
-        checked: false
+      name: "",
+      email: "",
+      message: "",
+      checked: false
     });
-  }
+  };
 
   handleCloseModal = () => {
     this.setState({
-        showModal: false,
-        disabled: false
-    })
-  }
+      showModal: false,
+      disabled: false
+    });
+  };
 
   onCheckHandler = () => {
     this.setState({
-        checked: true
-    })
-  }
+      checked: true
+    });
+  };
 
   render() {
     const sanitizer = dompurify.sanitize;
-    return(
-      <Wrapper className = 'wrapper'>
+    return (
+      <Wrapper className="wrapper">
         <Modal
-            isOpen = { this.state.showModal }
-            contentLabel = 'onRequestClose'
-            onRequestClose = { this.handleCloseModal }
-            className = 'Modal'
-            overlayClassName = 'Overlay'
-            shouldCloseOnOverlayClick = { false }
+          isOpen={this.state.showModal}
+          contentLabel="onRequestClose"
+          onRequestClose={this.handleCloseModal}
+          className="Modal"
+          overlayClassName="Overlay"
+          shouldCloseOnOverlayClick={false}
         >
-          <i className = 'fas fa-times' onClick = { this.handleCloseModal } style = { { cursor: 'pointer', marginRight: '1em'} }></i>
-          <p dangerouslySetInnerHTML = {{ __html: sanitizer(this.state.info) }} />
+          <i
+            className="fas fa-times"
+            onClick={this.handleCloseModal}
+            style={{ cursor: "pointer", marginRight: "1em" }}
+          ></i>
+          <p dangerouslySetInnerHTML={{ __html: sanitizer(this.state.info) }} />
         </Modal>
-        <form onSubmit = {this.onSubmitHandler}>
+        <form onSubmit={this.onSubmitHandler}>
           <p>
-            <label>Your name:
-              <input id = 'name' type = 'text' name = 'name' value = { this.state.name } onChange = { this.onChangeHandler } required/>
-            </label>
-          </p>
-          <p>
-            <label>Your email:
-              <input id = 'email' type = 'email' name = 'email' value = { this.state.email } onChange = { this.onChangeHandler } required/>
-            </label>
-          </p>
-          <p>
-            <label>Message:
-              <textarea id = 'message' type = 'text' name = 'message' value = { this.state.message } onChange = { this.onChangeHandler } required/>
+            <label>
+              Your name:
+              <input
+                id="name"
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.onChangeHandler}
+                required
+              />
             </label>
           </p>
           <p>
             <label>
-              <input id = 'checkbox' type = 'checkbox' checked = {this.state.checked} onChange = {this.onCheckHandler} required />
+              Your email:
+              <input
+                id="email"
+                type="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChangeHandler}
+                required
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              Message:
+              <textarea
+                id="message"
+                type="text"
+                name="message"
+                value={this.state.message}
+                onChange={this.onChangeHandler}
+                required
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <input
+                id="checkbox"
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.onCheckHandler}
+                required
+              />
               <span></span>
             </label>
-            I have read and accepted the &nbsp; <Link to = '/policy'>Privacy Policy</Link>
+            I have read and accepted the &nbsp;{" "}
+            <Link to="/policy">Privacy Policy</Link>
           </p>
           <div>
-            <button type='submit' name='send' disabled = { this.state.disabled }>Send</button>
+            <button type="submit" name="send" disabled={this.state.disabled}>
+              Send
+            </button>
           </div>
         </form>
       </Wrapper>
-    )
+    );
   }
 }
