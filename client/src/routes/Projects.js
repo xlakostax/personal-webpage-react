@@ -36,8 +36,8 @@ const Grid = styled.div`
 `;
 
 const Projects = () => {
-  var projectsData = require('../projects.json');
-  var projectList = projectsData.map ( (project) => {
+  let projectsData = require('../projects.json');
+  let projectList = projectsData.map ( (project) => {
     return (
       <article className = 'card-inGrid' key={ project.id }>
         <h3 className = 'card-title'>

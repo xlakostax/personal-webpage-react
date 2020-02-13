@@ -47,7 +47,7 @@ app.use( bodyParser.json() );
 
 //creating function for sending emails
 app.post( '/', ( req, res ) => {
-    const output = `
+    let output = `
       <p>You have a new contact request</p>
       <h3>Contact Details</h3>
       <ul>
@@ -56,7 +56,7 @@ app.post( '/', ( req, res ) => {
         <li>Message: ${req.body.message}</li>
       </ul>
     `;
-    const output_response = `
+    let output_response = `
       <p style = 'font-size: 16px'>Hi, ${req.body.name}!</p>
       <p style = 'font-size: 16px'>Your request has been received. I will get in touch with you shortly!</p></br></br>
       <p style = 'font-size: 16px'>Best regards,</br>
@@ -65,7 +65,7 @@ app.post( '/', ( req, res ) => {
       konstantin.veselovskii@gmail.com</p>
     `;
 // Create reusable transporter object using the default SMTP transport
-    var transporter = nodemailer.createTransport({
+    let transporter = nodemailer.createTransport({
         service: 'gmail',
         host: 'smtp.gmail.com',
         port: 465,

@@ -118,7 +118,7 @@ const HeaderTag = styled.header`
         display: inline-block;
         margin: 0 1rem;
         @media (min-width: 768px) and (max-width: 767px) {
-          font-size: 4rem;
+          /* font-size: 4rem; */
           /* forcing <li>'s width to be the same as it's content */
           /* float:left;
           clear:left; */
@@ -266,10 +266,10 @@ const Header = () => {
       <NavLink exact to = '/'>
         <h2 className = 'logo'><span>Konstantin</span><span>Veselovskii</span></h2>
       </NavLink>
-        <input id = 'menu-btn' className = 'menu-btn' type = 'checkbox'/>
-        <label className = 'menu-icon' htmlFor = 'menu-btn'>
-          <span className = 'navicon'></span>
-        </label>
+      <input id = 'menu-btn' className = 'menu-btn' type = 'checkbox'/>
+      <label className = 'menu-icon' htmlFor = 'menu-btn'>
+        <span className = 'navicon'></span>
+      </label>
       <nav id = 'nav'>
         <ul className = 'menu'>
           { menu }

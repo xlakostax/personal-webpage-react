@@ -139,8 +139,8 @@ export default class Form extends Component {
   };
 
   onChangeHandler = event => {
-    var name = event.target.name;
-    var value = event.target.value;
+    let name = event.target.name;
+    let value = event.target.value;
     this.setState({
       [name]: value /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
     });
@@ -153,15 +153,15 @@ export default class Form extends Component {
       disabled: true
     });
 
-    var name = this.state.name;
-    var email = this.state.email;
-    var message = this.state.message;
-    var formObj = {
+    let name = this.state.name;
+    let email = this.state.email;
+    let message = this.state.message;
+    let formObj = {
       name: name,
       email: email,
       message: message
     };
-    var axiosConfig = {
+    let axiosConfig = {
       /* Config headers to avoid CORS issues */
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
