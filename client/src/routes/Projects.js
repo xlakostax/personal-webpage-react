@@ -23,7 +23,7 @@ const Grid = styled.div`
     position: relative;
     margin-bottom: 1em;
     font-weight: 400;
-    color: rgb(255, 99, 71)
+    color: rgba(70, 130, 180)
   }
   & .card-inGrid {
     border: 3px solid rgba(220, 220, 220, 1);

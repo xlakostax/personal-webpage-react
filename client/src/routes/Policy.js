@@ -17,14 +17,14 @@ const Main = styled.main`
   }
   & a {
     display: inline-block;
-    color: rgb( 255, 99, 71 );
+    color: rgba(70, 130, 180);
   }
   & a:after {
     content: '';
     display: block;
     width: 0%;
     height: 1px;
-    background: rgb( 255, 99, 71 );
+    background: rgba(70, 130, 180);
     transition: 300ms;
       -webkit-transition: 300ms;
       -moz-transition: 300ms;

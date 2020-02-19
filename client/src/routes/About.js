@@ -19,15 +19,30 @@ const Main = styled.main`
     text-align: justify;
   }
   & a {
+    position: relative;
     display: inline-block;
-    color: rgb( 255, 99, 71 );
+    /* color: rgba(70, 130, 180); */
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: rgba(70, 130, 180, 0.5);
+      top: 60%;
+      left: -0.1em;
+      right: -0.1em;
+      bottom: 0;
+      z-index: -1;
+      transition: top 200ms ease-in-out;
+    }
+    &:hover:after {
+      top: 0%;
+    }
   }
-  & a:after {
+  /* & a:after {
     content: '';
     display: block;
     width: 0%;
     height: 1px;
-    background: rgb( 255, 99, 71 );
+    background: rgba(70, 130, 180);
     transition: 300ms;
       -webkit-transition: 300ms;
       -moz-transition: 300ms;
@@ -36,7 +51,7 @@ const Main = styled.main`
   }
   & a:hover:after {
     width: 100%;
-  }
+  } */
 `;
 
 const About = () => {
