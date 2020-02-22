@@ -112,7 +112,8 @@ const Main = styled.main`
     }
     & i:hover {
       transition: color 100ms linear;
-      color: rgb( 255, 99, 71 );
+      /* color: rgb( 255, 99, 71 ); */
+      color: rgba(70,130,180,0.5);
     }
     & li {
       display: inline-block;
@@ -141,7 +142,8 @@ const Main = styled.main`
     & h2 {
       &:hover {
         transition: color 100ms linear;
-        color: rgb( 255, 99, 71 );
+        /* color: rgb( 255, 99, 71 ); */
+        color: rgba(70,130,180,0.5);
       }
     }
     & li {

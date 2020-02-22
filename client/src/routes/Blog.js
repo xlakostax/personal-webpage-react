@@ -17,14 +17,21 @@ const Main = styled.main`
       position: relative;
     }
     & div {
-      align-items: center;
+      /* align-items: center; */
       display: flex;
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
       flex-direction: column;
-      height: 100%;
       justify-content: center;
+      & div {
+        & h3 {
+          margin-bottom: 1rem;
+        }
+        & p {
+          margin-bottom: 1rem;
+        }
+      }
     }
   }
 `;
@@ -33,6 +40,7 @@ export default class Blog extends Component {
   constructor( props ) {
     super( props );
     this.state = {
+        defPostsHistory: [],
         postsHistory: [],
     };
     this.updateList = this.updateList.bind( this );
@@ -69,28 +77,53 @@ export default class Blog extends Component {
       // console.log( posts )
 
       this.setState( {
+         defPostsHistory: posts,
          postsHistory: posts
       })
-      // console.log( this.state.postsHistory )
+      console.log( this.state.postsHistory )
     });
   }
 
-  filterHandler = () => {
-    let filtered = this.state.postsHistory.filter( element => {
-      return element.tag === 'React' || element.tag === 'Angular'
-    })
+  // filterHandler = () => {
+  //   let filtered = this.state.postsHistory.filter( element => {
+  //     return element.tag === 'React' || element.tag === 'Angular'
+  //   })
+  //   console.log(filtered)
+  //   this.setState( {
+  //      postsHistory: filtered
+  //   })
+  // }
+  // filterHandler = (clicked) => {
+  //   console.log(clicked.target.innerHTML)
+  //   let filtered = this.state.postsHistory.filter( element => {
+  //     return element.tag.includes(clicked.target.innerHTML)
+  //   })
+  //   console.log(filtered)
+  //   this.setState( {
+  //      postsHistory: filtered
+  //   })
+  // }
+  filterHandler = (element) => {
+    console.log(element.target.innerHTML)
+    let tags = element.target.innerHTML.slice( -element.target.innerHTML.length + 1 )
+    console.log(tags)
+    let filtered = this.state.defPostsHistory.filter( (element) => {
+      return element.tag.indexOf(tags) !== -1
+    } )
     console.log(filtered)
-    this.setState( {
-       postsHistory: filtered
+    this.setState({
+        postsHistory: filtered
     })
   }
 
   render(){
     const history = this.state.postsHistory.map( ( element ) => {
         return (
-          <div className = 'card-inGrid' key = { element.id }>
-            <p key = { element.post }> <b>Post:</b> { element.post } </p>
-            <p key = { element.tag } onClick = {this.filterHandler} style = {{ cursor: 'pointer'}}>#{ element.tag }</p>
+          <div key = { element.id }>
+            <h3>{ element.header }</h3>
+            <p>{ element.post }</p>
+            <p onClick = { this.filterHandler } style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p key = { element.id } style = {{ marginRight: '1rem' }}>#{ element }</p> } ) }</p>
+            <p onClick = { this.updateList }>Reset tag filter</p>
           </div>
         )
     })
@@ -101,10 +134,10 @@ export default class Blog extends Component {
           <article>
             <h1>Blog</h1>
             <div>
-              <p>
+              {/*<p>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    /*width="8.94444in" height="8.5in"*/
+                    {/*width="8.94444in" height="8.5in"/*}
                     viewBox="0 0 644 612"
                     width = '100%'
                     height = '100%'
@@ -184,10 +217,11 @@ export default class Blog extends Component {
                         595.00,305.00 48.00,305.00 48.00,305.00 Z" />
                 </svg>
               </p> <br />
-              <p>Under construction</p> <br />
+              <p>Under construction</p> <br />*/}
               {/*<div className = 'grid'>
                 {history}
               </div>*/}
+              {history}
             </div>
           </article>
         </Main>
