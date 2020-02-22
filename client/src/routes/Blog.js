@@ -122,8 +122,8 @@ export default class Blog extends Component {
           <div key = { element.id }>
             <h3>{ element.header }</h3>
             <p>{ element.post }</p>
-            <p onClick = { this.filterHandler } style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p key = { element.id } style = {{ marginRight: '1rem' }}>#{ element }</p> } ) }</p>
-            <p onClick = { this.updateList }>Reset tag filter</p>
+            <p style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p onClick = { this.filterHandler } key = { element.id } style = {{ marginRight: '1rem' }}>#{ element }</p> } ) }<p onClick = { this.updateList }>#reset tag</p></p>
+
           </div>
         )
     })
