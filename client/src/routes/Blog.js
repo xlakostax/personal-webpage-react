@@ -31,6 +31,9 @@ const Main = styled.main`
         & p {
           margin-bottom: 1rem;
         }
+        & .codeWrapper {
+          padding-left: 1rem;
+        }
       }
     }
   }
@@ -74,7 +77,8 @@ export default class Blog extends Component {
       for (let key in obj) {
           posts.push( obj[ key ] )
       }
-      // console.log( posts )
+      console.log( typeof posts )
+      console.log( posts )
 
       this.setState( {
          defPostsHistory: posts,
@@ -119,11 +123,15 @@ export default class Blog extends Component {
   render(){
     const history = this.state.postsHistory.map( ( element ) => {
         return (
+          // <div key = { element.id }>
+          //   <h3>{ element.header }</h3>
+          //   <p>{ element.post }</p>
+          //   <p style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p onClick = { this.filterHandler } key = { element.id } style = {{ marginRight: '1rem' }}>#{ element }</p> } ) }<p onClick = { this.updateList }>#reset tag</p></p>
+          // </div>
           <div key = { element.id }>
             <h3>{ element.header }</h3>
-            <p>{ element.post }</p>
+            <p dangerouslySetInnerHTML={{ __html: element.post }}/>
             <p style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p onClick = { this.filterHandler } key = { element.id } style = {{ marginRight: '1rem' }}>#{ element }</p> } ) }<p onClick = { this.updateList }>#reset tag</p></p>
-
           </div>
         )
     })
