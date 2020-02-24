@@ -8,10 +8,14 @@
 }
 
 /* remove (inner) paddings */
+body {
+  padding: 0;
+}
+
 body,
 ul,
 ol {
-  /* padding: 0; */
+  padding: 0;
 }
 
 /* remove (outer) margins */

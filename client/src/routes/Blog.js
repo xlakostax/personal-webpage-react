@@ -25,14 +25,19 @@ const Main = styled.main`
       flex-direction: column;
       justify-content: center;
       & div {
-        & h3 {
-          margin-bottom: 1rem;
-        }
-        & p {
+        & h3, p, .codeWrapper {
           margin-bottom: 1rem;
         }
         & .codeWrapper {
-          padding-left: 1rem;
+          & ul {
+            padding-left: 1rem;
+          }
+        }
+        & .tags {
+          margin-right: 1rem;
+          padding: .2rem;
+          background-color: rgb(220,220,220);
+          border-radius: 2px;
         }
       }
     }
@@ -128,10 +133,10 @@ export default class Blog extends Component {
           //   <p>{ element.post }</p>
           //   <p style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p onClick = { this.filterHandler } key = { element.id } style = {{ marginRight: '1rem' }}>#{ element }</p> } ) }<p onClick = { this.updateList }>#reset tag</p></p>
           // </div>
-          <div key = { element.id }>
+          <div key = { element.index }>
             <h3>{ element.header }</h3>
             <p dangerouslySetInnerHTML={{ __html: element.post }}/>
-            <p style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p onClick = { this.filterHandler } key = { element.id } style = {{ marginRight: '1rem' }}>#{ element }</p> } ) }<p onClick = { this.updateList }>#reset tag</p></p>
+            <p style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p className = 'tags' onClick = { this.filterHandler } key = { element.id }>#{ element }</p> } ) }<p className = 'tags' onClick = { this.updateList }>#reset tag</p></p>
           </div>
         )
     })
