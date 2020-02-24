@@ -11,7 +11,7 @@
 body,
 ul,
 ol {
-  padding: 0;
+  /* padding: 0; */
 }
 
 /* remove (outer) margins */
@@ -40,7 +40,8 @@ body, html {
 
 /* remove default styles for ul and ol */
 ul,
-ol {
+ol,
+li {
   /* line-height: 1; */
   list-style: none;
 }
