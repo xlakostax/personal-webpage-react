@@ -8,37 +8,47 @@ const Main = styled.main`
   grid-area: main;
   position: relative;
   width: 100%;
-  & article {
+  & h1 {
+    font-size: 2rem;
+    margin: 1.2rem 0;
+    position: relative;
+  }
+  & section {
     height: 70%;
     text-align: justify;
-    & h1 {
-      font-size: 2em;
-      margin: 1.2em 0;
-      position: relative;
-    }
-    & div {
-      /* align-items: center; */
-      display: flex;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-      flex-direction: column;
-      justify-content: center;
+    & article {
+      & span {
+        color: red;
+      }
+      & h3, div {
+        margin-bottom: 1rem;
+      }
+      & h3 {
+        text-align: left;
+      }
       & div {
-        & h3, p, .codeWrapper {
+        & p, code {
           margin-bottom: 1rem;
         }
-        & .codeWrapper {
+        & code {
+          display: block;
           & ul {
             padding-left: 1rem;
           }
         }
-        & .tags {
-          margin-right: 1rem;
-          padding: .2rem;
-          background-color: rgb(220,220,220);
-          border-radius: 2px;
-        }
+      }
+      & .tagWrapper {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start
+      }
+      & .tags {
+        margin-right: 1rem;
+        padding: .2rem;
+        background-color: rgb(220,220,220);
+        border-radius: 2px;
       }
     }
   }
@@ -94,8 +104,8 @@ export default class Blog extends Component {
   }
 
   // filterHandler = () => {
-  //   let filtered = this.state.postsHistory.filter( element => {
-  //     return element.tag === 'React' || element.tag === 'Angular'
+  //   let filtered = this.state.postsHistory.filter( elrement => {
+  //     return elrement.tag === 'React' || elrement.tag === 'Angular'
   //   })
   //   console.log(filtered)
   //   this.setState( {
@@ -104,20 +114,21 @@ export default class Blog extends Component {
   // }
   // filterHandler = (clicked) => {
   //   console.log(clicked.target.innerHTML)
-  //   let filtered = this.state.postsHistory.filter( element => {
-  //     return element.tag.includes(clicked.target.innerHTML)
+  //   let filtered = this.state.postsHistory.filter( elrement => {
+  //     return elrement.tag.includes(clicked.target.innerHTML)
   //   })
   //   console.log(filtered)
   //   this.setState( {
   //      postsHistory: filtered
   //   })
   // }
-  filterHandler = (element) => {
-    console.log(element.target.innerHTML)
-    let tags = element.target.innerHTML.slice( -element.target.innerHTML.length + 1 )
+  filterHandler = (elrement) => {
+    console.log(elrement.target.innerHTML)
+    // let tags = elrement.target.innerHTML.slice( -elrement.target.innerHTML.length + 1 )
+    let tags = elrement.target.innerHTML;
     console.log(tags)
-    let filtered = this.state.defPostsHistory.filter( (element) => {
-      return element.tag.indexOf(tags) !== -1
+    let filtered = this.state.defPostsHistory.filter( (elrement) => {
+      return elrement.tag.indexOf(tags) !== -1
     } )
     console.log(filtered)
     this.setState({
@@ -126,27 +137,28 @@ export default class Blog extends Component {
   }
 
   render(){
-    const history = this.state.postsHistory.map( ( element ) => {
+    const history = this.state.postsHistory.map( ( elrement ) => {
         return (
-          // <div key = { element.id }>
-          //   <h3>{ element.header }</h3>
-          //   <p>{ element.post }</p>
-          //   <p style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p onClick = { this.filterHandler } key = { element.id } style = {{ marginRight: '1rem' }}>#{ element }</p> } ) }<p onClick = { this.updateList }>#reset tag</p></p>
+          // <div key = { elrement.id }>
+          //   <h3>{ elrement.header }</h3>
+          //   <p>{ elrement.post }</p>
+          //   <p style = {{ cursor: 'pointer', display: 'flex'}}>{ elrement.tag.map( elrement => { return <p onClick = { this.filterHandler } key = { elrement.id } style = {{ marginRight: '1rem' }}>#{ elrement }</p> } ) }<p onClick = { this.updateList }>#reset tag</p></p>
           // </div>
-          <div key = { element.index }>
-            <h3>{ element.header }</h3>
-            <p dangerouslySetInnerHTML={{ __html: element.post }}/>
-            <p style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p className = 'tags' onClick = { this.filterHandler } key = { element.id }>#{ element }</p> } ) }<p className = 'tags' onClick = { this.updateList }>#reset tag</p></p>
-          </div>
+          <article key = { elrement.index }>
+            <h3>{ elrement.header }</h3>
+            <div dangerouslySetInnerHTML = {{ __html: elrement.post }}/>
+            <div className = 'tagWrapper'>
+              { elrement.tag.map( elrement => { return <p className = 'tags' onClick = { this.filterHandler } key = { elrement.id }>{ elrement }</p> } ) }<p className = 'tags' onClick = { this.updateList }>reset</p>
+            </div>
+          </article>
         )
     })
     return(
       <>
         <Header />
         <Main>
-          <article>
-            <h1>Blog</h1>
-            <div>
+          <h1>Blog</h1>
+          <section>
               {/*<p>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -235,8 +247,7 @@ export default class Blog extends Component {
                 {history}
               </div>*/}
               {history}
-            </div>
-          </article>
+          </section>
         </Main>
         <Footer />
       </>

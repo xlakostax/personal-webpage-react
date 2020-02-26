@@ -9,7 +9,7 @@ const Main = styled.main`
   width: 100%;
   & h1 {
       position: relative;
-      margin: 1.2em 0;
+      margin: 1.2rem 0;
     }
 `;
 
@@ -21,17 +21,17 @@ const Grid = styled.div`
   gap: 15px 15px;
   & h3 {
     position: relative;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     font-weight: 400;
     color: rgba(70, 130, 180)
   }
   & .card-inGrid {
     border: 3px solid rgba(220, 220, 220, 1);
     border-radius: 5px;
-    padding: 2em;
+    padding: 2rem;
   }
   & .card-inGrid p {
-    font-size: 1em;
+    font-size: 1rem;
   }
 `;
 

@@ -12,24 +12,24 @@ const Wrapper = styled.section`
   position: relative;
   width: 100%;
   & form {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     & input:not([type = 'checkbox']), textarea {
       display: block;
       width: 100%;
-      height: 2em;
-      margin: 0 0 1em 0;
+      height: 2rem;
+      margin: 0 0 1rem 0;
       border-radius: 5px 5px;
       border: 1px solid rgba( 220, 220, 220, 1 );
     }
     & textarea {
-      height: 10em;
+      height: 10rem;
     }
     & button {
       position: relative;
-      padding: 1em;
+      padding: 1rem;
       background-color: transparent;
-      height: 4em;
-      width: 6em;
+      height: 4rem;
+      width: 6rem;
       border-radius: 5px 5px;
       border: 1px solid rgba( 47, 47, 47, 1 );
       text-transform: uppercase;
@@ -44,32 +44,33 @@ const Wrapper = styled.section`
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex
-      align-items: center;
+      align-itrems: center;
     }
   }
   & span {
     color: rgba(70, 130, 180)
   }
   & :nth-child(4) {
+    align-items: center;
     display: flex;
       display: -webkit-box;
       display: -ms-flexbox;
       display: -webkit-flex
     justify-content: flex-start;
-    margin: 0 0 1em 0;
+    margin: 0 0 1rem 0;
     & label {
       border: 1px solid rgba( 47, 47, 47, 1 );
       cursor: pointer;
-      font-size: 1em;
-      height: 1.2em;
-      margin-right: 1em;
+      font-size: 1rem;
+      height: 1.2rem;
+      margin-right: 1rem;
       position: relative;
       user-select: none;
           -webkit-user-select: none;
           -moz-user-select: none;
           -ms-user-select: none;
           -o-user-select: none;
-      width: 1.2em;
+      min-width: 1.2rem;
       & input {
         cursor: pointer;
         height: 0;
@@ -107,8 +108,8 @@ const Wrapper = styled.section`
         position: absolute;
         background-color: rgba(70, 130, 180, 0.5);
         top: 60%;
-        left: -0.1em;
-        right: -0.1em;
+        left: -0.1rem;
+        right: -0.1rem;
         bottom: 0;
         z-index: -1;
         transition: top 200ms ease-in-out;
@@ -140,7 +141,7 @@ export default class Form extends Component {
     super(props);
     this.state = {
       name: "",
-      email: "",
+      remail: "",
       message: "",
       showModal: false,
       info: "",
@@ -169,11 +170,11 @@ export default class Form extends Component {
     });
 
     let name = this.state.name;
-    let email = this.state.email;
+    let remail = this.state.remail;
     let message = this.state.message;
     let formObj = {
       name: name,
-      email: email,
+      remail: remail,
       message: message
     };
     let axiosConfig = {
@@ -209,13 +210,13 @@ export default class Form extends Component {
   resetForm = () => {
     this.setState({
       name: "",
-      email: "",
+      remail: "",
       message: "",
       checked: false
     });
   };
 
-  handleCloseModal = () => {
+  handleClosremodal = () => {
     this.setState({
       showModal: false,
       disabled: false
@@ -235,15 +236,15 @@ export default class Form extends Component {
         <Modal
           isOpen={this.state.showModal}
           contentLabel="onRequestClose"
-          onRequestClose={this.handleCloseModal}
+          onRequestClose={this.handleClosremodal}
           className="Modal"
           overlayClassName="Overlay"
           shouldCloseOnOverlayClick={false}
         >
           <i
             className="fas fa-times"
-            onClick={this.handleCloseModal}
-            style={{ cursor: "pointer", marginRight: "1em" }}
+            onClick={this.handleClosremodal}
+            style={{ cursor: "pointer", marginRight: "1rem" }}
           ></i>
           <p dangerouslySetInnerHTML={{ __html: sanitizer(this.state.info) }} />
         </Modal>
@@ -263,12 +264,12 @@ export default class Form extends Component {
           </p>
           <p>
             <label>
-              Your email:
+              Your remail:
               <input
-                id="email"
-                type="email"
-                name="email"
-                value={this.state.email}
+                id="remail"
+                type="remail"
+                name="remail"
+                value={this.state.remail}
                 onChange={this.onChangeHandler}
                 required
               />
@@ -287,7 +288,7 @@ export default class Form extends Component {
               />
             </label>
           </p>
-          <p>
+          <div>
             <label>
               <input
                 id="checkbox"
@@ -298,9 +299,8 @@ export default class Form extends Component {
               />
               <span></span>
             </label>
-            I have read and accepted the &nbsp;{" "}
-            <Link to="/policy">Privacy Policy</Link>
-          </p>
+            <p>I have read and accepted the <Link to="/policy">Privacy Policy</Link></p>
+          </div>
           <div>
             <button type="submit" name="send" disabled={this.state.disabled}>
               Send
