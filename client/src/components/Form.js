@@ -141,7 +141,7 @@ export default class Form extends Component {
     super(props);
     this.state = {
       name: "",
-      remail: "",
+      email: "",
       message: "",
       showModal: false,
       info: "",
@@ -170,11 +170,11 @@ export default class Form extends Component {
     });
 
     let name = this.state.name;
-    let remail = this.state.remail;
+    let email = this.state.email;
     let message = this.state.message;
     let formObj = {
       name: name,
-      remail: remail,
+      email: email,
       message: message
     };
     let axiosConfig = {
@@ -210,7 +210,7 @@ export default class Form extends Component {
   resetForm = () => {
     this.setState({
       name: "",
-      remail: "",
+      email: "",
       message: "",
       checked: false
     });
@@ -264,12 +264,12 @@ export default class Form extends Component {
           </p>
           <p>
             <label>
-              Your remail:
+              Your email:
               <input
-                id="remail"
-                type="remail"
-                name="remail"
-                value={this.state.remail}
+                id="email"
+                type="email"
+                name="email"
+                value={this.state.email}
                 onChange={this.onChangeHandler}
                 required
               />
