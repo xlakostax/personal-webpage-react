@@ -93,14 +93,14 @@ export default class Blog extends Component {
       for (let key in obj) {
           posts.push( obj[ key ] )
       }
-      console.log( typeof posts )
-      console.log( posts )
+      //console.log( typeof posts )
+      //console.log( posts )
 
       this.setState( {
          defPostsHistory: posts,
          postsHistory: posts
       })
-      console.log( this.state.postsHistory )
+      //console.log( this.state.postsHistory )
     });
   }
 
@@ -124,14 +124,14 @@ export default class Blog extends Component {
   //   })
   // }
   filterHandler = (element) => {
-    console.log(element.target.innerHTML)
+    //console.log(element.target.innerHTML)
     // let tags = element.target.innerHTML.slice( -element.target.innerHTML.length + 1 )
     let tags = element.target.innerHTML;
-    console.log(tags)
+    //console.log(tags)
     let filtered = this.state.defPostsHistory.filter( (element) => {
       return element.tag.indexOf(tags) !== -1
     } )
-    console.log(filtered)
+    //console.log(filtered)
     this.setState({
         postsHistory: filtered
     })
