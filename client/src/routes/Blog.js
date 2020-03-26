@@ -104,8 +104,8 @@ export default class Blog extends Component {
   }
 
   // filterHandler = () => {
-  //   let filtered = this.state.postsHistory.filter( elrement => {
-  //     return elrement.tag === 'React' || elrement.tag === 'Angular'
+  //   let filtered = this.state.postsHistory.filter( element => {
+  //     return element.tag === 'React' || element.tag === 'Angular'
   //   })
   //   console.log(filtered)
   //   this.setState( {
@@ -114,21 +114,21 @@ export default class Blog extends Component {
   // }
   // filterHandler = (clicked) => {
   //   console.log(clicked.target.innerHTML)
-  //   let filtered = this.state.postsHistory.filter( elrement => {
-  //     return elrement.tag.includes(clicked.target.innerHTML)
+  //   let filtered = this.state.postsHistory.filter( element => {
+  //     return element.tag.includes(clicked.target.innerHTML)
   //   })
   //   console.log(filtered)
   //   this.setState( {
   //      postsHistory: filtered
   //   })
   // }
-  filterHandler = (elrement) => {
-    console.log(elrement.target.innerHTML)
-    // let tags = elrement.target.innerHTML.slice( -elrement.target.innerHTML.length + 1 )
-    let tags = elrement.target.innerHTML;
+  filterHandler = (element) => {
+    console.log(element.target.innerHTML)
+    // let tags = element.target.innerHTML.slice( -element.target.innerHTML.length + 1 )
+    let tags = element.target.innerHTML;
     console.log(tags)
-    let filtered = this.state.defPostsHistory.filter( (elrement) => {
-      return elrement.tag.indexOf(tags) !== -1
+    let filtered = this.state.defPostsHistory.filter( (element) => {
+      return element.tag.indexOf(tags) !== -1
     } )
     console.log(filtered)
     this.setState({
@@ -137,18 +137,18 @@ export default class Blog extends Component {
   }
 
   render(){
-    const history = this.state.postsHistory.map( ( elrement ) => {
+    const history = this.state.postsHistory.map( ( element ) => {
         return (
-          // <div key = { elrement.id }>
-          //   <h3>{ elrement.header }</h3>
-          //   <p>{ elrement.post }</p>
-          //   <p style = {{ cursor: 'pointer', display: 'flex'}}>{ elrement.tag.map( elrement => { return <p onClick = { this.filterHandler } key = { elrement.id } style = {{ marginRight: '1rem' }}>#{ elrement }</p> } ) }<p onClick = { this.updateList }>#reset tag</p></p>
+          // <div key = { element.id }>
+          //   <h3>{ element.header }</h3>
+          //   <p>{ element.post }</p>
+          //   <p style = {{ cursor: 'pointer', display: 'flex'}}>{ element.tag.map( element => { return <p onClick = { this.filterHandler } key = { element.id } style = {{ marginRight: '1rem' }}>#{ element }</p> } ) }<p onClick = { this.updateList }>#reset tag</p></p>
           // </div>
-          <article key = { elrement.index }>
-            <h3>{ elrement.header }</h3>
-            <div dangerouslySetInnerHTML = {{ __html: elrement.post }}/>
+          <article key = { element.index }>
+            <h3>{ element.header }</h3>
+            <div dangerouslySetInnerHTML = {{ __html: element.post }}/>
             <div className = 'tagWrapper'>
-              { elrement.tag.map( elrement => { return <p className = 'tags' onClick = { this.filterHandler } key = { elrement.id }>{ elrement }</p> } ) }<p className = 'tags' onClick = { this.updateList }>reset</p>
+              { element.tag.map( element => { return <p className = 'tags' onClick = { this.filterHandler } key = { element.id }>{ element }</p> } ) }<p className = 'tags' onClick = { this.updateList }>reset</p>
             </div>
           </article>
         )
