@@ -1,15 +1,9 @@
 [
   {
     "id": 1,
-    "title": "Event manager app",
-    "description": "A simple app for managing internal events. React.js, Redux, Node.js, Express.js, MongoDB",
-    "url": "http://eventid.herokuapp.com/"
-  },
-  {
-    "id": 2,
-    "title": "File uploader",
-    "description": "A simple app for file up- / download locally. React.js, Node.js",
-    "url": ""
+    "title": "inHelsinki. Essential city guide",
+    "description": "A web application to know more about events in Helsinki",
+    "url": "http://inhelsinki.herokuapp.com/"
   },
   {
     "id": 3,

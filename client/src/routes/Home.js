@@ -112,7 +112,8 @@ const Main = styled.main`
     }
     & i:hover {
       transition: color 100ms linear;
-      color: rgb( 255, 99, 71 );
+      /* color: rgb( 255, 99, 71 ); */
+      color: rgba(70,130,180,0.5);
     }
     & li {
       display: inline-block;
@@ -141,7 +142,8 @@ const Main = styled.main`
     & h2 {
       &:hover {
         transition: color 100ms linear;
-        color: rgb( 255, 99, 71 );
+        /* color: rgb( 255, 99, 71 ); */
+        color: rgba(70,130,180,0.5);
       }
     }
     & li {
@@ -153,7 +155,7 @@ const Main = styled.main`
   }
 `;
 
-class Home extends Component {
+export default class Home extends Component {
   constructor( props ) {
     super( props );
     // this.div = React.createRef();
@@ -176,16 +178,16 @@ class Home extends Component {
   }
 
   parallax = ( e ) => {
-    var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
+    let isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
     // console.log( e );
     // var smth = document.querySelectorAll(`.${this.div.current.className}`);
-    var smth = document.querySelectorAll(`.${this.className = 'titleContainer'}`);
+    let smth = document.querySelectorAll(`.${this.className = 'titleContainer'}`);
     smth.forEach( element => {
       if (!isMobile) {
-        var speed = element.getAttribute('speed');
+        let speed = element.getAttribute('speed');
         // console.log(speed)
-        var x = ( window.innerWidth - e.pageX * speed) / 100;
-        var y = ( window.innerWidth - e.pageY * speed) / 100;
+        let x = ( window.innerWidth - e.pageX * speed) / 100;
+        let y = ( window.innerWidth - e.pageY * speed) / 100;
         // console.log(x, y);
         this.setState({
           transform: `translateX(${x}px) translateY(${y}px)`,
@@ -196,8 +198,8 @@ class Home extends Component {
   }
 
   render() {
-    var data = require( '../menu.json' );
-    const menu = data.slice( 0, 4 ).map ( ( element ) => {
+    let data = require( '../menu.json' );
+    let menu = data.slice( 0, 4 ).map ( ( element ) => {
       return (
         <li key = { element.id }>
           <NavLink exact to = { element.path }>
@@ -206,7 +208,7 @@ class Home extends Component {
         </li>
       );
     });
-    const links = data.slice( 4 ).map ( ( element ) => {
+    let links = data.slice( 4 ).map ( ( element ) => {
       return (
         <li key = { element.id }>
           <a href = { element.url } target = '_blank' rel = 'noopener noreferrer'>
@@ -215,7 +217,7 @@ class Home extends Component {
         </li>
       );
     });
-    var speedAttr = {
+    const speedAttr = {
       'speed': 2
     }
     return(
@@ -246,4 +248,3 @@ class Home extends Component {
     )
   }
 }
-export default Home;

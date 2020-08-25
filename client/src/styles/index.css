@@ -8,6 +8,10 @@
 }
 
 /* remove (inner) paddings */
+body {
+  padding: 0;
+}
+
 body,
 ul,
 ol {
@@ -40,7 +44,8 @@ body, html {
 
 /* remove default styles for ul and ol */
 ul,
-ol {
+ol,
+li {
   /* line-height: 1; */
   list-style: none;
 }
@@ -164,12 +169,12 @@ h2, h1 {
 
 @media (min-width: 375px) and (max-width: 767px) {
   #root {
-    grid-template-columns: 10% 1fr 10%;
+    grid-template-columns: 10% 80% 10%;
   }
 }
 
 @media (max-width: 374px) {
   #root {
-    grid-template-columns: 5% 1fr 5%;
+    grid-template-columns: 5% 90% 5%;
   }
 }

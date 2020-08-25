@@ -9,7 +9,6 @@ import Notfound from './routes/Notfound';
 import Policy from './routes/Policy';
 import Projects from './routes/Projects';
 import './styles/index.css';
-import * as serviceWorker from './serviceWorker';
 
 const routing = (
   <Router>
@@ -26,5 +25,3 @@ const routing = (
 );
 
 ReactDOM.render(routing, document.getElementById('root'));
-
-serviceWorker.unregister();

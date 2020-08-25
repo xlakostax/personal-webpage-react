@@ -7,14 +7,16 @@
   "author": "Konstantin Veselovskii",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^5.0.2"
+    "concurrently": "^5.0.2",
+    "hello-world": "0.0.2",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server/server.js --exec nodemon",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm build --prefix client"
+    "build": "npm run build --prefix client"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

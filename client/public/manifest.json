@@ -1,0 +1,11 @@
+{
+  "short_name": "Web Page",
+  "name": "Konstantin Veselovskii's Web Page",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "128x128 64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

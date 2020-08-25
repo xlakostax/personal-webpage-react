@@ -11,23 +11,38 @@ const Main = styled.main`
   position: relative;
   width: 100%;
   & h1 {
-    font-size: 2em;
-    margin: 1.2em 0;
+    font-size: 2rem;
+    margin: 1.2rem 0;
     position: relative;
   }
   & article {
     text-align: justify;
   }
   & a {
+    position: relative;
     display: inline-block;
-    color: rgb( 255, 99, 71 );
+    /* color: rgba(70, 130, 180); */
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: rgba(70, 130, 180, 0.5);
+      top: 60%;
+      left: -0.1rem;
+      right: -0.1rem;
+      bottom: 0;
+      z-index: -1;
+      transition: top 200ms ease-in-out;
+    }
+    &:hover:after {
+      top: 0%;
+    }
   }
-  & a:after {
+  /* & a:after {
     content: '';
     display: block;
     width: 0%;
     height: 1px;
-    background: rgb( 255, 99, 71 );
+    background: rgba(70, 130, 180);
     transition: 300ms;
       -webkit-transition: 300ms;
       -moz-transition: 300ms;
@@ -36,11 +51,11 @@ const Main = styled.main`
   }
   & a:hover:after {
     width: 100%;
-  }
+  } */
 `;
 
 const About = () => {
-  // var currentWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  // var currentWidth = window.innerWidth || document.documentElrement.clientWidth || document.body.clientWidth;
   // var visible = (currentWidth < 1024) ? {display: 'block'} : {display: 'none'};
   // const [style, setStyle] = useState(visible);
   // useEffect( () => {

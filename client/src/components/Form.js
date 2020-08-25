@@ -1,74 +1,76 @@
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { loadProgressBar } from 'axios-progress-bar'
-import Modal from 'react-modal';
-// import ModalWindow from './Modal';
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import axios from "axios";
+import dompurify from "dompurify";
+import { Link } from "react-router-dom";
+import { loadProgressBar } from "axios-progress-bar";
+import Modal from "react-modal";
+import React, { Component } from "react";
+import styled from "styled-components";
 
-import 'axios-progress-bar/dist/nprogress.css';
+import "axios-progress-bar/dist/nprogress.css";
 
 const Wrapper = styled.section`
   position: relative;
   width: 100%;
   & form {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     & input:not([type = 'checkbox']), textarea {
       display: block;
       width: 100%;
-      height: 2em;
-      margin: 0 0 1em 0;
+      height: 2rem;
+      margin: 0 0 1rem 0;
       border-radius: 5px 5px;
       border: 1px solid rgba( 220, 220, 220, 1 );
     }
     & textarea {
-      height: 10em;
+      height: 10rem;
     }
     & button {
       position: relative;
-      padding: 1em;
+      padding: 1rem;
       background-color: transparent;
-      height: 4em;
-      width: 6em;
+      height: 4rem;
+      width: 6rem;
       border-radius: 5px 5px;
       border: 1px solid rgba( 47, 47, 47, 1 );
       text-transform: uppercase;
     }
     & button:hover {
       cursor: pointer;
-      color: rgb( 255, 99, 71 );
-      border: 1px solid rgb( 255, 99, 71 );
+      color: rgba(70, 130, 180);
+      border: 1px solid rgba(70, 130, 180);
     }
     & div {
       display: flex;
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex
-      align-items: center;
+      align-itrems: center;
     }
   }
   & span {
-    color: rgb( 255, 99, 71 )
+    color: rgba(70, 130, 180)
   }
   & :nth-child(4) {
+    align-items: center;
     display: flex;
       display: -webkit-box;
       display: -ms-flexbox;
       display: -webkit-flex
     justify-content: flex-start;
-    margin: 0 0 1em 0;
+    margin: 0 0 1rem 0;
     & label {
       border: 1px solid rgba( 47, 47, 47, 1 );
       cursor: pointer;
-      font-size: 1em;
-      height: 1.2em;
-      margin-right: 1em;
+      font-size: 1rem;
+      height: 1.2rem;
+      margin-right: 1rem;
       position: relative;
       user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-      width: 1.2em;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -o-user-select: none;
+      min-width: 1.2rem;
       & input {
         cursor: pointer;
         height: 0;
@@ -98,15 +100,30 @@ const Wrapper = styled.section`
       }
     }
     & a {
+      position: relative;
       display: inline-block;
-      color: rgb( 255, 99, 71 );
+      /* color: rgba(70, 130, 180); */
+      &:after {
+        content: '';
+        position: absolute;
+        background-color: rgba(70, 130, 180, 0.5);
+        top: 60%;
+        left: -0.1rem;
+        right: -0.1rem;
+        bottom: 0;
+        z-index: -1;
+        transition: top 200ms ease-in-out;
+      }
+      &:hover:after {
+        top: 0%;
+      }
     }
-    & a:after {
+    /* & a:after {
       content: '';
       display: block;
       width: 0%;
       height: 1px;
-      background: rgb( 255, 99, 71 );
+      background: rgba(70, 130, 180);
       transition: 300ms;
         -webkit-transition: 300ms;
         -moz-transition: 300ms;
@@ -115,149 +132,182 @@ const Wrapper = styled.section`
     }
     & a:hover:after {
       width: 100%;
-    }
+    } */
   }
 `;
 
 export default class Form extends Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
-        name: '',
-        email: '',
-        message: '',
-        showModalSuccess: false,
-        showModalError: false,
-        disabled: false
+      name: "",
+      email: "",
+      message: "",
+      showModal: false,
+      info: "",
+      disabled: false,
+      checked: false
     };
-    this.onSubmitHandler = this.onSubmitHandler.bind( this );
-    this.onChangeHandler = this.onChangeHandler.bind( this );
-    this.resetForm = this.resetForm.bind(this);
-    this.handleCloseModalSuccess = this.handleCloseModalSuccess.bind( this );
-    this.handleCloseModalError = this.handleCloseModalError.bind( this );
   }
 
   componentDidMount = () => {
     loadProgressBar();
-  }
+  };
 
-  onChangeHandler = ( event ) => {
+  onChangeHandler = event => {
     let name = event.target.name;
     let value = event.target.value;
-
     this.setState({
-        [name]: value, /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
+      [name]: value /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
     });
-  }
+  };
 
-  onSubmitHandler = ( event ) => {
+  onSubmitHandler = event => {
     event.preventDefault(); /* Prevent form submit from reloading the page */
 
-    this.setState({ disabled: true })
+    this.setState({
+      disabled: true
+    });
 
     let name = this.state.name;
     let email = this.state.email;
     let message = this.state.message;
     let formObj = {
-        name: name,
-        email: email,
-        message: message
+      name: name,
+      email: email,
+      message: message
     };
-    let axiosConfig = { /* Config headers to avoid CORS issues */
+    let axiosConfig = {
+      /* Config headers to avoid CORS issues */
       headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          "Access-Control-Allow-Origin": "*"
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*"
       }
     };
 
     axios
-    .post( 'https://us-central1-konstantin-veselovskii.cloudfunctions.net/app', formObj, axiosConfig ) /* POST request by axios to the function */
-    .then( ( res ) => {
-        // console.log( res.status )
-        if ( res.data.msg === 'success' ) {
-            this.resetForm();
-            this.setState({ showModalSuccess: true });
-        } else if ( res.data.msg === 'fail' || res.status !== 200 ) {
-            this.setState({ showModalError: true });
+      .post(
+        "https://us-central1-konstantin-veselovskii.cloudfunctions.net/app",
+        formObj,
+        axiosConfig
+      ) /* POST request by axios to the function */
+      .then(res => {
+        if (res.data.msg === "success") {
+          this.resetForm();
+          this.setState({
+            showModal: true,
+            info: `Your message was sent <span>successfully</span>.`
+          });
+        } else if (res.data.msg === "fail" || res.status !== 200) {
+          this.setState({
+            showModal: true,
+            info: `<span>Error.</span> Your message was not sent. Please check your connection or firewall settings.`
+          });
         }
-    })
-  }
+      });
+  };
 
   resetForm = () => {
     this.setState({
-        name: '',
-        email: '',
-        message: ''
+      name: "",
+      email: "",
+      message: "",
+      checked: false
     });
-  }
+  };
 
-  handleCloseModalSuccess = () => {
+  handleClosremodal = () => {
     this.setState({
-      showModalSuccess: false,
+      showModal: false,
       disabled: false
-     })
-  }
+    });
+  };
 
-  handleCloseModalError = () => {
+  onCheckHandler = () => {
     this.setState({
-      showModalSuccess: false,
-      disabled: false
-     })
-  }
+      checked: true
+    });
+  };
 
   render() {
-    return(
-      <Wrapper className = 'wrapper'>
+    const sanitizer = dompurify.sanitize;
+    return (
+      <Wrapper className="wrapper">
         <Modal
-            isOpen = { this.state.showModalSuccess }
-            contentLabel = 'onRequestClose'
-            onRequestClose = { this.handleCloseModalSuccess }
-            className = 'Modal'
-            overlayClassName = 'Overlay'
-            shouldCloseOnOverlayClick = { false }
+          isOpen={this.state.showModal}
+          contentLabel="onRequestClose"
+          onRequestClose={this.handleClosremodal}
+          className="Modal"
+          overlayClassName="Overlay"
+          shouldCloseOnOverlayClick={false}
         >
-          <i className = 'fas fa-times' onClick = { this.handleCloseModalSuccess } style = { { cursor: 'pointer', marginRight: '1em'} }></i>
-          <p>Your message was sent <span>successfully</span>.</p>
+          <i
+            className="fas fa-times"
+            onClick={this.handleClosremodal}
+            style={{ cursor: "pointer", marginRight: "1rem" }}
+          ></i>
+          <p dangerouslySetInnerHTML={{ __html: sanitizer(this.state.info) }} />
         </Modal>
-        <Modal
-            isOpen = { this.state.showModalError }
-            contentLabel = 'onRequestClose'
-            onRequestClose = { this.handleCloseModalError }
-            className = 'Modal'
-            overlayClassName = 'Overlay'
-            shouldCloseOnOverlayClick = { false }
-        >
-          <i className = 'fas fa-times' onClick = { this.handleCloseModalError } style = { { cursor: 'pointer', marginRight: '1em'} }></i>
-          <p><span>Error.</span> Your message was not sent. Please check your connection or firewall settings.</p>
-        </Modal>
-        <form onSubmit = {this.onSubmitHandler}>
+        <form onSubmit={this.onSubmitHandler}>
           <p>
-            <label>Your name:
-              <input id = 'name' type = 'text' name='name' value = { this.state.name } onChange = { this.onChangeHandler } required/>
-            </label>
-          </p>
-          <p>
-            <label>Your email:
-              <input id = 'email' type = 'email' name='email' value = { this.state.email } onChange = { this.onChangeHandler } required/>
-            </label>
-          </p>
-          <p>
-            <label>Message:
-              <textarea id = 'message' type = 'text' name = 'message' value = { this.state.message } onChange = { this.onChangeHandler } required/>
+            <label>
+              Your name:
+              <input
+                id="name"
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.onChangeHandler}
+                required
+              />
             </label>
           </p>
           <p>
             <label>
-              <input id = 'checkbox' type = 'checkbox' required />
-              <span></span>
+              Your email:
+              <input
+                id="email"
+                type="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChangeHandler}
+                required
+              />
             </label>
-            I have read and accepted the &nbsp; <Link to = '/policy'>Privacy Policy</Link>
+          </p>
+          <p>
+            <label>
+              Message:
+              <textarea
+                id="message"
+                type="text"
+                name="message"
+                value={this.state.message}
+                onChange={this.onChangeHandler}
+                required
+              />
+            </label>
           </p>
           <div>
-            <button type='submit' name='send' disabled = { this.state.disabled }>Send</button>
+            <label>
+              <input
+                id="checkbox"
+                type="checkbox"
+                checked={this.state.checked}
+                onChange={this.onCheckHandler}
+                required
+              />
+              <span></span>
+            </label>
+            <p>I have read and accepted the <Link to="/policy">Privacy Policy</Link></p>
+          </div>
+          <div>
+            <button type="submit" name="send" disabled={this.state.disabled}>
+              Send
+            </button>
           </div>
         </form>
       </Wrapper>
-    )
+    );
   }
 }
