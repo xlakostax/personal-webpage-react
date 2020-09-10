@@ -1,5 +1,6 @@
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Soon from "../components/soon"
 import React, {
   useEffect,
   useState
@@ -97,9 +98,10 @@ const Projects = () => {
       <Header />
       <Main>
         <h1>Projects</h1>
-        <Grid>
+        {/* <Grid>
           {projectList}
-        </Grid>
+        </Grid> */}
+        <Soon />
       </Main>
       <Footer />
     </>
