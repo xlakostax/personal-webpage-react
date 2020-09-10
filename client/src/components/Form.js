@@ -84,7 +84,8 @@ const Wrapper = styled.section`
       & span {
         &:after {
           border: solid black;
-          border-width: 0 3px 3px 0;content: "";
+          border-width: 0 3px 3px 0;
+          content: "";
           display: none;
           height: 10px;
           left: 6px;

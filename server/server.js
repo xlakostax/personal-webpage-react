@@ -1,7 +1,6 @@
 const express = require ('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require("body-parser");
-const path = require('path');
 const cors = require('cors')
 const config = require('./config.js');
 const app = express();

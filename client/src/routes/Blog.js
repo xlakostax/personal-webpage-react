@@ -72,14 +72,14 @@ export default class Blog extends Component {
     /* Create a reference to posts in the Firebase Database.
     The reference represents a specific location in the Database,
     and can be used for reading or writing data to that Database location. */
-    let postsRef = firebaseConf.database().ref();
+    let postsRef = firebaseConf.database().ref("posts");
     /* Firebase offers several different event types for reading data.
 
     child_added
 
     This event type will be triggered once for every message and every time
     a new message is added to the Database.  */
-    postsRef.on( 'child_added', ( snapshot ) => {
+    postsRef.on( 'value', ( snapshot ) => {
       /* snapshot.val() contains an object of objects from the Database:
       { {}, {}, ... , {} } */
       let obj = snapshot.val();
