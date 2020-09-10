@@ -157,14 +157,14 @@ h2, h1 {
 }
 
 #nprogress .bar {
-  background: rgb( 255, 99, 71 ) !important;
+  background: rgba(70,130,180) !important;
 }
 #nprogress .peg {
-  box-shadow: 0 0 10px rgb( 255, 99, 71 ), 0 0 5px rgb( 255, 99, 71 ) !important;
+  box-shadow: 0 0 10px rgba(70,130,180), 0 0 5px rgba(70,130,180) !important;
 }
 #nprogress .spinner-icon {
-  border-left-color: rgb( 255, 99, 71 ) !important;
-  border-top-color: rgb( ‎255, 99, 71 ) !important;
+  border-left-color: rgba(70,130,180) !important;
+  border-top-color: rgba(70,130,180) !important;
 }
 
 @media (min-width: 375px) and (max-width: 767px) {
