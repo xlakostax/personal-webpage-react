@@ -1,13 +1,9 @@
-// require('dotenv').config();
 const admin = require( 'firebase-admin' );
 const bodyParser = require( 'body-parser' );
 const cors = require( 'cors' );
 const express = require ( 'express' );
 const functions = require( 'firebase-functions' );
 const nodemailer = require( 'nodemailer' );
-// const { google } = require("googleapis");
-// const OAuth2 = google.auth.OAuth2;
-
 const app = express();
 
 // Account parameters. firebase functions:config:set gmail.login=yourlogin@gmail.com gmail.pass=yourpass

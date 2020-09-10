@@ -1,7 +1,13 @@
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import React from 'react';
+import Soon from "../components/soon"
+import React, {
+  useEffect,
+  useState
+} from 'react';
 import styled from 'styled-components';
+
+import firebaseConf from '../Firebase';
 
 const Main = styled.main`
   grid-area: main;
@@ -36,8 +42,48 @@ const Grid = styled.div`
 `;
 
 const Projects = () => {
-  let projectsData = require('../projects.json');
-  let projectList = projectsData.map ( (project) => {
+  const [projects, setProjects] = useState([]);
+  const updateList = () => {
+    /* Create a reference to projects in the Firebase Database.
+    The reference represents a specific location in the Database,
+    and can be used for reading or writing data to that Database location. */
+    // const projectsRef = firebaseConf.database().ref();
+    const projectsRef = firebaseConf.database().ref("projects");
+    /* Firebase offers several different event types for reading data.
+
+    child_added
+
+    This event type will be triggered once for every message and every time
+    a new message is added to the Database.  */
+    // projectsRef.on( 'child_added', ( snapshot ) => {
+
+    projectsRef.on( 'value', ( snapshot ) => {
+      /* snapshot.val() contains an object of objects from the Database:
+      { {}, {}, ... , {} } */
+      let obj = snapshot.val();
+      // console.log( "obj: ", obj )
+      // for (let key in obj.projects) {
+      //    obj[ key ]['id'] = key;
+      //    console.log("key: ", key)
+      // }
+
+      let projects = [];
+      for (let key in obj) {
+          projects.push( obj[ key ] )
+      }
+      // console.log( "typeof projects: ", typeof projects )
+      // console.log("projects: ", projects)
+
+      setProjects([...projects])
+      // console.log( "projects: ", projects )
+    });
+  }
+
+  useEffect(() => {
+    updateList()
+  }, [])
+
+  let projectList = projects.map ( (project) => {
     return (
       <article className = 'card-inGrid' key={ project.id }>
         <h3 className = 'card-title'>
@@ -52,9 +98,10 @@ const Projects = () => {
       <Header />
       <Main>
         <h1>Projects</h1>
-        <Grid>
+        {/* <Grid>
           {projectList}
-        </Grid>
+        </Grid> */}
+        <Soon />
       </Main>
       <Footer />
     </>

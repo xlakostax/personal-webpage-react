@@ -59,44 +59,44 @@ const Wrapper = styled.section`
     justify-content: flex-start;
     margin: 0 0 1rem 0;
     & label {
+      display: block;
+      position: relative;
+      height: 1.2rem;
+      min-width: 1.2rem;
+      margin-right: 1rem;
+      font-size: 1rem;
       border: 1px solid rgba( 47, 47, 47, 1 );
       cursor: pointer;
-      font-size: 1rem;
-      height: 1.2rem;
-      margin-right: 1rem;
-      position: relative;
       user-select: none;
           -webkit-user-select: none;
           -moz-user-select: none;
           -ms-user-select: none;
           -o-user-select: none;
-      min-width: 1.2rem;
       & input {
-        cursor: pointer;
-        height: 0;
-        opacity: 0;
         position: absolute;
         width: 0;
-        &:checked ~ span:after {
-          display: block;
-        }
+        height: 0;
+        opacity: 0;
+        cursor: pointer;
       }
-      & span {
-        &:after {
-          border: solid black;
-          border-width: 0 3px 3px 0;content: "";
-          display: none;
-          height: 10px;
-          left: 6px;
-          position: absolute;
-          top: 3px;
-          transform: rotate(45deg);
-              -webkit-transform: rotate(45deg);
-              -moz-transform: rotate(45deg);
-              -ms-transform: rotate(45deg);
-              -o-transform: rotate(45deg);
-          width: 5px;
-        }
+      & input:checked ~ span:after {
+        display: block;
+      }
+      & span:after {
+        border: solid black;
+        border-width: 0 3px 3px 0;
+        content: "";
+        display: none;
+        height: 10px;
+        left: 6px;
+        position: absolute;
+        top: 3px;
+        transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+        width: 5px;
       }
     }
     & a {
@@ -118,21 +118,6 @@ const Wrapper = styled.section`
         top: 0%;
       }
     }
-    /* & a:after {
-      content: '';
-      display: block;
-      width: 0%;
-      height: 1px;
-      background: rgba(70, 130, 180);
-      transition: 300ms;
-        -webkit-transition: 300ms;
-        -moz-transition: 300ms;
-        -ms-transition: 300ms;
-        -o-transition: 300ms;
-    }
-    & a:hover:after {
-      width: 100%;
-    } */
   }
 `;
 
@@ -146,8 +131,8 @@ export default class Form extends Component {
       showModal: false,
       info: "",
       disabled: false,
-      checked: false
-    };
+      checked: false,
+    }
   }
 
   componentDidMount = () => {
@@ -157,6 +142,8 @@ export default class Form extends Component {
   onChangeHandler = event => {
     let name = event.target.name;
     let value = event.target.value;
+    console.log(name, value)
+    console.log(this.state.name, this.state.email, this.state.checked)
     this.setState({
       [name]: value /* The ES6 computed property name syntax is used to update the state key corresponding to the given input name:*/
     });
@@ -224,8 +211,12 @@ export default class Form extends Component {
   };
 
   onCheckHandler = () => {
+    !this.state.checked ?
     this.setState({
       checked: true
+    }) :
+    this.setState({
+      checked: false
     });
   };
 

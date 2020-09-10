@@ -1,4 +1,3 @@
-// import BurgerMenu from '../components/BurgerMenu';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { Link } from 'react-router-dom';
@@ -55,25 +54,14 @@ const Main = styled.main`
 `;
 
 const About = () => {
-  // var currentWidth = window.innerWidth || document.documentElrement.clientWidth || document.body.clientWidth;
-  // var visible = (currentWidth < 1024) ? {display: 'block'} : {display: 'none'};
-  // const [style, setStyle] = useState(visible);
-  // useEffect( () => {
-  //   setStyle(visible);
-  //   window.addEventListener('resize', setStyle);
-  //   /* remove resize listener */
-  //   return () => {
-  //     window.removeEventListener('resize', setStyle);
-  //   }
-  // }, []);
   return(
     <>
-      {/*<BurgerMenu />*/}
       <Header />
       <Main>
         <article>
           <h1>About</h1>
-          <p>My name is Konstantin Veselovskii. I was born and grew up in Petrozavodsk, a small town in Karelia. I am passionate my job. I have been studying the web development since 2019. I focus on writing clean, elegant and efficient code.</p>
+          <p>My name is Konstantin Veselovskii. I am a web developer from Helsinki, who makes handcraft digital products.
+            I am passionate my job and eager to learn by doing new web technologies. I focus on writing clean, elegant and efficient code. I appreciate self-development as a professional.</p>
           <p>If you need some inspiring ideas, <Link to = '/contacts'>let’s connect</Link> to get the process started.</p>
         </article>
       </Main>
