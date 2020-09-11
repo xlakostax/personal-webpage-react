@@ -50,7 +50,7 @@ const HeaderTag = styled.header`
     font-weight: 400;
     font-size: 1.2rem;
     & span {
-      display: inline-block
+      display: inline-block;
       transition: transform .2s ease-in-out;
       transform: translateY(0);
         -webkit-transform: translateY(0);
