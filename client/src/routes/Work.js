@@ -1,47 +1,20 @@
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import Soon from "../components/soon"
 import React, {
-  // useEffect,
+  useEffect,
   // useState
 } from 'react';
-import styled from 'styled-components';
 
+/*Import components*/
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import Soon from "../components/Soon"
+
+/*Import configuration*/
 // import firebaseConf from '../Firebase';
 
-const Main = styled.main`
-  grid-area: main;
-  position: relative;
-  width: 100%;
-  & h1 {
-      position: relative;
-      margin: 1.2rem 0;
-    }
-`;
+/*Import styles*/
+import {/*Grid,*/ Main} from "../styles/styled";
 
-// const Grid = styled.div`
-//   position: relative;
-//   display: grid;
-//     display: -ms-grid;
-//   grid-template-columns: repeat(auto-fit, minmax(250px, auto));
-//   gap: 15px 15px;
-//   & h3 {
-//     position: relative;
-//     margin-bottom: 1rem;
-//     font-weight: 400;
-//     color: rgba(70, 130, 180)
-//   }
-//   & .card-inGrid {
-//     border: 3px solid rgba(220, 220, 220, 1);
-//     border-radius: 5px;
-//     padding: 2rem;
-//   }
-//   & .card-inGrid p {
-//     font-size: 1rem;
-//   }
-// `;
-
-const Projects = () => {
+const Work = () => {
   // const [projects, setProjects] = useState([]);
   // const updateList = () => {
   //   /* Create a reference to projects in the Firebase Database.
@@ -78,10 +51,10 @@ const Projects = () => {
   //     // console.log( "projects: ", projects )
   //   });
   // }
-  //
-  // useEffect(() => {
-  //   updateList()
-  // }, [])
+
+  useEffect(() => {
+    // updateList()
+  }, [])
 
   // let projectList = projects.map ( (project) => {
   //   return (
@@ -97,7 +70,7 @@ const Projects = () => {
     <>
       <Header />
       <Main>
-        <h1>Projects</h1>
+        <h1>Work</h1>
         {/* <Grid>
           {projectList}
         </Grid> */}
@@ -107,4 +80,5 @@ const Projects = () => {
     </>
   )
 }
-export default Projects;
+
+export default Work;

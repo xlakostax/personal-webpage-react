@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
-// import { TweenLite, TweenMax } from 'gsap/all';
+import React, {
+  useEffect,
+  useState
+} from 'react';
 import { NavLink } from 'react-router-dom';
-// import $ from 'jquery';
 import styled from 'styled-components';
+
+import data from "../components/Menu"
 
 const Main = styled.main`
   grid-row-start: 1;
@@ -113,7 +116,8 @@ const Main = styled.main`
     & i:hover {
       transition: color 100ms linear;
       /* color: rgb( 255, 99, 71 ); */
-      color: rgba(70,130,180,0.5);
+      /* color: rgba(70,130,180,0.5);*/
+      color: #46B29A;
     }
     & li {
       display: inline-block;
@@ -143,7 +147,8 @@ const Main = styled.main`
       &:hover {
         transition: color 100ms linear;
         /* color: rgb( 255, 99, 71 ); */
-        color: rgba(70,130,180,0.5);
+        /*color: rgba(70,130,180,0.5);*/
+        color: #46B29A;
       }
     }
     & li {
@@ -155,137 +160,69 @@ const Main = styled.main`
   }
 `;
 
-export default class Home extends Component {
-  constructor( props ) {
-    super( props );
-    // this.div = React.createRef();
-    this.state = {
-      transform: ''
-    };
-    this.parallax = this.parallax.bind( this );
-  }
-
-  /* Parallax effect using gsap from side sources */
-  componentDidMount = () => {
-    // if ( window.screen.width >= '1660px' ){}
-      document.addEventListener('mousemove', this.parallax);
-    // console.log(this.div.current.className)
-    // console.log(this.state.transform);
-  }
-
-  componentWillUnmount = () => {
-    window.removeEventListener('mousemove', this.parallax);
-  }
-
-  parallax = ( e ) => {
-    let isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
-    // console.log( e );
-    // var smth = document.querySelectorAll(`.${this.div.current.className}`);
-    let smth = document.querySelectorAll(`.${this.className = 'titleContainer'}`);
-    smth.forEach( element => {
-      if (!isMobile) {
-        let speed = element.getAttribute('speed');
-        // console.log(speed)
-        let x = ( window.innerWidth - e.pageX * speed) / 100;
-        let y = ( window.innerWidth - e.pageY * speed) / 100;
-        // console.log(x, y);
-        this.setState({
-          transform: `translateX(${x}px) translateY(${y}px)`,
-        })
-        // console.log(this.state.transform);
-      }
-    })
-  }
-
-  render() {
-    const data = [
-      {
-        "id": 1,
-        "title": "Projects",
-        "path": "/projects"
-      },
-      {
-        "id": 2,
-        "title": "About",
-        "path": "/about"
-      },
-      {
-        "id": 3,
-        "title": "Contacts",
-        "path": "/contacts"
-      },
-      {
-        "id": 4,
-        "title": "Blog",
-        "path": "/blog"
-      },
-      {
-        "id": 4,
-        "title": "Blog",
-        "path": "/blog"
-      },
-      {
-        "id": 5,
-        "icon": "fab fa-github-square",
-        "url": "https://github.com/xlakostax"
-      },
-      {
-        "id": 6,
-        "icon": "fab fa-linkedin",
-        "url": "https://www.linkedin.com/in/veselovskii/"
-      },
-      {
-        "id": 7,
-        "icon": "fab fa-facebook-square",
-        "url": "https://www.facebook.com/xlakostax"
-      }
-    ];
-    let menu = data.slice( 0, 4 ).map ( ( element ) => {
-      return (
-        <li key = { element.id }>
-          <NavLink exact to = { element.path }>
-            <h2>{ element.title }</h2>
-          </NavLink>
-        </li>
-      );
-    });
-    let links = data.slice( 4 ).map ( ( element ) => {
-      return (
-        <li key = { element.id }>
-          <a href = { element.url } target = '_blank' rel = 'noopener noreferrer'>
-            <i className = { element.icon }></i>
-          </a>
-        </li>
-      );
-    });
-    const speedAttr = {
-      'speed': 2
+const Home = () => {
+  const [transform, setTransform] = useState("")
+  useEffect(() => {
+    function parallax(e) {
+      let smth = document.querySelectorAll('.titleContainer');
+      smth.forEach( element => {
+          let speed = element.getAttribute('speed');
+          let x = ( window.innerWidth - e.pageX * speed) / 100;
+          let y = ( window.innerWidth - e.pageY * speed) / 100;
+          setTransform(`translateX(${x}px) translateY(${y}px)`)
+      })
     }
-    return(
-      <Main>
-        {/*<div id = 'titleContainer' className = 'titleContainer' {...speedAttr} style = {{ transform: this.state.transform }} ref = { this.div }>*/}
-        <div id = 'titleContainer' className = 'titleContainer' {...speedAttr} style = {{ transform: this.state.transform }}>
-          <h1>
-            <span>I'm </span>
-            Konstantin
-            <br />
-            Veselovskii
-          </h1>
-          <section>
-            <ul>
-              <li>
-                <h2>a web developer</h2>
-              </li>
-              {links}
-            </ul>
-          </section>
-          <nav>
-            <ul>
-              {menu}
-            </ul>
-          </nav>
-        </div>
-      </Main>
-    )
-  }
+    window.addEventListener("mousemove", parallax)
+    return () => {
+      window.removeEventListener("mousemove", parallax)
+    }
+  }, [transform])
+
+  let menu = data.slice( 0, 4 ).map ( ( element ) => {
+    return (
+      <li key = { element.id }>
+        <NavLink exact to = { element.path }>
+          <h2>{ element.title }</h2>
+        </NavLink>
+      </li>
+    );
+  });
+
+  let links = data.slice( 4 ).map ( ( element ) => {
+    return (
+      <li key = { element.id }>
+        <a href = { element.url } target = '_blank' rel = 'noopener noreferrer'>
+          <i className = { element.icon }></i>
+        </a>
+      </li>
+    );
+  });
+
+  return(
+    <Main>
+      <div id = 'titleContainer' className = 'titleContainer' speed = "2" style = {{ transform: `${transform}` }}>
+        <h1>
+          <span>I'm </span>
+          Konstantin
+          <br />
+          Veselovskii
+        </h1>
+        <section>
+          <ul>
+            <li>
+              <h2>a web developer</h2>
+            </li>
+            {links}
+          </ul>
+        </section>
+        <nav>
+          <ul>
+            {menu}
+          </ul>
+        </nav>
+      </div>
+    </Main>
+  )
 }
+
+export default Home;

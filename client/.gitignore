@@ -64,3 +64,9 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# Custom files
+index.html-webpack
+package.json--webpack
+.babelrc
+webpack.config.js

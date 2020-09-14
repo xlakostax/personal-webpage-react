@@ -1,21 +1,12 @@
 import React from 'react';
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import Form from '../components/Form'
-import styled from 'styled-components';
 
-const Main = styled.main`
-  grid-area: main;
-  position: relative;
-  width: 100%;
-  & h1 {
-    position: relative;
-    margin: 1.2rem 0;
-  }
-  & article {
-    text-align: justify;
-  }
-`;
+/*Import components*/
+import Form from '../components/Form';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+
+/*Import styles*/
+import {Main} from "../styles/styled";
 
 const Contacts = () => {
   return(
