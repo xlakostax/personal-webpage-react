@@ -19,14 +19,16 @@ const Main = styled.main`
     }
     & a {
       display: inline-block;
-      color: rgba(70, 130, 180);
+      /*color: rgba(70, 130, 180);*/
+      color: #46B29A;
     }
     & a:after {
       content: '';
       display: block;
       width: 0%;
       height: 1px;
-      background: rgba(70, 130, 180);
+      /*background: rgba(70, 130, 180);*/
+      background: #46B29A;
       transition: 300ms;
         -webkit-transition: 300ms;
         -moz-transition: 300ms;

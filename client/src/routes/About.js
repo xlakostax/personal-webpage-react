@@ -1,57 +1,14 @@
+import React from 'react';
+
+/*Import components*/
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import { Link } from 'react-router-dom';
-import React from 'react';
-// import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 
-const Main = styled.main`
-  grid-area: main;
-  position: relative;
-  width: 100%;
-  & h1 {
-    font-size: 2rem;
-    margin: 1.2rem 0;
-    position: relative;
-  }
-  & article {
-    text-align: justify;
-  }
-  & a {
-    position: relative;
-    display: inline-block;
-    /* color: rgba(70, 130, 180); */
-    &:after {
-      content: '';
-      position: absolute;
-      background-color: rgba(70, 130, 180, 0.5);
-      top: 60%;
-      left: -0.1rem;
-      right: -0.1rem;
-      bottom: 0;
-      z-index: -1;
-      transition: top 200ms ease-in-out;
-    }
-    &:hover:after {
-      top: 0%;
-    }
-  }
-  /* & a:after {
-    content: '';
-    display: block;
-    width: 0%;
-    height: 1px;
-    background: rgba(70, 130, 180);
-    transition: 300ms;
-      -webkit-transition: 300ms;
-      -moz-transition: 300ms;
-      -ms-transition: 300ms;
-      -o-transition: 300ms;
-  }
-  & a:hover:after {
-    width: 100%;
-  } */
-`;
+/*Import libraries*/
+import {Link} from 'react-router-dom';
+
+/*Import styles*/
+import {Main} from "../styles/styled";
 
 const About = () => {
   return(

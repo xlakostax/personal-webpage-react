@@ -1,6 +1,6 @@
 import axios from "axios";
 import dompurify from "dompurify";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { loadProgressBar } from "axios-progress-bar";
 import Modal from "react-modal";
 import React, { Component } from "react";
@@ -279,7 +279,7 @@ export default class Form extends Component {
               />
             </label>
           </p>
-          <div>
+          {/* <div>
             <label>
               <input
                 id="checkbox"
@@ -291,7 +291,7 @@ export default class Form extends Component {
               <span></span>
             </label>
             <p>I have read and accepted the <Link to="/policy">Privacy Policy</Link></p>
-          </div>
+          </div> */}
           <div>
             <button type="submit" name="send" disabled={this.state.disabled}>
               Send

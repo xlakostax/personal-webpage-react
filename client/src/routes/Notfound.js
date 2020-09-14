@@ -1,4 +1,6 @@
 import React from "react";
+
+/*Import libraries*/
 import styled from 'styled-components';
 
 const Main = styled.div`
@@ -22,28 +24,27 @@ const Main = styled.div`
     font-size: 3em;
   }
   & a {
+    position: relative;
     display: inline-block;
-    color: rgb( 255, 99, 71 );
-    text-transform: uppercase;
-  }
-  & a:after {
-    content: '';
-    display: block;
-    width: 0%;
-    height: 1px;
-    background: rgb( 255, 99, 71 );
-    transition: 300ms;
-      -webkit-transition: 300ms;
-      -moz-transition: 300ms;
-      -ms-transition: 300ms;
-      -o-transition: 300ms;
-  }
-  & a:hover:after {
-    width: 100%;
-  }
+    /* color: rgba(70, 130, 180); */
+    &:after {
+      content: '';
+      position: absolute;
+      /*background-color: rgba(70, 130, 180, 0.5);*/
+      background-color: #46B29A;
+      top: 60%;
+      left: -0.1rem;
+      right: -0.1rem;
+      bottom: 0;
+      z-index: -1;
+      transition: top 200ms ease-in-out;
+    }
+    &:hover:after {
+      top: 0%;
+    }
 `;
 
-const Notfound = () => {
+const NotFound = () => {
   return (
     <Main>
       <p>404 <br />
@@ -51,6 +52,6 @@ const Notfound = () => {
       <a href="/">Go back home</a>
     </Main>
   )
-}
+};
 
-export default Notfound
+export default NotFound
