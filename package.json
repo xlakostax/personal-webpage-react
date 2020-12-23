@@ -17,6 +17,6 @@
     "build": "npm run build --prefix client"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.6"
   }
 }
