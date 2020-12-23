@@ -149,8 +149,7 @@ h2, h1 {
 }
 
 .Modal span {
-  /* color: rgb( 255, 99, 71 ) */
-  color: #46B29A;
+  color: rgb( 255, 99, 71 )
 }
 
 .Modal:focus {
@@ -158,14 +157,14 @@ h2, h1 {
 }
 
 #nprogress .bar {
-  background: #46B29A !important;
+  background: rgba(70,130,180) !important;
 }
 #nprogress .peg {
-  box-shadow: 0 0 10px #46B29A, 0 0 5px #46B29A !important;
+  box-shadow: 0 0 10px rgba(70,130,180), 0 0 5px rgba(70,130,180) !important;
 }
 #nprogress .spinner-icon {
-  border-left-color: #46B29A !important;
-  border-top-color: #46B29A !important;
+  border-left-color: rgba(70,130,180) !important;
+  border-top-color: rgba(70,130,180) !important;
 }
 
 @media (min-width: 375px) and (max-width: 767px) {
