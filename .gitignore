@@ -19,6 +19,8 @@ Error.js
 burger.css
 BurgerMenu.js
 .env
+config.js
+Firebase.js
 
 # Firebase config
 
