@@ -6,16 +6,16 @@
   "author": "Konstantin Veselovskii",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "axios-progress-bar": "^1.2.0",
-    "dompurify": "^2.2.2",
-    "firebase": "^7.24.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-modal": "^3.11.2",
+    "dompurify": "^2.2.6",
+    "firebase": "^8.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.4",
-    "styled-components": "^4.4.1"
+    "react-scripts": "^4.0.1",
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
