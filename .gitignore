@@ -12,14 +12,15 @@
 # production
 **/build/**
 
-# Custom files
+# files
 About (with class function).js
 Success.js
 Error.js
 burger.css
 BurgerMenu.js
-Firebase.js
-config.js
+.env
+
+# Firebase config
 
 #Firebase
 
@@ -44,7 +45,6 @@ firebase-debug.log*
 
 # misc
 .DS_Store
-.env
 .env.local
 .env.development.local
 .env.test.local
