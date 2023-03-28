@@ -10,23 +10,11 @@ const app = express();
 const gmailEmail = functions.config().gmail.email;
 const gmailPassword = functions.config().gmail.password;
 
-// const oauth2Client = new OAuth2(
-//      '', // ClientID
-//      '', // Client Secret
-//      "https://developers.google.com/oauthplayground" // Redirect URL
-// );
-
-// oauth2Client.setCredentials({
-//      refresh_token: ''
-// });
-// const accessToken = oauth2Client.getAccessToken()
-
 admin.initializeApp();
 
 // middleware for CORS enabling
 app.use(
   cors({
-      // origin: '*'
       origin: true
   })
 );
@@ -71,21 +59,6 @@ app.post( '/', ( req, res ) => {
             pass: gmailPassword
         }
     });
-
-   //  var transporter = nodemailer.createTransport({
-   //   service: "gmail",
-   //   host: 'smtp.gmail.com',
-   //   port: 465,
-   //   secure: true,
-   //   auth: {
-   //        type: "OAuth2",
-   //        user: 'konstantin.veselovskii@gmail.com',
-   //        clientId: '',
-   //        clientSecret: '',
-   //        refreshToken: '',
-   //        accessToken: accessToken
-   //   }
-   // });
 
 // setup email data with unicode symbols
     const mailOptions_request = {

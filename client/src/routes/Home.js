@@ -188,7 +188,7 @@ const Home = () => {
     );
   });
 
-  let links = data.slice( 4 ).map ( ( element ) => {
+  let links = data.slice( 3 ).map ( ( element ) => {
     return (
       <li key = { element.id }>
         <a href = { element.url } target = '_blank' rel = 'noopener noreferrer'>

@@ -13,7 +13,7 @@ app.use(
   })
 );
 
-app.use( bodyParser.json() );
+app.use(bodyParser.json());
 
 app.post('/send', (req, res) => {
   const output = `
@@ -27,13 +27,12 @@ app.post('/send', (req, res) => {
     <p>${req.body.message}</p>
   `;
 
-  const output_response = `
-    <p style = 'color: red'>Your request has been received. I will get in touch with you shortly!</p>
-  `;
-
   // Create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    ...config.mailer
+    ...config.mailer,
+    tls: {
+      rejectUnauthorized: false
+    }
   });
 
   transporter.verify((error, success) => {
@@ -42,17 +41,11 @@ app.post('/send', (req, res) => {
 
   // setup email data with unicode symbols
   let mailOptions = {
-      from: `${req.body.email}`,
-      to: 'jorge.crooks@ethereal.email',
-      subject: 'A new request frow web page', // Subject line
+      from: "konstantin.veselovskii@gmail.com",
+      to: `konstantin.veselovskii@gmail.com`,
+      subject: 'A request from "Nodemailer Service"', // Subject line
       // text: '', // Plain text body
       html: output // HTML body
-  };
-
-  const mailOptions_response = {
-      to: req.body.email,
-      subject: 'Thank you for contacting me!',
-      html: output_response
   };
 
   // Send mail with defined transport object
