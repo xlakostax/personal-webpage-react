@@ -60,7 +60,8 @@ const Form = () => {
     };
 
     axios.post(
-      "https://us-central1-konstantin-veselovskii.cloudfunctions.net/app",
+      // "https://us-central1-konstantin-veselovskii.cloudfunctions.net/app",
+      "http://localhost:3001/send",
       formObj,
       axiosConfig
     ) /* POST request by axios to the function */

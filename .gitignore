@@ -13,13 +13,6 @@
 **/build/**
 
 # files
-About (with class function).js
-Success.js
-Error.js
-burger.css
-BurgerMenu.js
-.env
-config.js
 Firebase.js
 
 # Firebase config
@@ -47,6 +40,7 @@ firebase-debug.log*
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local

@@ -2,8 +2,10 @@ const express = require ('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require("body-parser");
 const cors = require('cors')
-const config = require('./config.js');
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config();
+const port = 3001;
 
 app.use(cors());
 
@@ -16,7 +18,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.post('/send', (req, res) => {
-  const output = `
+  let output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>
     <ul>
@@ -26,45 +28,75 @@ app.post('/send', (req, res) => {
     <h3>Message</h3>
     <p>${req.body.message}</p>
   `;
+  
+  let output_response = `
+    <p style = 'font-size: 16px'>Hi, ${req.body.name}!</p>
+    <p style = 'font-size: 16px'>Your request has been received. I will get in touch with you shortly!</p></br></br>
+    <p style = 'font-size: 16px'>Best regards,</br>
+    Konstantin Veselovskii</p>
+  `;
 
   // Create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    ...config.mailer,
-    tls: {
-      rejectUnauthorized: false
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // true for 465, false for other portss
+    service: "gmail",
+    tls:{
+      rejectUnauthorized:false
+    },
+    auth: {
+      user: process.env.TRANSPORT_EMAIL,
+      pass: process.env.TRANSPORT_PASSWORD,
     }
   });
 
   transporter.verify((error, success) => {
-    error ? console.log( error ) : console.log( 'Server is ready to take message' )
+    error ? console.log(error) : console.log('Server is ready to take message')
   });
 
   // setup email data with unicode symbols
-  let mailOptions = {
-      from: "konstantin.veselovskii@gmail.com",
-      to: `konstantin.veselovskii@gmail.com`,
-      subject: 'A request from "Nodemailer Service"', // Subject line
-      // text: '', // Plain text body
-      html: output // HTML body
+  const mailOptions_request = {
+    from: req.body.email,
+    to: process.env.TRANSPORT_EMAIL,
+    subject: 'A new request frow web page!',
+    html: output
+  };
+
+  const mailOptions_response = {
+    to: req.body.email,
+    subject: 'Thank you for your request!',
+    html: output_response
   };
 
   // Send mail with defined transport object
-  transporter.sendMail(mailOptions, (error, data) => {
-    if (error) {
-      return res.json({
-        msg: 'fail'
-      })
-      console.log(error);
+  transporter.sendMail(mailOptions_request, (err, info) => {
+    if (err) {
+      console.log(err);
     } else {
-      return res.json({
-        msg: 'success'
-      })
-      console.log('Message sent: %s', data.messageId);
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(data));
+      console.log(info);
     }
   });
+
+  transporter.sendMail(mailOptions_response, (err, info) => {
+    if (err) {
+      return (
+        res.status(500).json({
+          msg: 'fail'
+        }),
+        console.log(err)
+      );
+    } else {
+      return (
+        res.status(200).json({
+          msg: 'success'
+        }),
+        console.log(info)
+      )
+    }
+  })
 });
 
-app.listen( config.server.port, () => {
-  console.log( `Server running on port ${ config.server.port }` );
-} );
+app.listen(port, () => {
+  console.log(`Server running on port ${port}... ${process.env.TRANSPORT_EMAIL}`);
+});
