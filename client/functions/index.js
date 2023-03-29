@@ -48,10 +48,13 @@ app.post('/', (req, res) => {
   `;
 // Create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    service: 'gmail',
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
+    service: "gmail",
+    tls:{
+      rejectUnauthorized:false
+    },
     auth: {
       user: gmailEmail,
       pass: gmailPassword
