@@ -1,10 +1,11 @@
+require('dotenv').config({path:__dirname+'/.env'});
+console.log(process.env.TRANSPORT_EMAIL);
 const express = require ('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require("body-parser");
 const cors = require('cors')
 const app = express();
-const dotenv = require('dotenv');
-dotenv.config();
+
 const port = 3001;
 
 app.use(cors());
@@ -98,5 +99,5 @@ app.post('/send', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}...`);
+  console.log(`Server running on port ${port}...${process.env.TRANSPORT_EMAIL}`);
 });

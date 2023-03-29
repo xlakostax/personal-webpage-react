@@ -3,7 +3,6 @@ import React from "react";
 const Soon = () => {
   return (
     <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%"}}>
-
       <svg
           xmlns="http://www.w3.org/2000/svg"
           /*width="8.94444in" height="8.5in"*/

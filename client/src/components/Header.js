@@ -4,16 +4,16 @@ import React from 'react';
 import {HeaderTag} from "../styles/styled";
 
 /*Import libraries*/
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
-import data from "./Menu"
+import navigationData from "./Menu"
 
 const Header = () => {
-  let menu = data.slice( 0, 4 ).map ( ( e ) => {
+  let menu = navigationData.slice(0, 4).map ((e) => {
     return (
-      <li key = { e.id }>
-        <NavLink exact to = { e.path }>
-          <h2>{ e.title }</h2>
+      <li key = {e.id}>
+        <NavLink exact to = {e.path}>
+          <h2>{e.title}</h2>
         </NavLink>
       </li>
     );
@@ -29,7 +29,7 @@ const Header = () => {
       </label>
       <nav id = 'nav'>
         <ul className = 'menu'>
-          { menu }
+          {menu}
         </ul>
       </nav>
     </HeaderTag>

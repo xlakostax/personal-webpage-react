@@ -1,4 +1,5 @@
-export default [
+// eslint-disable-next-line import/no-anonymous-default-export
+const navigationData = [
   {
     "id": 1,
     "title": "Work",
@@ -40,3 +41,5 @@ export default [
     "url": "https://www.facebook.com/xlakostax"
   }
 ];
+
+export default navigationData;

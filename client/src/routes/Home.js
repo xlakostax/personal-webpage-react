@@ -2,10 +2,10 @@ import React, {
   useEffect,
   useState
 } from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
-import data from "../components/Menu"
+import navigationData from "../components/Menu"
 
 const Main = styled.main`
   grid-row-start: 1;
@@ -178,21 +178,21 @@ const Home = () => {
     }
   }, [transform])
 
-  let menu = data.slice( 0, 4 ).map ( ( element ) => {
+  let menu = navigationData.slice(0, 4).map ((element) => {
     return (
-      <li key = { element.id }>
-        <NavLink exact to = { element.path }>
-          <h2>{ element.title }</h2>
+      <li key = {element.id}>
+        <NavLink exact to = {element.path}>
+          <h2>{element.title}</h2>
         </NavLink>
       </li>
     );
   });
 
-  let links = data.slice( 3 ).map ( ( element ) => {
+  let links = navigationData.slice(3).map((element) => {
     return (
-      <li key = { element.id }>
-        <a href = { element.url } target = '_blank' rel = 'noopener noreferrer'>
-          <i className = { element.icon }></i>
+      <li key = {element.id}>
+        <a href = {element.url} target = '_blank' rel = 'noopener noreferrer'>
+          <i className = {element.icon}></i>
         </a>
       </li>
     );
@@ -200,7 +200,7 @@ const Home = () => {
 
   return(
     <Main>
-      <div id = 'titleContainer' className = 'titleContainer' speed = "2" style = {{ transform: `${transform}` }}>
+      <div id = 'titleContainer' className = 'titleContainer' speed = "2" style = {{transform: `${transform}`}}>
         <h1>
           <span>I'm </span>
           Konstantin

@@ -70,15 +70,15 @@ const Notes = () => {
  }
 
   const history = state.postsHistory.map((element) => {
-      return (
-        <article key = {element.index}>
-          <h3>{element.header}</h3>
-          <div dangerouslySetInnerHTML = {{__html: element.post}}/>
-          <div className = "tagWrapper">
-            {element.tag.map(element => {return <p className = "tags" onClick = {filterHandler} key = {element.id}>{element}</p>})}<p className = "tags" onClick = {updateList}>reset</p>
-          </div>
-        </article>
-     )
+    return (
+      <article key = {element.index}>
+        <h3>{element.header}</h3>
+        <div dangerouslySetInnerHTML = {{__html: element.post}}/>
+        <div className = "tagWrapper">
+          {element.tag.map(element => {return <p className = "tags" onClick = {filterHandler} key = {element.id}>{element}</p>})}<p className = "tags" onClick = {updateList}>reset</p>
+        </div>
+      </article>
+    )
  })
   return(
     <>
